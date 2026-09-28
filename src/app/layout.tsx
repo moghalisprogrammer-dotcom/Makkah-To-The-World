@@ -40,9 +40,6 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body>
-        <div className="frontend-preview" role="note">
-          نسخة واجهات للمراجعة · التسجيل والدخول يحتاجان ربط الخادم
-        </div>
         <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
