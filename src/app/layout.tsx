@@ -39,14 +39,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/images/alula.jpg"
-          fetchPriority="high"
-        />
-      </head>
       <body>
         <LocaleProvider>{children}</LocaleProvider>
       </body>

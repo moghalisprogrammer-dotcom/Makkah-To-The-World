@@ -1,0 +1,64 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(64) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  role ENUM('ADMIN','STAFF') NOT NULL,
+  display_name VARCHAR(100) NOT NULL,
+  gate TINYINT UNSIGNED NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS event_settings (
+  id TINYINT PRIMARY KEY,
+  capacity INT UNSIGNED NOT NULL,
+  CHECK (id=1)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS registrations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(150) NOT NULL,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  phone VARCHAR(20) NOT NULL,
+  company VARCHAR(150) NOT NULL DEFAULT '',
+  job_title VARCHAR(100) NOT NULL DEFAULT '',
+  age_group VARCHAR(10) NOT NULL,
+  locale ENUM('ar','en') NOT NULL DEFAULT 'ar',
+  workshop_id ENUM('digital','kitchens','food-safety') NULL DEFAULT NULL,
+  registration_number VARCHAR(20) NULL UNIQUE,
+  secure_token CHAR(64) NOT NULL UNIQUE,
+  status ENUM('REGISTERED','CHECKED_IN','CANCELLED') NOT NULL DEFAULT 'REGISTERED',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  checked_in_at DATETIME NULL,
+  checked_in_by INT UNSIGNED NULL,
+  FOREIGN KEY (checked_in_by) REFERENCES users(id),
+  INDEX idx_status (status), INDEX idx_phone (phone)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS sessions (
+  token_hash CHAR(64) PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  expires_at DATETIME NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  INDEX idx_expiry (expires_at)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS check_in_logs (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  registration_id INT UNSIGNED NOT NULL,
+  staff_id INT UNSIGNED NOT NULL,
+  action ENUM('CHECK_IN','UNDO','CANCEL') NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (registration_id) REFERENCES registrations(id),
+  FOREIGN KEY (staff_id) REFERENCES users(id)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS email_logs (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  registration_id INT UNSIGNED NOT NULL,
+  status ENUM('SENT','FAILED') NOT NULL,
+  error_code VARCHAR(80) NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (registration_id) REFERENCES registrations(id),
+  INDEX idx_email_registration (registration_id,id)
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS rate_limits (
+  bucket_key CHAR(64) PRIMARY KEY,
+  hits INT UNSIGNED NOT NULL,
+  expires_at DATETIME NOT NULL,
+  INDEX idx_rate_expiry (expires_at)
+) ENGINE=InnoDB;

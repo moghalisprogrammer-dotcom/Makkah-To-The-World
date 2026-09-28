@@ -10,7 +10,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -38,6 +38,7 @@ import { event } from "@/lib/event";
 import { agenda, arabicTime, workshops } from "@/lib/agenda";
 import { Sponsor } from "./sponsor";
 import { InvitationForm, emptyInvitation } from "./invitation-form";
+import { useAccessibleReducedMotion } from "./use-reduced-motion";
 const chapters = [
   { id: "welcome", label: "الدعوة" },
   { id: "experience", label: "التجربة" },
@@ -130,7 +131,7 @@ function Action({
 }) {
   const { t } = useLocale();
   const [burst, setBurst] = useState(0);
-  const reduced = useReducedMotion();
+  const reduced = useAccessibleReducedMotion();
   return (
     <motion.button
       type="button"
@@ -171,7 +172,7 @@ function Reveal({
   as?: "h1" | "h2";
 }) {
   const { t } = useLocale();
-  const reduced = useReducedMotion();
+  const reduced = useAccessibleReducedMotion();
   const words = children.split(" ");
   const Tag = as;
   return (
@@ -248,7 +249,7 @@ export function Invitation() {
     );
   }, []);
   const router = useRouter();
-  const reduced = useReducedMotion();
+  const reduced = useAccessibleReducedMotion();
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
   const activeRef = useRef(0);
@@ -474,9 +475,6 @@ export function Invitation() {
                 alt=""
                 style={{ objectPosition: destination.position }}
                 className={reduced ? "" : "photo-living"}
-                loading="lazy"
-                decoding="async"
-                fetchPriority="low"
               />
             </motion.div>
           </AnimatePresence>

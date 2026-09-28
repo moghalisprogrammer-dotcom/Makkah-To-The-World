@@ -16,6 +16,7 @@ import {
   SlidersHorizontal,
   XCircle,
 } from "lucide-react";
+import type { Registration } from "@/lib/db";
 import { formatDate, statusLabels, ageGroups, ageLabels } from "@/lib/event";
 import { api } from "@/lib/client";
 import {
@@ -24,13 +25,7 @@ import {
   workshopTime,
   type WorkshopId,
 } from "@/lib/workshops";
-type Row = {
-  id: number; full_name: string; email: string; phone: string; company: string;
-  job_title: string; age_group: string; workshop_id: WorkshopId | null;
-  created_at: string; locale: "ar" | "en"; registration_number: string;
-  status: string; checked_in_at: string | null; staff_name: string | null;
-  email_status?: string;
-};
+type Row = Omit<Registration, "secure_token">;
 interface Data {
   registrations: Row[];
   stats: {

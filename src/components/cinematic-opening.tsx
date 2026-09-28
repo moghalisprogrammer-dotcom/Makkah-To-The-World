@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Volume2, VolumeX, MapPin } from "lucide-react";
 import { LanguageSwitch, useLocale } from "./locale-provider";
 import { CollegeIdentity } from "./college-identity";
 import { Sponsor } from "./sponsor";
+import { useAccessibleReducedMotion } from "./use-reduced-motion";
 const shots = [
   {
     src: "/images/alula.jpg",
@@ -57,7 +58,7 @@ export function CinematicOpening({
 }) {
   const { locale, ready } = useLocale();
   const en = locale === "en" ? 1 : 0;
-  const reduced = useReducedMotion();
+  const reduced = useAccessibleReducedMotion();
   const [shot, setShot] = useState(0);
   const [visible, setVisible] = useState(true);
   const skip = useRef<HTMLButtonElement>(null);
@@ -137,7 +138,7 @@ export function CinematicOpening({
             style={{ objectPosition: shots[shot].position }}
             loading="eager"
             decoding="async"
-            fetchPriority={shot === 0 ? "high" : "auto"}
+            fetchPriority="high"
           />
         </motion.div>
       </AnimatePresence>

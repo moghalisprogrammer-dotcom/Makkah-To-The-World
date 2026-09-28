@@ -64,7 +64,7 @@ export const agenda: AgendaItem[] = [
   {
     start: "12:15",
     end: "13:00",
-    title: "أساسيات الظهور المهني الرقمي",
+    title: "أساسيات الظهور المهني",
     category: "workshop",
     location: "الدور الثاني",
     note: "ورشة عمل ضمن برنامج الفعالية.",
@@ -102,7 +102,7 @@ export const workshops = [
   {
     id: "digital",
     number: "01",
-    title: "أساسيات الظهور المهني الرقمي",
+    title: "أساسيات الظهور المهني",
     start: "12:15",
     end: "13:00",
     location: "الدور الثاني",

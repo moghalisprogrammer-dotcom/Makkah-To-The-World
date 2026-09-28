@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { currentUser } from "@/lib/auth";
 import { Header } from "@/components/header";
 import { LoginForm } from "@/components/login-form";
-export const metadata: Metadata = { title: "معاينة دخول فريق التنظيم", robots: { index: false, follow: false } };
-export default function Login() {
+export const metadata: Metadata = {
+  title: "دخول فريق التنظيم",
+  robots: { index: false, follow: false },
+};
+export default async function Login() {
+  const user = await currentUser();
+  if (user) redirect(user.role === "ADMIN" ? "/admin" : "/check-in");
   return (
     <>
       <Header simple />
@@ -16,7 +23,6 @@ export default function Login() {
             دخول الإدارة وموظفي بوابات الاستقبال
           </p>
           <LoginForm />
-          <div className="notice info">واجهة استعراض فقط · تفعيل الحسابات بعد ربط الخادم.</div>
           <div className="auth-footnote">حسابات مخصصة لفريق تنظيم الفعالية</div>
         </div>
       </main>

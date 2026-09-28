@@ -1,32 +1,48 @@
 {
-  "name": "makkah-to-the-world-frontend",
+  "name": "makkah-tourism-2026",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "node node_modules/next/dist/bin/next dev --hostname 0.0.0.0 --port 3000",
     "build": "node node_modules/next/dist/bin/next build",
-    "typecheck": "node node_modules/typescript/bin/tsc --noEmit"
+    "start": "node scripts/start.mjs",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
+    "db:setup": "node --env-file=.env.local --import tsx scripts/setup.ts",
+    "db:setup:prod": "node --env-file=.env.production.local --import tsx scripts/setup.ts --production",
+    "test": "node --env-file=.env.local --import tsx --test tests/integration.test.ts tests/workshops.test.ts",
+    "db:migrate": "node --env-file=.env.local --import tsx scripts/migrate.ts",
+    "db:migrate:prod": "node --env-file=.env.production.local --import tsx scripts/migrate.ts",
+    "test:browser": "node --env-file=.env.local tests/browser.mjs",
+    "test:email": "node --import tsx tests/email-layout.mjs",
+    "maintenance": "node --env-file=.env.local --import tsx scripts/maintenance.ts",
+    "maintenance:prod": "node --env-file=.env.production.local --import tsx scripts/maintenance.ts"
   },
   "dependencies": {
     "@fontsource/hanken-grotesk": "^5.3.0",
     "@fontsource/ibm-plex-sans-arabic": "^5.2.7",
     "@fontsource/manrope": "^5.2.8",
     "@fontsource/poppins": "^5.3.0",
-    "@types/qrcode": "^1.5.6",
     "@zxing/browser": "^0.1.5",
     "jsqr": "^1.4.0",
     "lucide-react": "^0.468.0",
     "motion": "^13.4.4",
+    "mysql2": "^3.14.0",
     "next": "^16.3.6",
+    "nodemailer": "^10.0.11",
     "qrcode": "^1.5.4",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "zod": "^4.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.0",
     "@types/node": "^24.0.0",
+    "@types/nodemailer": "^7.0.0",
+    "@types/qrcode": "^1.5.5",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "prettier": "^3.9.9",
+    "tsx": "^4.20.0",
     "typescript": "^5.9.0"
   }
 }

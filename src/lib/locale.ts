@@ -1,10 +1,6 @@
 export type Locale = "ar" | "en";
 // Source phrases remain Arabic so content and translations can be reviewed together.
 export const english: Record<string, string> = {
-  "تذكرة عرض تجريبية؛ لم يُحفظ التسجيل ولم يُرسل بريد.":
-    "Demo ticket only; no registration was saved and no email was sent.",
-  "نموذج تجريبي · غير صالح للدخول":
-    "DEMO · NOT VALID FOR ENTRY",
   الدعوة: "Invitation",
   التجربة: "Experience",
   البرنامج: "Agenda",
@@ -263,7 +259,8 @@ export const english: Record<string, string> = {
   "دور M": "Floor M",
   "تجربة القهوة السعودية للمناطق الأربع": "Coffee from four Saudi regions",
   "سارة الشهري": "Sarah Al-Shehri",
-  "أساسيات الظهور المهني الرقمي": "Professional digital presence essentials",
+  "أساسيات الظهور المهني الرقمي": "Professional presence essentials",
+  "أساسيات الظهور المهني": "Professional presence essentials",
   "ورشة عمل ضمن برنامج الفعالية.": "A workshop in the event programme.",
   "لقاء ملهم / مشاركة قطاعية": "Inspiring talk / industry contribution",
   "جولة مفتوحة وتجارب تفاعلية": "Open tour & interactive experiences",

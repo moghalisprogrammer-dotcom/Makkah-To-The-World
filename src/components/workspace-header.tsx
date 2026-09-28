@@ -2,8 +2,8 @@
 import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { useState } from "react";
+import type { User } from "@/lib/db";
 import { api } from "@/lib/client";
-type User = { display_name: string; role: "ADMIN" | "STAFF"; gate: number | null };
 export function WorkspaceHeader({ user }: { user: User }) {
   const [error, setError] = useState("");
   return (
