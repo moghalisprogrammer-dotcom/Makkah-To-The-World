@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ArrowUpLeft, Menu, X } from "lucide-react";
 import { Sponsor } from "./sponsor";
+import { appPath } from "@/lib/base-path";
 export function Header({ simple = false }: { simple?: boolean }) {
   const { t } = useLocale();
   const [open, setOpen] = useState(false);
@@ -16,7 +17,7 @@ export function Header({ simple = false }: { simple?: boolean }) {
           aria-label={t("كلية مكة الأهلية — الرئيسية")}
         >
           <img
-            src="/images/college-logo.webp"
+            src={appPath("/images/college-logo.webp")}
             alt={t("كلية مكة الأهلية")}
             width="206"
             height="78"

@@ -5,6 +5,7 @@ import { verifyPassword, newToken, digest } from "@/lib/security";
 import { body, failure, HttpError, json } from "@/lib/http";
 import { rateLimit, clientKey } from "@/lib/rate-limit";
 import { SESSION_COOKIE } from "@/lib/auth";
+import { basePath } from "@/lib/base-path";
 export async function POST(request: Request) {
   try {
     const data = z
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
         new URL(process.env.APP_URL || "http://localhost:3000").protocol ===
         "https:",
       sameSite: "strict",
-      path: "/",
+      path: basePath || "/",
       maxAge: hours * 3600,
     });
     return json({ redirect: user.role === "ADMIN" ? "/admin" : "/check-in" });

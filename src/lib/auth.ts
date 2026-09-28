@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { rows, type User } from "./db";
 import { digest } from "./security";
 import { HttpError } from "./http";
+import { appPath } from "./base-path";
 export const SESSION_COOKIE = "makkah_session";
 export async function currentUser(): Promise<User | null> {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
@@ -22,7 +23,7 @@ export async function requireUser(admin = false) {
 }
 export async function protectPage(admin = false) {
   const user = await currentUser();
-  if (!user) redirect("/login");
-  if (admin && user.role !== "ADMIN") redirect("/check-in");
+  if (!user) redirect(appPath("/login"));
+  if (admin && user.role !== "ADMIN") redirect(appPath("/check-in"));
   return user;
 }

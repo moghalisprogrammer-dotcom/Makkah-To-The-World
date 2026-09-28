@@ -19,6 +19,7 @@ import {
 import type { Registration } from "@/lib/db";
 import { formatDate, statusLabels, ageGroups, ageLabels } from "@/lib/event";
 import { api } from "@/lib/client";
+import { appPath } from "@/lib/base-path";
 import {
   workshopIds,
   workshopLabel,
@@ -287,7 +288,7 @@ export function AdminDashboard() {
                 aria-label="البحث في المسجلين"
               />
             </div>
-            <a href="/api/admin/export" className="button button-small">
+            <a href={appPath("/api/admin/export")} className="button button-small">
               <Download size={16} />
               تصدير كل السجلات
             </a>

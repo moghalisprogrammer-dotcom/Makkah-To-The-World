@@ -37,6 +37,7 @@ import { useRouter } from "next/navigation";
 import { event } from "@/lib/event";
 import { agenda, arabicTime, workshops } from "@/lib/agenda";
 import { Sponsor } from "./sponsor";
+import { appPath } from "@/lib/base-path";
 import { InvitationForm, emptyInvitation } from "./invitation-form";
 import { useAccessibleReducedMotion } from "./use-reduced-motion";
 const chapters = [
@@ -471,7 +472,7 @@ export function Invitation() {
               transition={{ duration: reduced ? 0.1 : 1.5, ease: "easeInOut" }}
             >
               <img
-                src={destination.src}
+                src={appPath(destination.src)}
                 alt=""
                 style={{ objectPosition: destination.position }}
                 className={reduced ? "" : "photo-living"}
@@ -688,7 +689,7 @@ export function Invitation() {
                     </p>
                     <a
                       className="calendar-link"
-                      href={locale === "en" ? "/event-en.ics" : "/event.ics"}
+                      href={appPath(locale === "en" ? "/event-en.ics" : "/event.ics")}
                       download
                     >
                       <CalendarDays size={16} />
@@ -1044,7 +1045,7 @@ export function Invitation() {
               <i />
               <i />
             </button>
-            <a href="/credits" aria-label={t("حقوق الصور والموسيقى")}>
+            <a href={appPath("/credits")} aria-label={t("حقوق الصور والموسيقى")}>
               {t("الحقوق")}
             </a>
           </div>
@@ -1077,7 +1078,7 @@ export function Invitation() {
       </div>
       <audio
         ref={audio}
-        src="/audio/saudi-invitation.mp3"
+        src={appPath("/audio/saudi-invitation.mp3")}
         loop
         preload="none"
       />

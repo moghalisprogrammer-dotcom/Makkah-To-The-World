@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { SESSION_COOKIE } from "@/lib/auth";
 import { digest } from "@/lib/security";
 import { body, failure, json } from "@/lib/http";
+import { basePath } from "@/lib/base-path";
 export async function POST(request: Request) {
   try {
     await body(request);
@@ -12,7 +13,7 @@ export async function POST(request: Request) {
       await db().execute("DELETE FROM sessions WHERE token_hash=?", [
         digest(token),
       ]);
-    jar.delete(SESSION_COOKIE);
+    jar.set(SESSION_COOKIE, "", { path: basePath || "/", maxAge: 0 });
     return json({ ok: true });
   } catch (error) {
     return failure(error);

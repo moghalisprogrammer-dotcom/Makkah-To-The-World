@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUpLeft, Globe, Mail } from "lucide-react";
 import { event } from "@/lib/event";
 import { Sponsor } from "./sponsor";
+import { appPath } from "@/lib/base-path";
 export function Footer() {
   const { t } = useLocale();
   return (
@@ -12,7 +13,7 @@ export function Footer() {
         <div className="footer-top">
           <div>
             <img
-              src="/images/college-logo.webp"
+              src={appPath("/images/college-logo.webp")}
               alt={t("كلية مكة الأهلية")}
               width="215"
               height="81"

@@ -2,6 +2,7 @@
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, Check, LoaderCircle, ShieldCheck } from "lucide-react";
 import { ageGroups, ageLabels } from "@/lib/event";
+import { appPath } from "@/lib/base-path";
 export function RegistrationForm() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -11,7 +12,7 @@ export function RegistrationForm() {
     setError("");
     const data = Object.fromEntries(new FormData(e.currentTarget));
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(appPath("/api/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...data, consent: data.consent === "on" }),
@@ -20,7 +21,7 @@ export function RegistrationForm() {
       if (!response.ok) throw new Error(result.error);
       sessionStorage.setItem("makkah_ticket", result.token);
       sessionStorage.setItem("makkah_email_sent", String(result.emailSent));
-      window.location.assign("/registration/success");
+      window.location.assign(appPath("/registration/success"));
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "تعذر الاتصال. حاول مجددًا.",

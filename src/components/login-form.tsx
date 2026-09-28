@@ -1,6 +1,7 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, LoaderCircle, LockKeyhole } from "lucide-react";
+import { appPath } from "@/lib/base-path";
 export function LoginForm() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -10,14 +11,14 @@ export function LoginForm() {
     setError("");
     try {
       const data = Object.fromEntries(new FormData(e.currentTarget));
-      const r = await fetch("/api/auth/login", {
+      const r = await fetch(appPath("/api/auth/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       const result = await r.json();
       if (!r.ok) throw new Error(result.error);
-      window.location.assign(result.redirect);
+      window.location.assign(appPath(result.redirect));
     } catch (err) {
       setError(err instanceof Error ? err.message : "تعذر الاتصال.");
       setBusy(false);

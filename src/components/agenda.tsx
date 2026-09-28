@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { appPath } from "@/lib/base-path";
 import {
   ArrowDown,
   ArrowLeft,
@@ -65,7 +66,7 @@ export function Agenda() {
               يلهمك.
             </p>
           </div>
-          <a className="button button-outline" href="/event.ics" download>
+          <a className="button button-outline" href={appPath("/event.ics")} download>
             <CalendarPlus size={18} />
             أضف الموعد إلى تقويمك
           </a>

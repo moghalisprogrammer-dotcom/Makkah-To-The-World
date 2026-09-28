@@ -1,6 +1,6 @@
 # نشر النظام على خادم كايزن
 
-هذا الدليل يثبت التطبيق في `/opt/makkah-event`، قاعدة MariaDB مستقلة في حاوية Docker، وNext.js على `127.0.0.1:3001`. إعداد كايزن الحالي على المنفذ `3000` وMongoDB على `27017` لا يتغيران. نفّذ الأوامر على الخادم بصلاحية root بعد رفع التحديث إلى GitHub.
+هذا الدليل يثبت التطبيق في `/opt/makkah-event`، قاعدة MariaDB مستقلة في حاوية Docker، وNext.js على `127.0.0.1:3001`. يظهر الموقع تحت المسار `https://kaizenksa.com/makkah` دون سجل DNS جديد. إعداد كايزن الحالي على المنفذ `3000` وMongoDB على `27017` لا يتغيران. نفّذ الأوامر على الخادم بصلاحية root بعد رفع التحديث إلى GitHub.
 
 ## 1. المتطلبات ونسخة التطبيق
 
@@ -40,7 +40,8 @@ chmod 600 .env.production.local
 DATABASE_URL=mysql://makkah:ضع_كلمة_مرور_SQL@127.0.0.1:3307/makkah_event
 MYSQL_ROOT_PASSWORD=كلمة_مرور_جذر_SQL_عشوائية_جديدة
 MYSQL_PASSWORD=ضع_نفس_كلمة_مرور_SQL_هنا
-APP_URL=https://makkah.kaizenksa.com
+APP_URL=https://kaizenksa.com/makkah
+NEXT_PUBLIC_BASE_PATH=/makkah
 EVENT_CAPACITY=800
 SESSION_HOURS=12
 TRUST_PROXY=true
@@ -78,41 +79,34 @@ curl -fsS http://127.0.0.1:3001/api/health
 
 يستمع Next.js على `127.0.0.1:3001` فقط، ولا يفتح منفذًا عامًا. إذا لم يكن PM2 مضبوطًا للتشغيل بعد إعادة تشغيل الخادم، شغّل `pm2 startup` واتبع الأمر الذي يطبعه مرة واحدة.
 
-## 4. ربط النطاق في Nginx
+## 4. ربط المسار في Nginx
 
-بعد إنشاء `makkah.kaizenksa.com` في DNS، أنشئ ملفًا مستقلًا:
+أضف القواعد التالية داخل كتلة HTTPS الحالية التي تحتوي `server_name kaizenksa.com www.kaizenksa.com;`، وقبل قاعدة `location /` العامة. بذلك تبقى الصفحة الرئيسية على إعدادها الحالي، بينما يحوّل المسار `/makkah/` إلى التطبيق على المنفذ 3001. لا تضف `location` إلى كتلة HTTP التي تحوّل كل الطلبات إلى HTTPS.
 
 ```bash
-cat > /etc/nginx/sites-available/makkah-event <<'NGINX'
-server {
-    listen 80;
-    listen [::]:80;
-    server_name makkah.kaizenksa.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:3001;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $remote_addr;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_read_timeout 60s;
-    }
+location = /makkah {
+    proxy_pass http://127.0.0.1:3001;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
 }
-NGINX
-ln -s /etc/nginx/sites-available/makkah-event /etc/nginx/sites-enabled/makkah-event
-nginx -t && systemctl reload nginx
+
+location ^~ /makkah/ {
+    proxy_pass http://127.0.0.1:3001;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 60s;
+}
 ```
 
-بعد أن يشير DNS إلى الخادم ويصبح النطاق قابلًا للوصول، فعّل TLS بشهادة Let’s Encrypt (إذا كان Certbot مثبتًا):
-
-```bash
-certbot --nginx -d makkah.kaizenksa.com
-```
-
-لا تغيّر ملف موقع `kaizenksa.com` ولا `default`؛ هذا الموقع يستخدم إعدادًا منفصلًا.
+بعد إضافة القاعدتين، نفّذ `nginx -t && systemctl reload nginx`. لا تغيّر قاعدة `location /` العامة، ولا إعداد TLS؛ النطاق والشهادة الحاليان يخدمان المسار الفرعي أيضًا. لا يحتاج هذا الخيار سجل DNS جديدًا.
 
 ## 5. تحقق تشغيلي قبل فتح التسجيل
 

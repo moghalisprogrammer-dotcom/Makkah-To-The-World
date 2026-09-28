@@ -4,13 +4,14 @@ import { LogOut } from "lucide-react";
 import { useState } from "react";
 import type { User } from "@/lib/db";
 import { api } from "@/lib/client";
+import { appPath } from "@/lib/base-path";
 export function WorkspaceHeader({ user }: { user: User }) {
   const [error, setError] = useState("");
   return (
     <header className="workspace-header">
       <div className="container workspace-bar">
         <Link href="/" aria-label="العودة للرئيسية">
-          <img src="/images/college-logo.webp" alt="كلية مكة الأهلية" />
+          <img src={appPath("/images/college-logo.webp")} alt="كلية مكة الأهلية" />
         </Link>
         <div className="workspace-user">
           {user.role === "ADMIN" && (
@@ -32,7 +33,7 @@ export function WorkspaceHeader({ user }: { user: User }) {
             onClick={async () => {
               try {
                 await api("/api/auth/logout", {});
-                window.location.assign("/login");
+                window.location.assign(appPath("/login"));
               } catch {
                 setError("تعذر تسجيل الخروج. حاول مجددًا.");
               }

@@ -27,7 +27,7 @@ npm run dev
 
 ## النشر
 
-دليل إعداد خادم Ubuntu مستقل، قاعدة البيانات، Resend، PM2 وNginx موجود في [DEPLOYMENT.md](./DEPLOYMENT.md). يستخدم هذا التطبيق المنفذ `3001` محليًا، وقاعدة MariaDB على `127.0.0.1:3307`، ويترك `kaizenksa.com` على إعداداته الحالية.
+دليل إعداد خادم Ubuntu وقاعدة البيانات وResend وPM2 وNginx موجود في [DEPLOYMENT.md](./DEPLOYMENT.md). يستخدم التطبيق المنفذ `3001` محليًا وقاعدة MariaDB على `127.0.0.1:3307`، ويظهر تحت `https://kaizenksa.com/makkah` عبر قاعدة مسار مستقلة في Nginx؛ لا يحتاج سجل DNS جديدًا.
 
 ## إعداد Resend
 

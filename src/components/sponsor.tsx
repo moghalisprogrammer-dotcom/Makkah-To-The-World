@@ -2,6 +2,7 @@
 import { useLocale } from "./locale-provider";
 import { brand } from "@/lib/brand";
 import Image from "next/image";
+import { appPath } from "@/lib/base-path";
 export function Sponsor() {
   const { t } = useLocale();
   return (
@@ -14,7 +15,7 @@ export function Sponsor() {
     >
       {brand.kaizenLogo ? (
         <Image
-          src={brand.kaizenLogo}
+          src={appPath(brand.kaizenLogo)}
           alt={t("كايزن جروب")}
           width={360}
           height={120}

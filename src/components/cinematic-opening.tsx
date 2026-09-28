@@ -6,6 +6,7 @@ import { LanguageSwitch, useLocale } from "./locale-provider";
 import { CollegeIdentity } from "./college-identity";
 import { Sponsor } from "./sponsor";
 import { useAccessibleReducedMotion } from "./use-reduced-motion";
+import { appPath } from "@/lib/base-path";
 const shots = [
   {
     src: "/images/alula.jpg",
@@ -75,7 +76,7 @@ export function CinematicOpening({
       const image = new Image();
       image.decoding = "async";
       image.fetchPriority = "low";
-      image.src = src;
+      image.src = appPath(src);
     }
   }, []);
   useEffect(() => {
@@ -133,7 +134,7 @@ export function CinematicOpening({
           transition={{ duration: reduced ? 0.18 : 0.85 }}
         >
           <img
-            src={shots[shot].src}
+            src={appPath(shots[shot].src)}
             alt=""
             style={{ objectPosition: shots[shot].position }}
             loading="eager"
