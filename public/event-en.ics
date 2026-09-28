@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Makkah National College//World Tourism Day 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:world-tourism-day-2026@mnc.edu.sa
+DTSTAMP:20260928T000000Z
+DTSTART:20261001T060000Z
+DTEND:20261001T120000Z
+SUMMARY:World Tourism Day 2026 - Makkah National College
+DESCRIPTION:World Tourism Day and International Saudi Coffee Day.\n
+ Tourism & Hospitality Department - Makkah National College.\n
+ Contact: hospitality.dept@mnc.edu.sa\nWebsite: https://www.mnc.edu.sa
+LOCATION:Makkah National College - college lobby - Makkah
+URL:https://maps.app.goo.gl/GjQE9njK7atUjA9x6?g_st=ic
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

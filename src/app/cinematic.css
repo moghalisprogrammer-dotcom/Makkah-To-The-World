@@ -1,0 +1,2303 @@
+.cinematic-invitation {
+  height: var(--invitation-height, 100dvh);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #041b3d;
+  color: #fff;
+  --cinema-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cinematic-invitation button {
+  font-family: inherit;
+}
+.cinema-world {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+.cinema-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.cinema-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+}
+.photo-living {
+  animation: cinema-breathe 38s ease-in-out infinite alternate;
+}
+.cinema-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      270deg,
+      #041b3df7 0%,
+      #041b3dec 30%,
+      #041b3d73 62%,
+      #041b3d0d 100%
+    ),
+    linear-gradient(0deg, #041b3df0 0%, transparent 36%, #041b3d38 90%);
+}
+.cinema-halo {
+  position: absolute;
+  width: 65vw;
+  height: 65vw;
+  background: radial-gradient(ellipse, #2c97d21c, transparent 64%);
+  top: -15vw;
+  left: 18%;
+  pointer-events: none;
+}
+.cinema-meridian {
+  position: absolute;
+  width: 95vw;
+  height: 95vw;
+  border: 1px solid #b6e6ff17;
+  border-radius: 50%;
+  right: 59%;
+  top: 5%;
+  box-shadow:
+    0 0 0 65px #b6e6ff05,
+    0 0 0 130px #b6e6ff05;
+  pointer-events: none;
+}
+.cinema-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: radial-gradient(#d1e9fa77 0.4px, transparent 0.6px);
+  background-size: 7px 7px;
+  pointer-events: none;
+}
+.cinema-header {
+  height: 95px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 5%;
+  gap: 25px;
+  border-bottom: 1px solid #ffffff12;
+  z-index: 5;
+}
+.cinema-college {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.cinema-college img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+.cinema-college small {
+  display: block;
+  font-weight: 400;
+  font-size: 10px;
+  color: #b7c9dc;
+}
+.cinema-header-word {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #c2d4e5;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.cinema-header-word i {
+  width: 38px;
+  height: 1px;
+  background: #559dc759;
+}
+.cinematic-invitation .invite-sponsor {
+  gap: 4px;
+  flex-direction: column;
+}
+.cinematic-invitation .invite-sponsor > img {
+  width: 132px;
+  max-width: 132px;
+  height: 44px;
+  max-height: 44px;
+  object-fit: cover;
+  background: #fff;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+.cinematic-invitation .invite-sponsor > span {
+  font-size: 10px;
+  max-width: none;
+  border: 0;
+  padding: 0;
+  line-height: 1.7;
+}
+.cinema-progress {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 49px;
+  flex: none;
+  margin: 0 auto;
+  z-index: 4;
+}
+.cinema-progress button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  color: #aabfd5;
+  font-size: 11px;
+  min-height: 36px;
+  padding: 8px 13px;
+  border-radius: 30px;
+}
+.progress-mark {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #8eaecf8c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.progress-label {
+  z-index: 1;
+}
+.cinema-progress button[aria-current] {
+  color: #fff;
+}
+.cinema-progress button[aria-current] .progress-mark {
+  background: #63c3f3;
+  border-color: #63c3f3;
+  box-shadow: 0 0 10px #63c3f345;
+}
+.progress-highlight {
+  position: absolute;
+  inset: 3px 0;
+  border: 1px solid #69b9e64d;
+  background: #2c97d21d;
+  border-radius: 30px;
+  z-index: 0;
+}
+.cinema-main {
+  min-height: 0;
+  flex: 1;
+  position: relative;
+  outline: none;
+  margin: 0 6%;
+  perspective: 1600px;
+}
+.cinema-scene {
+  height: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  outline: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  will-change: transform, opacity;
+}
+.cinema-scene > div {
+  width: 100%;
+  max-height: 100%;
+}
+.scene-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 12px;
+  color: #a8d6f0;
+  margin: 0 0 15px;
+}
+.scene-eyebrow > span {
+  width: 27px;
+  height: 1px;
+  background: #2c97d2;
+}
+.scene-title {
+  font-size: clamp(44px, 5.2vw, 78px);
+  font-weight: 500;
+  letter-spacing: -1.8px;
+  line-height: 1.4;
+  margin: 0 0 18px;
+  color: #fff;
+}
+.scene-title .word-mask {
+  color: inherit;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.42;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+.word-mask > span {
+  display: inline-block;
+}
+.scene-description {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #c6d8e8;
+  max-width: 430px;
+  margin: 0;
+}
+.welcome-stage {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 5%;
+  align-items: center;
+}
+.welcome-story .scene-title {
+  font-size: clamp(56px, 6.4vw, 98px);
+  max-width: 570px;
+  line-height: 1.25;
+  letter-spacing: -2.7px;
+}
+.welcome-title {
+  padding-right: 18px;
+  border-right: 2px solid #2c97d2;
+  margin: 22px 0;
+}
+.welcome-title > p {
+  font-size: 12px;
+  color: #afc8df;
+  margin: 0 0 5px;
+}
+.welcome-title > h2 {
+  font-size: clamp(21px, 2.05vw, 30px);
+  letter-spacing: -0.35px;
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+.welcome-title em {
+  color: #7dd1ff;
+  font-style: normal;
+  white-space: nowrap;
+}
+.welcome-coffee {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.welcome-coffee svg {
+  color: #82c7ec;
+  flex: none;
+}
+.scene-event-line {
+  display: flex;
+  gap: 21px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #c4d8e8;
+  margin: 0 0 26px;
+}
+.scene-event-line > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.scene-event-line svg {
+  color: #74bee7;
+}
+.welcome-note {
+  max-width: 390px;
+  margin: -9px 0 19px;
+  color: #b9d0e2;
+  font-size: 11px;
+  line-height: 1.8;
+  padding-right: 10px;
+  border-right: 1px solid #6bbce654;
+}
+.cinema-action {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  min-height: 57px;
+  min-width: 210px;
+  padding: 7px 9px 7px 23px;
+  background: #eff8ff;
+  color: #041b3d;
+  border: 1px solid #c6e8ff;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 6px 28px #0082bf17;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.action-copy {
+  position: relative;
+  z-index: 2;
+}
+.action-orb {
+  height: 40px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  background: #0082bf;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  transition:
+    transform 0.55s var(--cinema-ease),
+    background 0.25s;
+}
+.cinema-action:hover .action-orb {
+  transform: rotate(-35deg);
+  background: #082b65;
+}
+.cinema-action:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent, #8bcefc70, transparent);
+  transform: translateX(120%);
+  transition: transform 0.8s var(--cinema-ease);
+}
+.cinema-action:hover:before {
+  transform: translateX(-120%);
+}
+.action-wave {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 110px;
+  height: 110px;
+  background: #49b5ed88;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+.cinema-action.secondary {
+  background: #0a305c8a;
+  border-color: #70b6df57;
+  color: #e6f3ff;
+}
+.cinema-quiet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 0;
+  color: #b7d5ed;
+  padding: 16px 2px 0;
+  font-size: 11px;
+}
+.landmark-window {
+  overflow: hidden;
+  height: min(450px, 48vh);
+  position: relative;
+  align-self: center;
+  min-height: 260px;
+}
+.window-outline {
+  position: absolute;
+  inset: 0 0 0 7%;
+  border: 1px solid #dcf0ff43;
+  border-radius: 220px 220px 7px 7px;
+  box-shadow:
+    0 0 35px #a8d9f208,
+    inset 0 0 40px #a8d9f208;
+  animation: window-reveal 1.8s var(--cinema-ease) both;
+}
+.window-orbit {
+  position: absolute;
+  inset: -27px -23px -22px 30px;
+  border: 1px solid #dcf0ff1c;
+  border-radius: 220px 220px 50% 50%;
+  transform: rotate(-9deg);
+}
+.landmark-caption {
+  position: absolute;
+  bottom: 30px;
+  right: 26px;
+  text-shadow: 0 3px 18px #041b3d;
+}
+.destination-kicker {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #d1eaff;
+}
+.landmark-caption strong {
+  display: block;
+  font-weight: 500;
+  font-size: 38px;
+  margin: 5px 0;
+}
+.landmark-caption div > span {
+  font-size: 13px;
+  color: #ccdeee;
+}
+.cinema-footer {
+  height: 95px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 5%;
+  z-index: 4;
+  background: linear-gradient(0deg, #041b3d80, transparent);
+  border-top: 1px solid #cde5ff10;
+}
+.cinema-navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cinema-back {
+  width: 43px;
+  height: 43px;
+  border: 1px solid #b8d9ef50;
+  border-radius: 50%;
+  background: #041b3d59;
+  color: #dceeff;
+  display: grid;
+  place-items: center;
+}
+.cinema-back:disabled {
+  opacity: 0.22;
+  cursor: default;
+}
+.cinema-next {
+  min-height: 46px;
+  min-width: 168px;
+  font-size: 12px;
+  padding: 5px 7px 5px 19px;
+  gap: 25px;
+}
+.cinema-next .action-orb {
+  width: 33px;
+  height: 33px;
+}
+.cinema-next .action-orb svg {
+  width: 17px;
+}
+.cinema-atmosphere {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.cinema-atmosphere > a {
+  font-size: 10px;
+  color: #9fb8d1;
+}
+.cinema-sound {
+  background: transparent;
+  border: 0;
+  color: #c5d9ec;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  padding: 10px 0;
+}
+.cinema-sound > i {
+  width: 2px;
+  height: 4px;
+  background: #7ac6ed;
+  display: none;
+  border-radius: 2px;
+}
+.cinema-sound.is-playing > i {
+  display: block;
+  animation: sound-pulse 0.6s ease-in-out infinite alternate;
+}
+.cinema-sound > i:nth-last-child(2) {
+  animation-delay: 0.2s;
+}
+.cinema-sound > i:last-child {
+  animation-delay: 0.4s;
+}
+.cinema-location-caption {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  color: #9fc1dc;
+}
+.registration-security {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #afd1e8;
+  min-width: 140px;
+  justify-content: center;
+}
+.experience-stage,
+.agenda-stage,
+.workshop-stage,
+.location-stage,
+.register-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  align-items: center;
+}
+.scene-heading .scene-title {
+  max-width: 550px;
+}
+.experience-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.experience-tabs button {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background: #0725487d;
+  border: 1px solid #95c4e34d;
+  border-radius: 9px;
+  padding: 17px 8px;
+  color: #92b8d4;
+  min-height: 93px;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+.experience-tabs button > span {
+  font-size: 9px;
+  text-align: center;
+  line-height: 1.6;
+}
+.experience-tabs button[aria-selected="true"] {
+  border-color: #6bc8f6;
+  background: #1482b734;
+  color: #d9f4ff;
+  box-shadow: 0 0 24px #2c97d21a;
+}
+.experience-panel {
+  min-height: 260px;
+  background: linear-gradient(120deg, #052248d6, #062a4ed9);
+  border: 1px solid #b3dff02b;
+  border-radius: 10px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(14px);
+}
+.experience-panel:before {
+  content: "";
+  position: absolute;
+  inset: auto auto -140px -100px;
+  width: 270px;
+  height: 270px;
+  border: 1px solid #98d9f526;
+  border-radius: 50%;
+}
+.panel-kicker {
+  font-size: 12px;
+  color: #77c7f1;
+}
+.experience-panel h3 {
+  font-size: 33px;
+  font-weight: 500;
+  margin: 15px 0;
+  letter-spacing: -0.8px;
+}
+.experience-panel p {
+  font-size: 14px;
+  line-height: 2;
+  color: #c7dce9;
+  position: relative;
+  margin: 0;
+}
+.agenda-focus {
+  border: 1px solid #a6d5f03d;
+  border-radius: 10px;
+  background: #052246db;
+  padding: 22px 27px;
+  backdrop-filter: blur(14px);
+}
+.agenda-period {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #adcee525;
+  margin-bottom: 3px;
+}
+.agenda-period > span {
+  font-size: 13px;
+  color: #cbe6f7;
+}
+.agenda-period > small {
+  font-size: 10px;
+  color: #89aac4;
+}
+.cinema-agenda-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 17px 0;
+  border-bottom: 1px solid #adcee51b;
+  min-height: 85px;
+}
+.item-clock {
+  min-width: 49px;
+  text-align: center;
+  border-left: 1px solid #5bbbea59;
+  padding-left: 13px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.7;
+}
+.item-clock b {
+  font-size: 18px;
+  font-weight: 500;
+  color: #a8dfff;
+}
+.item-clock span {
+  font-size: 11px;
+  color: #80aaca;
+}
+.cinema-agenda-item h3 {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+.cinema-agenda-item p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #a2bfd6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.scene-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  padding: 14px 0 0;
+}
+.scene-pager > button {
+  display: grid;
+  place-items: center;
+  border: 1px solid #89b9da3d;
+  border-radius: 50%;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  color: #bbdcf1;
+}
+.scene-pager > button:disabled {
+  opacity: 0.22;
+  cursor: default;
+}
+.scene-pager > div {
+  display: flex;
+  gap: 5px;
+}
+.scene-pager > div button {
+  width: 27px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.scene-pager > div button span {
+  height: 4px;
+  width: 15px;
+  border-radius: 3px;
+  background: #628daa6b;
+  transition:
+    width 0.3s,
+    background 0.3s;
+}
+.scene-pager button[aria-current] span {
+  background: #64c7fa;
+  width: 24px;
+}
+.calendar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #99d7fa;
+  border-bottom: 1px solid #7bcaf347;
+  padding: 10px 0;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.workshop-selector {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 17px;
+}
+.workshop-selector button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 9px;
+  font-size: 11px;
+  line-height: 1.6;
+  border-radius: 7px;
+  background: #042345b8;
+  border: 1px solid #92bedc38;
+  color: #b2cede;
+}
+.workshop-selector button[aria-pressed="true"] {
+  border-color: #55baf0;
+  background: #0c6a9e4d;
+  color: #d6f2ff;
+}
+.workshop-spotlight {
+  min-height: 300px;
+  border: 1px solid #a4d2ef45;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0a315cdf, #041e42f2);
+  backdrop-filter: blur(12px);
+  padding: 33px;
+  position: relative;
+  overflow: hidden;
+}
+.workshop-spotlight:after {
+  content: "";
+  position: absolute;
+  inset: -80px auto auto -80px;
+  border: 1px solid #9bd9ff18;
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+}
+.workshop-start {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  color: #8cd6ff;
+}
+.workshop-start i {
+  font-style: normal;
+  color: #658fae;
+  margin: 0 4px;
+}
+.workshop-spotlight h3 {
+  font-size: 31px;
+  letter-spacing: -0.6px;
+  line-height: 1.7;
+  margin: 26px 0 12px;
+  min-height: 95px;
+  font-weight: 500;
+}
+.workshop-spotlight > p {
+  font-size: 13px;
+  margin-bottom: 22px;
+  color: #9ebed7;
+}
+.workshop-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-top: 1px solid #a7cfe725;
+  padding-top: 18px;
+}
+.workshop-foot span,
+.workshop-foot button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+}
+.workshop-foot span {
+  color: #9abcdb;
+}
+.workshop-foot button {
+  background: none;
+  border: 0;
+  color: #c8edff;
+  padding: 7px 0;
+}
+.workshop-disclaimer {
+  font-size: 11px;
+  color: #9ab7d0;
+  text-align: center;
+  margin: 15px 0 0;
+}
+.venue-address {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 23px 0;
+  color: #8bcdf1;
+}
+.venue-address strong {
+  display: block;
+  font-size: 23px;
+  color: #e5f3ff;
+  font-weight: 500;
+}
+.venue-address span {
+  display: block;
+  font-size: 12px;
+  color: #a7c6dc;
+  margin-top: 3px;
+}
+.map-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 310px;
+  border: 1px solid #b7e6ff;
+  border-radius: 13px;
+  padding: 10px 14px 10px 11px;
+  color: #fff;
+  background: linear-gradient(115deg, #0090d3, #075e9a 76%);
+  font-size: 13px;
+  box-shadow:
+    0 12px 32px #0082bf4d,
+    inset 0 1px #ffffff48;
+  transition:
+    background 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+.map-action:hover {
+  background: linear-gradient(115deg, #13a7e9, #0072b3 76%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 38px #0082bf63,
+    inset 0 1px #ffffff75;
+}
+.map-action-pin {
+  width: 39px;
+  height: 39px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #ffffff20;
+  border: 1px solid #ffffff5c;
+}
+.map-action-copy {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+}
+.map-action-copy strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.map-action-copy small {
+  font-size: 10px;
+  color: #e6f6ff;
+}
+.location-tabs {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+.location-tabs button {
+  flex: 1;
+  min-height: 43px;
+  border-radius: 6px;
+  border: 1px solid #8bbada38;
+  background: #06244794;
+  color: #a7c5dc;
+  font-size: 12px;
+}
+.location-tabs button[aria-selected="true"] {
+  border-color: #66c4f5;
+  color: #def5ff;
+  background: #17608b70;
+}
+.location-panel {
+  border: 1px solid #a7d4ee3d;
+  background: #052348e8;
+  padding: 25px;
+  border-radius: 10px;
+  min-height: 300px;
+  backdrop-filter: blur(12px);
+}
+.visit-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 0 0 21px;
+}
+.visit-item:last-child {
+  margin-bottom: 0;
+}
+.visit-item > svg {
+  width: 21px;
+  flex: none;
+  color: #74c1ec;
+  margin-top: 5px;
+}
+.visit-item p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #b4cfe2;
+}
+.visit-item b {
+  display: block;
+  font-size: 16px;
+  color: #e2f1ff;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.floor-item {
+  display: flex;
+  gap: 23px;
+  align-items: center;
+  margin: 10px 0 28px;
+}
+.floor-item:last-child {
+  margin-bottom: 0;
+}
+.floor-item > b {
+  font-size: 41px;
+  font-weight: 400;
+  color: #72c7f4;
+  min-width: 40px;
+  text-align: center;
+  font-family: Manrope, var(--font);
+}
+.floor-item p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #abc8df;
+  margin: 0;
+}
+.floor-item strong {
+  display: block;
+  color: #d8efff;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.location-panel > h3 {
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+.location-panel > p {
+  font-size: 13px;
+  line-height: 2.2;
+  color: #b7d1e6;
+}
+.help-mail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8bd3f9;
+  font-size: 12px;
+  margin-top: 20px;
+}
+.help-mail span {
+  font-family: Manrope, sans-serif;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.register-stage {
+  max-width: 1180px;
+  margin: auto;
+  grid-template-columns: 1fr minmax(340px, 470px);
+  gap: 9%;
+}
+.registration-cinema-intro .scene-title {
+  font-size: clamp(44px, 4.5vw, 67px);
+}
+.register-event {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 13px;
+  color: #c6dceb;
+}
+.register-event > span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.register-event svg {
+  color: #76c4f1;
+}
+.cinematic-invitation .question-form {
+  width: 100%;
+  max-height: 100%;
+  min-height: 0;
+}
+@keyframes cinema-breathe {
+  0% {
+    transform: scale(1.025) translateX(0);
+  }
+  100% {
+    transform: scale(1.15) translateX(-1.5%);
+  }
+}
+@keyframes halo-float {
+  to {
+    transform: translate(-12%, 15%) scale(1.2);
+    opacity: 0.65;
+  }
+}
+@keyframes orbit-sway {
+  to {
+    transform: rotate(5deg) translateY(10px);
+  }
+}
+@keyframes window-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.87);
+    clip-path: inset(100% 0 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    clip-path: inset(0);
+  }
+}
+@keyframes sound-pulse {
+  to {
+    height: 14px;
+  }
+}
+@media (min-width: 1600px) {
+  .cinema-header {
+    height: 110px;
+  }
+  .cinema-progress {
+    height: 60px;
+  }
+  .cinema-footer {
+    height: 110px;
+  }
+  .cinema-main {
+    margin: 0 7%;
+  }
+  .welcome-story .scene-title {
+    font-size: 110px;
+  }
+  .experience-panel {
+    min-height: 300px;
+  }
+  .agenda-focus {
+    padding: 30px;
+  }
+  .cinema-agenda-item {
+    padding: 22px 0;
+  }
+}
+@media (max-width: 1150px) {
+  .cinema-header {
+    height: 82px;
+  }
+  .cinema-header-word {
+    display: none;
+  }
+  .scene-title {
+    font-size: 47px;
+  }
+  .welcome-story .scene-title {
+    font-size: 70px;
+  }
+  .experience-stage,
+  .agenda-stage,
+  .location-stage,
+  .workshop-stage {
+    gap: 5%;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .experience-tabs {
+    gap: 6px;
+  }
+  .experience-tabs button {
+    padding: 13px 5px;
+  }
+  .experience-tabs button > span {
+    font-size: 8px;
+  }
+  .experience-panel {
+    padding: 25px;
+  }
+  .experience-panel h3 {
+    font-size: 27px;
+  }
+  .workshop-selector button {
+    font-size: 10px;
+    gap: 5px;
+    padding: 12px 5px;
+  }
+  .workshop-spotlight {
+    padding: 27px;
+  }
+  .workshop-spotlight h3 {
+    font-size: 27px;
+  }
+  .cinema-footer {
+    height: 85px;
+  }
+  .register-stage {
+    gap: 6%;
+    grid-template-columns: 1fr 1.2fr;
+  }
+  .scene-event-line {
+    gap: 11px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 760px) {
+  .cinema-header {
+    height: 74px;
+    padding: 12px 5%;
+    gap: 10px;
+  }
+  .cinema-college {
+    font-size: 11px;
+    gap: 7px;
+  }
+  .cinema-college img {
+    width: 39px;
+    height: 39px;
+  }
+  .cinema-college small {
+    font-size: 8px;
+  }
+  .cinematic-invitation .invite-sponsor {
+    gap: 3px;
+  }
+  .cinematic-invitation .invite-sponsor > img {
+    width: 114px;
+    max-width: 114px;
+    height: 30px;
+    max-height: 30px;
+    padding: 2px 3px;
+  }
+  .cinematic-invitation .invite-sponsor > span {
+    font-size: 7px;
+    max-width: none;
+    padding-right: 0;
+    border-right-color: #b4d0ed38;
+  }
+  .cinema-progress {
+    height: 46px;
+    gap: 0;
+    width: 91%;
+    justify-content: space-between;
+  }
+  .cinema-progress button {
+    font-size: 9px;
+    padding: 8px 8px;
+    gap: 5px;
+    min-height: 34px;
+  }
+  .progress-mark {
+    width: 5px;
+    height: 5px;
+  }
+  .progress-mark svg {
+    width: 7px;
+    height: 7px;
+  }
+  .cinema-main {
+    margin: 0 6%;
+  }
+  .cinema-scene {
+    align-items: center;
+    overflow: visible;
+  }
+  .cinema-gradient {
+    background:
+      linear-gradient(270deg, #041b3dc2 0%, #041b3d76 60%, #041b3d22 100%),
+      linear-gradient(0deg, #041b3dca 0%, transparent 62%, #041b3d26 100%);
+  }
+  .cinema-photo img {
+    opacity: 0.98;
+    filter: brightness(1.12) contrast(1.08) saturate(1.14);
+    transform: scale(1.035);
+  }
+  .cinema-grain {
+    opacity: 0.05;
+  }
+  .scene-eyebrow {
+    font-size: 11px;
+    margin-bottom: 13px;
+  }
+  .scene-title {
+    font-size: 37px;
+    line-height: 1.45;
+    letter-spacing: -1px;
+    margin-bottom: 13px;
+  }
+  .scene-description {
+    font-size: 12px;
+    line-height: 1.85;
+    max-width: none;
+  }
+  .welcome-stage {
+    display: block;
+    position: relative;
+  }
+  .welcome-story {
+    position: relative;
+    z-index: 1;
+  }
+  .welcome-story .scene-title {
+    font-size: clamp(47px, 12.2vw, 65px);
+    line-height: 1.27;
+    letter-spacing: -1.8px;
+    max-width: 330px;
+    margin-bottom: 15px;
+  }
+  .welcome-title {
+    margin: 22px 0;
+    padding-right: 13px;
+  }
+  .welcome-title > h2 {
+    font-size: 22px;
+    max-width: 310px;
+    line-height: 1.5;
+    letter-spacing: -0.4px;
+    margin-bottom: 8px;
+  }
+  .welcome-title > p {
+    font-size: 11px;
+  }
+  .welcome-title > p.welcome-coffee {
+    font-size: 10px;
+    gap: 6px;
+    line-height: 1.7;
+    max-width: 300px;
+  }
+  .welcome-coffee svg {
+    width: 14px;
+  }
+  .scene-event-line {
+    font-size: 11px;
+    gap: 10px;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .scene-event-line svg {
+    width: 15px;
+  }
+  .welcome-note {
+    font-size: 10px;
+    line-height: 1.65;
+    margin: -8px 0 16px;
+  }
+  .cinema-action {
+    min-height: 54px;
+    min-width: 204px;
+    font-size: 14px;
+    padding-right: 8px;
+  }
+  .action-orb {
+    height: 38px;
+    width: 38px;
+  }
+  .cinema-quiet {
+    font-size: 10px;
+    padding-top: 14px;
+  }
+  .landmark-window {
+    position: absolute;
+    inset: -18px 45% -15px 0;
+    opacity: 0.36;
+    height: auto;
+    min-height: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .landmark-caption {
+    display: none;
+  }
+  .window-outline {
+    border-radius: 140px 140px 6px 6px;
+  }
+  .window-orbit {
+    inset: -15px -12px -10px 18px;
+  }
+  .cinema-footer {
+    height: 98px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 18px 1fr;
+    padding: 7px 5% 9px;
+    gap: 4px;
+  }
+  .cinema-location-caption {
+    display: none;
+  }
+  .cinema-atmosphere {
+    grid-row: 1;
+    justify-self: start;
+    gap: 7px;
+    max-width: none;
+  }
+  .cinema-atmosphere > a {
+    display: none;
+  }
+  .cinema-sound {
+    padding: 0;
+    font-size: 8px;
+    gap: 5px;
+  }
+  .cinema-sound > svg {
+    width: 17px;
+  }
+  .cinema-sound > i {
+    display: none !important;
+  }
+  .cinema-navigation {
+    grid-row: 2;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cinema-back {
+    width: 100%;
+    height: 47px;
+    border-radius: 12px;
+    background: #082b65b3;
+  }
+  .cinema-back svg {
+    width: 18px;
+  }
+  .cinema-next {
+    min-width: 0;
+    width: 100%;
+    min-height: 47px;
+    font-size: 13px;
+    padding: 5px 8px 5px 18px;
+    gap: 18px;
+  }
+  .cinema-next .action-orb {
+    width: 31px;
+    height: 31px;
+  }
+  .registration-security {
+    grid-column: 1 / -1;
+    min-width: 0;
+    font-size: 10px;
+  }
+  .experience-stage,
+  .agenda-stage,
+  .workshop-stage,
+  .location-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: stretch;
+  }
+  .scene-heading .scene-title {
+    font-size: 35px;
+    line-height: 1.4;
+    max-width: 340px;
+  }
+  .experience-stage .scene-description {
+    max-width: 320px;
+  }
+  .experience-tabs {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .experience-tabs button {
+    padding: 11px 4px;
+    min-height: 63px;
+    gap: 7px;
+    border-radius: 7px;
+  }
+  .experience-tabs button > span {
+    font-size: 7px;
+    line-height: 1.45;
+  }
+  .experience-tabs button > svg {
+    width: 20px;
+    height: 20px;
+  }
+  .experience-panel {
+    min-height: 0;
+    height: 195px;
+    border-radius: 9px;
+    padding: 22px;
+    backdrop-filter: blur(8px);
+  }
+  .panel-kicker {
+    font-size: 11px;
+  }
+  .experience-panel h3 {
+    font-size: 26px;
+    margin: 12px 0;
+    line-height: 1.5;
+  }
+  .experience-panel p {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+  .agenda-stage {
+    gap: 17px;
+  }
+  .agenda-stage .scene-title {
+    font-size: 33px;
+    margin-bottom: 5px;
+  }
+  .agenda-stage .scene-eyebrow {
+    margin-bottom: 9px;
+  }
+  .agenda-stage .scene-description {
+    font-size: 11px;
+  }
+  .calendar-link {
+    font-size: 10px;
+    margin-top: 7px;
+    padding: 5px 0;
+    gap: 7px;
+  }
+  .calendar-link svg {
+    width: 13px;
+  }
+  .agenda-focus {
+    padding: 14px 17px;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+  }
+  .agenda-period {
+    padding-bottom: 7px;
+    margin: 0;
+  }
+  .agenda-period > span {
+    font-size: 11px;
+  }
+  .agenda-period > small {
+    font-size: 8px;
+  }
+  .cinema-agenda-item {
+    padding: 10px 0;
+    min-height: 64px;
+    gap: 12px;
+  }
+  .item-clock {
+    min-width: 43px;
+    padding-left: 9px;
+  }
+  .item-clock b {
+    font-size: 16px;
+  }
+  .item-clock span {
+    font-size: 9px;
+  }
+  .cinema-agenda-item h3 {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 2px;
+  }
+  .cinema-agenda-item p {
+    font-size: 9px;
+    line-height: 1.7;
+    -webkit-line-clamp: 2;
+  }
+  .scene-pager {
+    gap: 14px;
+    padding-top: 8px;
+  }
+  .scene-pager > button {
+    height: 28px;
+    width: 28px;
+  }
+  .scene-pager > div button {
+    height: 25px;
+  }
+  .workshop-stage {
+    gap: 21px;
+  }
+  .workshop-stage .scene-title {
+    font-size: 38px;
+  }
+  .workshop-selector {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .workshop-selector button {
+    flex-direction: column;
+    font-size: 9px;
+    padding: 10px 5px;
+    gap: 6px;
+    min-height: 60px;
+  }
+  .workshop-selector svg {
+    height: 19px;
+    width: 19px;
+  }
+  .workshop-spotlight {
+    padding: 22px;
+    min-height: 0;
+    border-radius: 9px;
+    height: 250px;
+    backdrop-filter: blur(8px);
+  }
+  .workshop-start {
+    font-size: 12px;
+    gap: 7px;
+  }
+  .workshop-start svg {
+    width: 15px;
+  }
+  .workshop-start i {
+    margin: 0;
+  }
+  .workshop-spotlight h3 {
+    font-size: 26px;
+    line-height: 1.6;
+    margin: 17px 0 8px;
+    min-height: 75px;
+  }
+  .workshop-spotlight > p {
+    font-size: 11px;
+    margin: 0 0 15px;
+  }
+  .workshop-foot {
+    padding-top: 11px;
+    gap: 12px;
+  }
+  .workshop-foot span,
+  .workshop-foot button {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .workshop-disclaimer {
+    font-size: 9px;
+    margin-top: 11px;
+  }
+  .location-stage {
+    gap: 19px;
+  }
+  .location-stage .scene-title {
+    font-size: 33px;
+    margin-bottom: 10px;
+  }
+  .location-stage .scene-eyebrow {
+    margin-bottom: 9px;
+  }
+  .venue-address {
+    margin: 12px 0;
+    gap: 10px;
+  }
+  .venue-address strong {
+    font-size: 18px;
+  }
+  .venue-address span {
+    font-size: 10px;
+  }
+  .venue-address svg {
+    width: 18px;
+  }
+  .map-action {
+    width: 100%;
+    min-width: 0;
+    padding: 9px 11px;
+    font-size: 11px;
+    gap: 10px;
+  }
+  .map-action svg {
+    width: 18px;
+  }
+  .map-action-pin {
+    width: 35px;
+    height: 35px;
+  }
+  .map-action-copy strong {
+    font-size: 12px;
+  }
+  .map-action-copy small {
+    font-size: 9px;
+  }
+  .location-tabs {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .location-tabs button {
+    min-height: 35px;
+    font-size: 10px;
+  }
+  .location-panel {
+    min-height: 0;
+    height: 231px;
+    padding: 19px;
+    border-radius: 9px;
+    backdrop-filter: blur(8px);
+  }
+  .visit-item {
+    gap: 12px;
+    margin: 0 0 14px;
+  }
+  .visit-item > svg {
+    width: 19px;
+    margin-top: 3px;
+  }
+  .visit-item p {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .visit-item b {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  .floor-item {
+    gap: 17px;
+    margin: 8px 0 20px;
+  }
+  .floor-item > b {
+    font-size: 30px;
+    min-width: 30px;
+  }
+  .floor-item p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .floor-item strong {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .location-panel > h3 {
+    font-size: 21px;
+    margin: 0 0 12px;
+  }
+  .location-panel > p {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .help-mail {
+    font-size: 10px;
+    margin-top: 15px;
+    gap: 7px;
+  }
+  .register-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    height: 100%;
+    justify-content: center;
+    max-width: 480px;
+  }
+  .registration-cinema-intro {
+    flex: none;
+  }
+  .registration-cinema-intro .scene-eyebrow {
+    font-size: 10px;
+    margin-bottom: 7px;
+  }
+  .registration-cinema-intro .scene-title {
+    font-size: 29px;
+    line-height: 1.4;
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .registration-cinema-intro .scene-description,
+  .register-event {
+    display: none;
+  }
+  .cinematic-invitation .question-form {
+    flex-shrink: 1;
+    height: 420px;
+    max-height: calc(100% - 78px);
+  }
+}
+@media (max-height: 740px) and (max-width: 760px) {
+  .cinema-header {
+    height: 62px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .cinema-college img {
+    height: 33px;
+    width: 33px;
+  }
+  .cinema-college {
+    font-size: 10px;
+  }
+  .cinema-college small {
+    font-size: 7px;
+  }
+  .cinema-progress {
+    height: 40px;
+  }
+  .cinema-progress button {
+    font-size: 8px;
+    padding: 6px 7px;
+    min-height: 30px;
+  }
+  .cinema-footer {
+    height: 70px;
+    display: flex;
+    padding: 8px 5%;
+  }
+  .cinema-atmosphere {
+    display: none;
+  }
+  .cinema-navigation {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cinema-back,
+  .cinema-next {
+    width: 100%;
+    min-width: 0;
+    height: 45px;
+    min-height: 45px;
+    border-radius: 11px;
+  }
+  .scene-eyebrow {
+    margin-bottom: 9px;
+    font-size: 10px;
+  }
+  .scene-title {
+    font-size: 29px;
+  }
+  .welcome-story .scene-title {
+    font-size: 46px;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+  .welcome-title {
+    margin: 15px 0;
+  }
+  .welcome-title > h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  .welcome-title > p {
+    font-size: 10px;
+  }
+  .welcome-title > p.welcome-coffee {
+    font-size: 9px;
+  }
+  .scene-event-line {
+    font-size: 10px;
+    gap: 7px;
+    margin-bottom: 17px;
+  }
+  .cinema-action {
+    min-height: 48px;
+    font-size: 12px;
+    min-width: 186px;
+  }
+  .action-orb {
+    height: 33px;
+    width: 33px;
+  }
+  .cinema-quiet {
+    font-size: 9px;
+    padding-top: 9px;
+  }
+  .cinema-next {
+    font-size: 10px;
+  }
+  .cinema-next .action-orb {
+    height: 30px;
+    width: 30px;
+  }
+  .experience-stage,
+  .agenda-stage,
+  .workshop-stage,
+  .location-stage {
+    gap: 13px;
+  }
+  .scene-heading .scene-title,
+  .workshop-stage .scene-title {
+    font-size: 29px;
+    margin-bottom: 8px;
+  }
+  .scene-description {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .experience-tabs button {
+    min-height: 51px;
+    padding: 8px 4px;
+    gap: 4px;
+  }
+  .experience-tabs button > span {
+    font-size: 6px;
+  }
+  .experience-tabs button > svg {
+    width: 18px;
+    height: 18px;
+  }
+  .experience-panel {
+    height: 173px;
+    padding: 18px;
+  }
+  .experience-panel h3 {
+    font-size: 24px;
+    margin: 9px 0;
+  }
+  .experience-panel p {
+    font-size: 11px;
+  }
+  .agenda-stage .scene-title {
+    font-size: 29px;
+    margin-bottom: 4px;
+  }
+  .agenda-stage .scene-description {
+    font-size: 10px;
+  }
+  .calendar-link {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+  .agenda-focus {
+    padding: 10px 14px;
+  }
+  .cinema-agenda-item {
+    padding: 9px 0;
+    min-height: 63px;
+  }
+  .cinema-agenda-item h3 {
+    font-size: 12px;
+  }
+  .cinema-agenda-item p {
+    font-size: 8px;
+  }
+  .workshop-selector {
+    margin-bottom: 9px;
+  }
+  .workshop-selector button {
+    min-height: 49px;
+    font-size: 8px;
+    padding: 7px 4px;
+    gap: 4px;
+  }
+  .workshop-selector svg {
+    width: 16px;
+    height: 16px;
+  }
+  .workshop-spotlight {
+    height: 218px;
+    padding: 18px;
+  }
+  .workshop-start {
+    font-size: 11px;
+  }
+  .workshop-spotlight h3 {
+    font-size: 23px;
+    margin: 12px 0 7px;
+    min-height: 69px;
+  }
+  .workshop-spotlight > p {
+    font-size: 10px;
+    margin-bottom: 9px;
+  }
+  .workshop-foot {
+    padding-top: 7px;
+  }
+  .workshop-disclaimer {
+    font-size: 8px;
+    margin-top: 8px;
+  }
+  .location-stage .scene-title {
+    font-size: 28px;
+  }
+  .venue-address {
+    margin: 4px 0;
+  }
+  .venue-address strong {
+    font-size: 16px;
+  }
+  .map-action {
+    min-height: 37px;
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  .map-action-pin {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+  .map-action-copy small {
+    display: none;
+  }
+  .map-action-copy strong {
+    font-size: 11px;
+  }
+  .location-tabs {
+    margin-bottom: 8px;
+  }
+  .location-tabs button {
+    min-height: 31px;
+    font-size: 9px;
+  }
+  .location-panel {
+    height: 202px;
+    padding: 16px;
+  }
+  .visit-item {
+    margin-bottom: 11px;
+    gap: 9px;
+  }
+  .visit-item b {
+    font-size: 12px;
+  }
+  .visit-item p {
+    font-size: 9px;
+  }
+  .location-panel > p {
+    font-size: 10px;
+  }
+  .location-panel > h3 {
+    font-size: 20px;
+    margin-bottom: 9px;
+  }
+  .floor-item {
+    margin: 5px 0 16px;
+  }
+  .floor-item p {
+    font-size: 10px;
+  }
+  .registration-cinema-intro .scene-title {
+    font-size: 25px;
+  }
+  .registration-cinema-intro .scene-eyebrow {
+    font-size: 9px;
+    margin-bottom: 4px;
+  }
+  .register-stage {
+    gap: 9px;
+  }
+  .cinematic-invitation .question-form {
+    height: 365px;
+    max-height: calc(100% - 62px);
+  }
+}
+@media (max-height: 660px) and (min-width: 761px) {
+  .cinema-header {
+    height: 62px;
+  }
+  .cinema-college img {
+    height: 39px;
+    width: 39px;
+  }
+  .cinema-progress {
+    height: 37px;
+  }
+  .cinema-footer {
+    height: 67px;
+  }
+  .scene-title,
+  .registration-cinema-intro .scene-title {
+    font-size: 38px;
+  }
+  .welcome-story .scene-title {
+    font-size: 57px;
+  }
+  .welcome-title {
+    margin: 13px 0;
+  }
+  .welcome-title > h2 {
+    font-size: 23px;
+  }
+  .scene-event-line {
+    margin-bottom: 17px;
+  }
+  .cinema-quiet {
+    padding-top: 9px;
+  }
+  .landmark-window {
+    height: 280px;
+    min-height: 0;
+  }
+  .experience-panel {
+    min-height: 210px;
+    padding: 22px;
+  }
+  .experience-tabs button {
+    min-height: 65px;
+    padding: 9px 5px;
+  }
+  .experience-tabs {
+    margin-bottom: 12px;
+  }
+  .agenda-focus {
+    padding: 13px 21px;
+  }
+  .cinema-agenda-item {
+    min-height: 73px;
+    padding: 12px 0;
+  }
+  .workshop-spotlight {
+    min-height: 0;
+    padding: 23px;
+  }
+  .workshop-spotlight h3 {
+    font-size: 26px;
+    min-height: 75px;
+    margin-top: 18px;
+  }
+  .location-panel {
+    min-height: 250px;
+    padding: 20px;
+  }
+  .visit-item {
+    margin-bottom: 17px;
+  }
+  .register-event {
+    margin-top: 18px;
+    gap: 9px;
+    font-size: 11px;
+  }
+}
+@media (max-height: 540px) {
+  .cinema-header {
+    height: 48px;
+  }
+  .cinema-college img {
+    width: 29px;
+    height: 29px;
+  }
+  .cinema-college small {
+    display: none;
+  }
+  .cinematic-invitation .invite-sponsor > span {
+    display: none;
+  }
+  .cinema-progress {
+    height: 34px;
+  }
+  .cinema-footer {
+    height: 56px;
+    padding: 6px 5%;
+  }
+  .cinema-footer .cinema-navigation {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .cinema-footer .cinema-back,
+  .cinema-footer .cinema-next {
+    height: 34px;
+    min-height: 34px;
+    border-radius: 9px;
+  }
+  .cinema-footer .cinema-next {
+    min-height: 34px;
+  }
+  .cinema-footer .action-orb {
+    height: 25px;
+    width: 25px;
+  }
+  .cinema-scene {
+    align-items: center;
+  }
+  .registration-cinema-intro {
+    display: none;
+  }
+  .cinematic-invitation .question-form {
+    max-height: 100%;
+    height: 100%;
+  }
+  .scene-heading .scene-eyebrow {
+    display: none;
+  }
+  .scene-heading .scene-description {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .scene-heading .scene-title {
+    font-size: 24px;
+  }
+  .experience-stage,
+  .agenda-stage,
+  .workshop-stage,
+  .location-stage {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5%;
+  }
+  .welcome-story .scene-title {
+    font-size: 38px;
+  }
+  .welcome-title {
+    margin: 10px 0;
+  }
+  .welcome-title > h2 {
+    font-size: 17px;
+  }
+  .welcome-title > p {
+    font-size: 9px;
+  }
+  .scene-event-line {
+    font-size: 9px;
+    margin-bottom: 12px;
+    gap: 4px;
+  }
+  .cinema-quiet {
+    display: none;
+  }
+  .experience-panel {
+    height: 175px;
+    padding: 13px;
+  }
+  .experience-panel h3 {
+    font-size: 20px;
+    margin: 8px 0;
+  }
+  .experience-panel p {
+    font-size: 10px;
+  }
+  .experience-tabs {
+    margin-bottom: 6px;
+    gap: 3px;
+  }
+  .experience-tabs button {
+    min-height: 34px;
+    padding: 6px 3px;
+  }
+  .experience-tabs button > span {
+    display: none;
+  }
+  .experience-tabs button > svg {
+    width: 17px;
+    height: 17px;
+  }
+  .agenda-period {
+    display: none;
+  }
+  .agenda-focus {
+    padding: 8px 12px;
+  }
+  .cinema-agenda-item {
+    min-height: 58px;
+    padding: 6px 0;
+    gap: 8px;
+  }
+  .cinema-agenda-item h3 {
+    font-size: 11px;
+  }
+  .cinema-agenda-item p {
+    font-size: 8px;
+    -webkit-line-clamp: 1;
+  }
+  .item-clock b {
+    font-size: 14px;
+  }
+  .workshop-selector {
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+  .workshop-selector button {
+    font-size: 8px;
+    min-height: 32px;
+    padding: 5px;
+    flex-direction: row;
+  }
+  .workshop-selector button svg {
+    display: none;
+  }
+  .workshop-spotlight {
+    height: 190px;
+    padding: 14px;
+  }
+  .workshop-spotlight h3 {
+    font-size: 19px;
+    min-height: 60px;
+    margin: 12px 0 6px;
+  }
+  .workshop-spotlight > p {
+    font-size: 9px;
+  }
+  .workshop-start {
+    font-size: 9px;
+  }
+  .workshop-foot span,
+  .workshop-foot button {
+    font-size: 8px;
+  }
+  .workshop-disclaimer {
+    display: none;
+  }
+  .location-tabs {
+    margin-bottom: 6px;
+  }
+  .location-panel {
+    height: 213px;
+    padding: 14px;
+  }
+  .venue-address strong {
+    font-size: 16px;
+  }
+  .venue-address span {
+    font-size: 9px;
+  }
+  .map-action {
+    font-size: 10px;
+    padding: 7px 12px;
+  }
+  .cinema-location-caption {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-invitation * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .cinema-scene {
+    will-change: auto;
+  }
+}
+.cinematic-invitation[data-keyboard="true"][data-scene="register"]
+  .cinema-header,
+.cinematic-invitation[data-keyboard="true"][data-scene="register"]
+  .cinema-progress,
+.cinematic-invitation[data-keyboard="true"][data-scene="register"]
+  .cinema-footer,
+.cinematic-invitation[data-keyboard="true"][data-scene="register"]
+  .registration-cinema-intro {
+  display: none;
+}
+.cinematic-invitation[data-keyboard="true"] .cinema-main {
+  margin: 16px 6%;
+}
+.cinematic-invitation[data-keyboard="true"] .question-form {
+  height: 100%;
+  max-height: 100%;
+}
+.cinematic-invitation[data-scene="welcome"] .cinema-navigation {
+  display: none;
+}
+.cinematic-invitation[data-scene="welcome"] .cinema-location-caption {
+  display: flex;
+}

@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Makkah National College//World Tourism Day 2026//AR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:world-tourism-day-2026@mnc.edu.sa
+DTSTAMP:20260927T000000Z
+DTSTART:20261001T060000Z
+DTEND:20261001T120000Z
+SUMMARY:يوم السياحة العالمي 2026 — كلية مكة
+  الأهلية
+DESCRIPTION:الاحتفال بيوم السياحة العالمي 20
+ 26 بالتزامن مع اليوم الدولي للقهوة السع
+ ودية.\nالتنظيم: قسم السياحة والضيافة — ك
+ لية مكة الأهلية.\nللاستفسارات: hospitality.dept@
+ mnc.edu.sa
+LOCATION:كلية مكة الأهلية — بهو الكلية — مك
+ ة المكرمة
+URL:https://maps.app.goo.gl/GjQE9njK7atUjA9x6
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

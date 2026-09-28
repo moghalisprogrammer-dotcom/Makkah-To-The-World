@@ -1,0 +1,730 @@
+.agenda-section {
+  background: #051d3e;
+  border-top: 1px solid #23426380;
+  border-bottom: 1px solid #23426380;
+}
+.agenda-heading {
+  align-items: center;
+  margin-bottom: 32px;
+}
+.agenda-heading h2 {
+  margin-bottom: 14px;
+}
+.agenda-heading > div > p {
+  font-size: 14px;
+  margin: 0;
+  max-width: 650px;
+}
+.agenda-heading > .button {
+  font-size: 12px;
+  gap: 14px;
+  min-height: 47px;
+  white-space: nowrap;
+}
+.agenda-overview {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 21px 0;
+  color: #c4d9ee;
+  font-size: 12px;
+}
+.agenda-overview > span,
+.agenda-overview > a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.agenda-overview svg {
+  color: var(--sky);
+  flex-shrink: 0;
+}
+.agenda-overview > a:nth-child(3) {
+  margin-right: auto;
+}
+.agenda-overview > a {
+  font-size: 11px;
+  color: #92bddb;
+}
+.agenda-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 17px;
+}
+.agenda-filter button {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #93a9c3;
+  background: transparent;
+  padding: 8px 19px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.agenda-filter button.active {
+  color: #a9dcfa;
+  background: #123d61;
+  border-color: #2c97d23b;
+}
+.agenda-filter button:hover {
+  color: white;
+}
+.agenda-filter > span {
+  margin-right: auto;
+  color: #758fae;
+  font-size: 10px;
+}
+.agenda-timeline {
+  border-top: 1px solid var(--border);
+}
+.agenda-row {
+  display: grid;
+  grid-template-columns: 125px 46px 1fr 180px;
+  gap: 15px;
+  min-height: 139px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: 0 0 0 8px;
+}
+.agenda-time {
+  padding: 22px 0;
+}
+.agenda-time > strong {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #e4eef8;
+}
+.agenda-time > strong > span {
+  font-size: 10px;
+  font-weight: 400;
+  color: #9cb4d1;
+}
+.agenda-time > small {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  color: #8babc9;
+}
+.agenda-duration {
+  display: inline-block;
+  margin-top: 9px;
+  font-size: 9px;
+  color: #587e9f;
+}
+.timeline-line {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timeline-line:before {
+  content: "";
+  width: 1px;
+  background: #27547775;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 50%;
+}
+.timeline-line > span {
+  position: relative;
+  z-index: 1;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #3d6687;
+  background: #08284a;
+  display: grid;
+  place-items: center;
+  color: #69b8e2;
+}
+.agenda-row:first-child .timeline-line:before {
+  top: 50%;
+}
+.agenda-row:last-child .timeline-line:before {
+  bottom: 50%;
+}
+.agenda-content {
+  padding: 23px 0;
+}
+.agenda-category {
+  font-size: 9px;
+  color: #5ca7d6;
+}
+.agenda-category.closing {
+  color: #92aaca;
+}
+.agenda-content h3 {
+  font-size: 18px;
+  margin: 6px 0 4px;
+  line-height: 1.7;
+}
+.agenda-content p {
+  font-size: 12px;
+  line-height: 1.9;
+  max-width: 590px;
+  margin: 4px 0 0;
+}
+.agenda-speaker {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: #a9c0d7;
+  font-size: 11px;
+  margin-top: 8px;
+}
+.agenda-place > span {
+  display: flex;
+  gap: 8px;
+  color: #8faeca;
+  align-items: start;
+  font-size: 10px;
+}
+.agenda-place svg {
+  color: #5b9ec5;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.agenda-hint {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  padding: 17px 0;
+  color: #568ba9;
+}
+.agenda-hint p {
+  font-size: 11px;
+  margin: 0;
+  color: #859db8;
+}
+.agenda-hint svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.workshops-block {
+  padding-top: 47px;
+  scroll-margin-top: 30px;
+}
+.workshop-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 24px;
+}
+.workshop-heading h3 {
+  font-size: 30px;
+  margin-bottom: 7px;
+}
+.workshop-heading .section-label {
+  font-size: 11px;
+  margin-bottom: 9px;
+}
+.workshop-heading p {
+  margin: 0;
+  font-size: 13px;
+}
+.workshop-time {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 20px;
+  border-right: 2px solid #2c97d2;
+  background: #0b305031;
+}
+.workshop-time > svg {
+  color: var(--sky);
+}
+.workshop-time strong {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
+.workshop-time small {
+  display: block;
+  font-size: 10px;
+  color: #85a3bf;
+  margin-top: 4px;
+}
+.workshops-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.workshop-card {
+  border: 1px solid #3658758c;
+  border-radius: 5px;
+  background: #0b2b4a66;
+  padding: 23px 22px;
+  display: flex;
+  flex-direction: column;
+}
+.workshop-card .card-top {
+  margin-bottom: 21px;
+}
+.workshop-card h4 {
+  font-size: 19px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  min-height: 65px;
+}
+.workshop-card > div:last-child {
+  border-top: 1px solid var(--border);
+  padding-top: 15px;
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+}
+.workshop-card > div:last-child > span {
+  font-size: 10px;
+  color: #95afca;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.workshop-card > div:last-child svg {
+  color: #539aca;
+}
+.workshop-status {
+  font-size: 10px;
+  line-height: 1.8;
+  color: #b4c6d8;
+  margin: -12px 0 17px;
+}
+.workshop-pending {
+  display: flex;
+  gap: 9px;
+  align-items: start;
+  font-size: 10px;
+  margin: 18px 0 0;
+  color: #7e9ab8;
+  max-width: 960px;
+  line-height: 1.95;
+}
+.workshop-pending svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.venue-guide {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 35px;
+  margin-top: 55px;
+  padding-top: 35px;
+  border-top: 1px solid var(--border);
+  align-items: center;
+  scroll-margin-top: 30px;
+}
+.venue-guide-title .section-label {
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+.venue-guide-title h3 {
+  font-size: 25px;
+  margin-bottom: 7px;
+}
+.venue-guide-title p {
+  font-size: 12px;
+  margin: 0;
+}
+.floor-card {
+  display: flex;
+  gap: 19px;
+  align-items: center;
+}
+.floor-number {
+  font:
+    400 48px/1.2 Manrope,
+    sans-serif;
+  display: grid;
+  place-items: center;
+  width: 83px;
+  height: 96px;
+  border: 1px solid #376183;
+  border-radius: 45px 45px 4px 4px;
+  flex-shrink: 0;
+  color: #59afdf;
+  background: #11355938;
+}
+.floor-card h4 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+.floor-card p {
+  font-size: 11px;
+  line-height: 2;
+  color: #8ea9c5;
+  margin: 0;
+}
+.agenda-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 36px;
+  padding-top: 25px;
+  font-size: 13px;
+  color: #90abc7;
+}
+.agenda-cta strong {
+  font-weight: 500;
+  color: #cedce9;
+}
+.agenda-cta .text-link {
+  font-size: 13px;
+}
+@media (max-width: 1150px) {
+  .agenda-row {
+    grid-template-columns: 110px 36px 1fr 160px;
+    gap: 12px;
+  }
+  .agenda-content h3 {
+    font-size: 17px;
+  }
+  .workshop-card {
+    padding: 20px 18px;
+  }
+  .workshop-card h4 {
+    font-size: 17px;
+  }
+  .venue-guide {
+    gap: 25px;
+  }
+  .floor-card {
+    gap: 14px;
+  }
+  .floor-number {
+    width: 65px;
+    height: 80px;
+    font-size: 39px;
+  }
+  .floor-card p {
+    font-size: 10px;
+  }
+}
+@media (max-width: 900px) {
+  .agenda-heading {
+    align-items: start;
+    gap: 25px;
+  }
+  .agenda-heading > div > p {
+    font-size: 13px;
+  }
+  .agenda-heading > .button {
+    font-size: 10px;
+    padding: 10px 14px;
+  }
+  .agenda-overview {
+    gap: 18px;
+    font-size: 11px;
+  }
+  .agenda-overview > a {
+    font-size: 10px;
+  }
+  .agenda-filter button {
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+  .agenda-filter > span {
+    font-size: 9px;
+  }
+  .agenda-row {
+    grid-template-columns: 105px 35px 1fr;
+    gap: 13px;
+    padding: 0;
+    position: relative;
+  }
+  .agenda-place {
+    grid-column: 3;
+    margin-top: -19px;
+    padding-bottom: 18px;
+  }
+  .agenda-place:empty {
+    display: none;
+  }
+  .agenda-content {
+    padding: 24px 0;
+  }
+  .timeline-line {
+    grid-column: 2;
+    grid-row: auto;
+  }
+  .agenda-row:has(.agenda-place > span) .timeline-line {
+    grid-row: span 2;
+  }
+  .agenda-time {
+    align-self: start;
+    padding-top: 32px;
+  }
+  .agenda-content h3 {
+    font-size: 17px;
+  }
+  .agenda-content p {
+    font-size: 11px;
+  }
+  .workshops-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .workshop-card h4 {
+    font-size: 19px;
+    min-height: 60px;
+  }
+  .workshop-time {
+    padding: 13px;
+  }
+  .workshop-time strong {
+    font-size: 12px;
+  }
+  .workshop-time small {
+    font-size: 9px;
+  }
+  .venue-guide {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .venue-guide-title {
+    grid-column: 1/-1;
+  }
+  .venue-guide-title h3 {
+    font-size: 27px;
+  }
+  .floor-number {
+    width: 78px;
+    height: 88px;
+  }
+  .floor-card p {
+    font-size: 11px;
+  }
+}
+@media (max-width: 620px) {
+  .agenda-heading {
+    display: block;
+    margin-bottom: 25px;
+  }
+  .agenda-heading h2 {
+    font-size: 34px;
+  }
+  .agenda-heading > .button {
+    font-size: 11px;
+    margin-top: 23px;
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+  .agenda-heading > div > p {
+    font-size: 13px;
+    line-height: 1.95;
+  }
+  .agenda-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px 8px;
+    padding: 20px 0;
+    font-size: 10px;
+  }
+  .agenda-overview > span,
+  .agenda-overview > a {
+    gap: 7px;
+  }
+  .agenda-overview > a:nth-child(3) {
+    margin: 0;
+  }
+  .agenda-overview svg {
+    width: 16px;
+  }
+  .agenda-overview > a {
+    font-size: 10px;
+  }
+  .agenda-filter {
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 25px 0 17px;
+  }
+  .agenda-filter button {
+    font-size: 10px;
+    padding: 8px 11px;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .agenda-filter > span {
+    margin: 8px 0 0;
+    width: 100%;
+    font-size: 9px;
+  }
+  .agenda-row {
+    grid-template-columns: 80px 25px 1fr;
+    gap: 9px;
+    min-height: 134px;
+  }
+  .agenda-time {
+    padding-top: 31px;
+  }
+  .agenda-time > strong {
+    font-size: 23px;
+    gap: 5px;
+    flex-wrap: wrap;
+    line-height: 1.3;
+  }
+  .agenda-time > strong > span {
+    font-size: 9px;
+  }
+  .agenda-time > small {
+    font-size: 9px;
+    line-height: 1.9;
+    margin-top: 5px;
+  }
+  .agenda-duration {
+    font-size: 8px;
+    margin-top: 5px;
+  }
+  .timeline-line > span {
+    height: 27px;
+    width: 27px;
+  }
+  .timeline-line > span > svg {
+    width: 13px;
+    height: 13px;
+  }
+  .agenda-content h3 {
+    font-size: 15px;
+    line-height: 1.85;
+    margin-top: 4px;
+  }
+  .agenda-content p {
+    font-size: 10px;
+    line-height: 1.9;
+  }
+  .agenda-category {
+    font-size: 8px;
+  }
+  .agenda-content {
+    padding: 20px 0;
+  }
+  .agenda-speaker {
+    font-size: 10px;
+  }
+  .agenda-place {
+    margin-top: -13px;
+    padding-bottom: 18px;
+  }
+  .agenda-place > span {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .agenda-place svg {
+    width: 12px;
+  }
+  .agenda-hint {
+    padding: 18px 0;
+    gap: 8px;
+  }
+  .agenda-hint p {
+    font-size: 10px;
+  }
+  .agenda-hint svg {
+    width: 15px;
+  }
+  .workshops-block {
+    padding-top: 34px;
+  }
+  .workshop-heading {
+    display: block;
+    margin-bottom: 22px;
+  }
+  .workshop-heading h3 {
+    font-size: 27px;
+  }
+  .workshop-heading p {
+    font-size: 12px;
+  }
+  .workshop-time {
+    margin-top: 21px;
+    width: fit-content;
+    padding: 14px 18px;
+  }
+  .workshop-time strong {
+    font-size: 13px;
+  }
+  .workshop-time small {
+    font-size: 10px;
+  }
+  .workshops-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+  .workshop-card {
+    padding: 22px;
+  }
+  .workshop-card .card-top {
+    margin-bottom: 16px;
+  }
+  .workshop-card h4 {
+    min-height: 0;
+    font-size: 20px;
+    margin-bottom: 20px;
+    max-width: 310px;
+  }
+  .workshop-card > div:last-child {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 10px;
+  }
+  .workshop-card > div:last-child > span {
+    font-size: 10px;
+    gap: 7px;
+  }
+  .workshop-status {
+    margin: -8px 0 18px;
+  }
+  .workshop-pending {
+    font-size: 9px;
+    line-height: 2.1;
+  }
+  .venue-guide {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    margin-top: 38px;
+    padding-top: 30px;
+  }
+  .venue-guide-title {
+    grid-column: auto;
+  }
+  .venue-guide-title h3 {
+    font-size: 25px;
+  }
+  .floor-card {
+    gap: 21px;
+  }
+  .floor-number {
+    width: 74px;
+    height: 82px;
+    font-size: 36px;
+  }
+  .floor-card h4 {
+    font-size: 19px;
+  }
+  .floor-card p {
+    font-size: 12px;
+  }
+  .agenda-cta {
+    display: block;
+    margin-top: 30px;
+    padding-top: 23px;
+    font-size: 12px;
+  }
+  .agenda-cta > span {
+    display: block;
+    line-height: 2;
+  }
+  .agenda-cta .text-link {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+}
