@@ -13,6 +13,7 @@ import {
 import { event } from "@/lib/event";
 import { brand } from "@/lib/brand";
 import { workshopLabel, workshopTime, type WorkshopId } from "@/lib/workshops";
+import { api } from "@/lib/client";
 interface TicketData {
   full_name: string;
   registration_number: string;
@@ -49,20 +50,17 @@ export function TicketView({
         sessionStorage.getItem("makkah_registration_email") || "",
       );
     }
-    const controller = new AbortController();
-    fetch(`/api/ticket/${key}`, {
-      signal: controller.signal,
-      cache: "no-store",
-    })
-      .then(async (r) => {
-        const data = await r.json();
-        if (!r.ok) throw new Error(data.error);
-        setTicket(data);
+    let active = true;
+    api<TicketData>(`/api/ticket/${key}`)
+      .then((result) => {
+        if (active) setTicket(result);
       })
       .catch((e) => {
-        if (e.name !== "AbortError") setError(e.message);
+        if (active) setError(e.message);
       });
-    return () => controller.abort();
+    return () => {
+      active = false;
+    };
   }, [token, success]);
   async function download() {
     if (!ticket) return;
@@ -203,9 +201,11 @@ export function TicketView({
           )}
           {success && !emailSent && (
             <div className="notice warning">
-              {t(
-                "تسجيلك مؤكد وتذكرتك محفوظة. تعذر إرسال البريد حاليًا؛ احفظ تذكرتك من هنا، أو تواصل مع فريق التنظيم.",
-              )}
+              {ticket.registration_number.startsWith("DEMO-")
+                ? t("تذكرة عرض تجريبية؛ لم يُحفظ التسجيل ولم يُرسل بريد.")
+                : t(
+                    "تسجيلك مؤكد وتذكرتك محفوظة. تعذر إرسال البريد حاليًا؛ احفظ تذكرتك من هنا، أو تواصل مع فريق التنظيم.",
+                  )}
             </div>
           )}
           {ticket.status === "CANCELLED" ? (
@@ -231,6 +231,11 @@ export function TicketView({
                   <div className="ticket-number" dir="ltr">
                     {ticket.registration_number}
                   </div>
+                  {ticket.registration_number.startsWith("DEMO-") && (
+                    <span className="ticket-demo-note">
+                      {t("نموذج تجريبي · غير صالح للدخول")}
+                    </span>
+                  )}
                   <img
                     className="ticket-qr"
                     src={ticket.qr}

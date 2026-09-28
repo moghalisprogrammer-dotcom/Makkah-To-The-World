@@ -1,6 +1,10 @@
 export type Locale = "ar" | "en";
 // Source phrases remain Arabic so content and translations can be reviewed together.
 export const english: Record<string, string> = {
+  "تذكرة عرض تجريبية؛ لم يُحفظ التسجيل ولم يُرسل بريد.":
+    "Demo ticket only; no registration was saved and no email was sent.",
+  "نموذج تجريبي · غير صالح للدخول":
+    "DEMO · NOT VALID FOR ENTRY",
   الدعوة: "Invitation",
   التجربة: "Experience",
   البرنامج: "Agenda",
