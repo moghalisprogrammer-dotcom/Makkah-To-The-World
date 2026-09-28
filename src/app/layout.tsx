@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { appPath } from "@/lib/base-path";
 import { LocaleProvider } from "@/components/locale-provider";
 import "@fontsource/poppins/latin-400.css";
 import "@fontsource/poppins/latin-600.css";
@@ -20,6 +21,10 @@ import "./ticket-compact.css";
 import "./opening.css";
 import "./bilingual.css";
 export const metadata: Metadata = {
+  icons: {
+    icon: [{ url: appPath("/images/college-seal.webp"), type: "image/webp" }],
+    shortcut: appPath("/images/college-seal.webp"),
+  },
   title: {
     default: "يوم السياحة العالمي 2026 | كلية مكة الأهلية",
     template: "%s | كلية مكة الأهلية",
