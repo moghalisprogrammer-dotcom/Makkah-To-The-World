@@ -26,7 +26,7 @@ export function Header({ simple = false }: { simple?: boolean }) {
         {simple ? (
           <div className="header-language">
             <LanguageSwitch />
-            <Sponsor />
+            <Sponsor compact />
           </div>
         ) : (
           <>

@@ -259,7 +259,7 @@ export const english: Record<string, string> = {
   "دور M": "Floor M",
   "تجربة القهوة السعودية للمناطق الأربع": "Coffee from four Saudi regions",
   "سارة الشهري": "Sarah Al-Shehri",
-  "أساسيات الظهور المهني الرقمي": "Professional presence essentials",
+  "أساسيات الظهور المهني الرقمي": "Digital professional presence essentials",
   "أساسيات الظهور المهني": "Professional presence essentials",
   "ورشة عمل ضمن برنامج الفعالية.": "A workshop in the event programme.",
   "لقاء ملهم / مشاركة قطاعية": "Inspiring talk / industry contribution",
@@ -306,6 +306,31 @@ export const english: Record<string, string> = {
   "اختيارك للورش": "Your workshop choice",
   "جارٍ الحفظ…": "Saving…",
   "تحميل التذكرة": "Download ticket",
+  "بعد تأكيد حضور الفعالية، يلزم تعبئة نموذج الورشة المختارة وإرساله.":
+    "After your event RSVP, you must complete and submit the selected workshop's form.",
+  "رمز الدخول": "Entry QR code",
+  "تسجيل الورشة": "Workshop registration",
+  "خطوات تأكيد الحضور": "Your attendance steps",
+  "احفظ رمز الدخول أولًا": "Save your entry QR code first",
+  "ستحتاجه عند بوابة الدخول، حتى بعد تعبئة نموذج الورشة.":
+    "You will need it at the entrance, even after submitting the workshop form.",
+  "حفظ رمز الدخول على جهازي": "Save my entry QR code",
+  "حفظ الرمز مرة أخرى": "Save QR code again",
+  "تم طلب التنزيل؛ تأكد من حفظ الصورة على جهازك.":
+    "Download requested. Check that the image is saved on your device.",
+  "التالي: تأكيد المشاركة في الورشة": "Next: confirm workshop participation",
+  "خطوة مطلوبة لتأكيد الورشة": "Required for workshop registration",
+  "أكمل تسجيلك في الورشة": "Complete your workshop registration",
+  "حضورك للفعالية مؤكد. لتأكيد مشاركتك في الورشة التالية، يجب تعبئة نموذجها وإرساله.":
+    "Your event attendance is confirmed. To confirm participation in the workshop below, you must complete and submit its form.",
+  "فتح نموذج الورشة وتعبئته": "Open and complete the workshop form",
+  "يفتح نموذج Google في نافذة جديدة. أكمل البيانات واضغط «إرسال» داخل النموذج.":
+    "Google Forms opens in a new tab. Complete the details and press Submit in the form.",
+  "تسجيل الفعالية وحده لا يؤكد المشاركة في الورشة.":
+    "Event registration alone does not confirm workshop participation.",
+  "قبل فتح النموذج، احتفظ بنسخة من رمز الدخول.":
+    "Before opening the form, keep a copy of your entry QR code.",
+  "عرض تذكرة الدخول": "View entry ticket",
   "طباعة / حفظ PDF": "Print / Save PDF",
   "خطّط لزيارتك:": "Plan your visit:",
   "استعرض البرنامج وورش العمل": "Explore the agenda & workshops",
@@ -315,6 +340,7 @@ export const english: Record<string, string> = {
   "يرجى إبراز رمز QR عند الدخول": "Please show your QR code at the entrance",
   كايزن: "Kaizen Group",
   "كايزن جروب": "Kaizen Group",
+  "شريك استراتيجي": "Strategic partner",
   "الراعي الاستراتيجي والمنظّم": "Strategic sponsor & organiser",
   "شريك استراتيجي للخدمات التسويقية وتنظيم المعارض والمؤتمرات":
     "Strategic partner for marketing services and exhibition and conference organisation",

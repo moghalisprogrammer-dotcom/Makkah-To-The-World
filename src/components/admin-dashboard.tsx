@@ -248,9 +248,12 @@ export function AdminDashboard() {
           <div className="workshop-overview-title">
             <div>
               <span className="workspace-kicker">نظرة سريعة</span>
-              <h2 id="workshop-overview-title">حجوزات ورش العمل</h2>
+              <h2 id="workshop-overview-title">اختيارات ورش العمل</h2>
             </div>
-            <p>اضغط على أي ورشة لعرض مسجليها في السجل.</p>
+            <p>
+              اضغط على الورشة لعرض من اختاروها. إتمام نماذج الورش يُراجع في
+              Google Forms.
+            </p>
           </div>
           <div className="workshop-insights">
             {[...workshopIds, "none" as const].map((id) => {
@@ -288,7 +291,10 @@ export function AdminDashboard() {
                 aria-label="البحث في المسجلين"
               />
             </div>
-            <a href={appPath("/api/admin/export")} className="button button-small">
+            <a
+              href={appPath("/api/admin/export")}
+              className="button button-small"
+            >
               <Download size={16} />
               تصدير كل السجلات
             </a>

@@ -64,7 +64,7 @@ export const agenda: AgendaItem[] = [
   {
     start: "12:15",
     end: "13:00",
-    title: "أساسيات الظهور المهني",
+    title: "أساسيات الظهور المهني الرقمي",
     category: "workshop",
     location: "الدور الثاني",
     note: "ورشة عمل ضمن برنامج الفعالية.",
@@ -102,7 +102,8 @@ export const workshops = [
   {
     id: "digital",
     number: "01",
-    title: "أساسيات الظهور المهني",
+    title: "أساسيات الظهور المهني الرقمي",
+    formUrl: "https://forms.gle/6tieMndiVakSni1o8",
     start: "12:15",
     end: "13:00",
     location: "الدور الثاني",
@@ -112,6 +113,8 @@ export const workshops = [
     id: "kitchens",
     number: "02",
     title: "مطابخ حول العالم",
+    formUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLScSl_3X2OnsCVkTo8nBeqqmUt2eI7PZ2xlUv70ZZCPWXDqRCg/viewform?pli=1",
     start: "12:00",
     end: "13:00",
     location: "الدور الثاني",
@@ -121,6 +124,8 @@ export const workshops = [
     id: "food-safety",
     number: "03",
     title: "سلامة الأغذية من الاستلام حتى التقديم الآمن",
+    formUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdEvIOFyUXG10_0Pq5o5QaiKWTdppr3U72uqIVy0gLF_j7XGQ/viewform",
     start: "12:00",
     end: "13:00",
     location: "الدور الثاني",

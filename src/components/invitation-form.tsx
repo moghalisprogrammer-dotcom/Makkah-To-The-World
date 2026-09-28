@@ -358,6 +358,11 @@ export function InvitationForm({
                 <div className="question-heading">
                   <h3 tabIndex={-1}>{t("هل ترغب بحضور ورشة؟")}</h3>
                   <p>{t("اختر ورشة واحدة؛ مواعيدها متداخلة.")}</p>
+                  <p>
+                    {t(
+                      "بعد تأكيد حضور الفعالية، يلزم تعبئة نموذج الورشة المختارة وإرساله.",
+                    )}
+                  </p>
                 </div>
                 <fieldset
                   className="question-choices question-workshops"

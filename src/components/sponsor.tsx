@@ -3,7 +3,7 @@ import { useLocale } from "./locale-provider";
 import { brand } from "@/lib/brand";
 import Image from "next/image";
 import { appPath } from "@/lib/base-path";
-export function Sponsor() {
+export function Sponsor({ compact = false }: { compact?: boolean }) {
   const { t } = useLocale();
   return (
     <a
@@ -28,7 +28,7 @@ export function Sponsor() {
           <small>KAIZEN</small>
         </strong>
       )}
-      <span>{t(brand.kaizenRole)}</span>
+      <span>{t(compact ? "شريك استراتيجي" : brand.kaizenRole)}</span>
     </a>
   );
 }

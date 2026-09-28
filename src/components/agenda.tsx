@@ -66,7 +66,11 @@ export function Agenda() {
               يلهمك.
             </p>
           </div>
-          <a className="button button-outline" href={appPath("/event.ics")} download>
+          <a
+            className="button button-outline"
+            href={appPath("/event.ics")}
+            download
+          >
             <CalendarPlus size={18} />
             أضف الموعد إلى تقويمك
           </a>
@@ -202,7 +206,7 @@ export function Agenda() {
           <p className="workshop-pending">
             <Info size={15} />
             تبدأ ورشتا مطابخ حول العالم وسلامة الأغذية الساعة 12 ظهرًا، وورشة
-            أساسيات الظهور المهني الساعة 12:15. تنتهي الورش الثلاث الساعة
+            أساسيات الظهور المهني الرقمي الساعة 12:15. تنتهي الورش الثلاث الساعة
             1 مساءً.
           </p>
         </div>

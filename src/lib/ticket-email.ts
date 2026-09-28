@@ -1,6 +1,6 @@
 import { event, ageGroups, ageLabels } from "./event";
 import { agenda, workshops, arabicTime } from "./agenda";
-import { workshopLabel, workshopTime } from "./workshops";
+import { selectedWorkshop, workshopLabel, workshopTime } from "./workshops";
 import { translate } from "./locale";
 import type { Registration } from "./db";
 
@@ -20,6 +20,10 @@ export function ticketEmail(registration: Registration, base: string) {
   const url = `${base}/ticket/${registration.secure_token}?lang=${locale}`;
   const calendar = `${base}/${en ? "event-en.ics" : "event.ics"}`;
   const workshop = `${workshopLabel(registration.workshop_id, locale)}${registration.workshop_id ? ` · ${workshopTime(registration.workshop_id, locale)} · ${t("الدور الثاني")}` : ""}`;
+  const selected =
+    registration.status === "CANCELLED"
+      ? null
+      : selectedWorkshop(registration.workshop_id);
   const details = [
     [t("الاسم الكامل"), registration.full_name],
     [t("البريد الإلكتروني"), registration.email],
@@ -49,6 +53,9 @@ export function ticketEmail(registration: Registration, base: string) {
   ];
   const button = (text: string, href: string, light = false) =>
     `<a href="${esc(href)}" style="display:inline-block;margin:6px 4px;padding:13px 22px;border-radius:9px;text-decoration:none;font-weight:bold;background:${light ? "#eaf5fc" : "#0082bf"};color:${light ? "#082b65" : "#ffffff"}">${esc(text)}</a>`;
+  const workshopFollowup = selected
+    ? `<div style="padding:20px;border:1px solid #a5d7e9;border-radius:12px;background:#f0f9fc;margin:18px 0"><h2 style="font-size:18px;margin:0 0 10px">${esc(t("خطوة مطلوبة لتأكيد الورشة"))}</h2><p style="font-size:14px;line-height:1.9">${esc(t("حضورك للفعالية مؤكد. لتأكيد مشاركتك في الورشة التالية، يجب تعبئة نموذجها وإرساله."))}</p><p style="font-size:16px;font-weight:bold">${esc(t(selected.title))}</p><p style="font-size:13px;line-height:1.8">${esc(t("قبل فتح النموذج، احتفظ بنسخة من رمز الدخول."))}</p>${button(t("فتح نموذج الورشة وتعبئته"), selected.formUrl)}<p style="font-size:12px;line-height:1.8">${esc(t("يفتح نموذج Google في نافذة جديدة. أكمل البيانات واضغط «إرسال» داخل النموذج."))}</p></div>`
+    : "";
   const time = (value: string) =>
     `${arabicTime(value)} ${Number(value.split(":")[0]) < 12 ? pick("ص", "AM") : pick("م", "PM")}`;
   const schedule = agenda
@@ -96,6 +103,7 @@ export function ticketEmail(registration: Registration, base: string) {
   <tr><td class="email-padding" style="padding:30px 34px"><h2 style="font-size:23px;margin:0 0 12px">${esc(greeting)}</h2><p style="font-size:14px;line-height:1.9;color:#47627c">${esc(note)}</p><div style="background:#eef7fc;border-inline-start:3px solid #2c97d2;padding:18px;border-radius:9px;font-size:14px;line-height:2">${esc(t(event.date))}<br>${esc(t(event.time))} · ${esc(pick("بتوقيت مكة المكرمة", "Makkah time · GMT+3"))}<br>${esc(t(event.location))}</div>
   <div style="text-align:center;padding:24px 0"><img src="cid:ticket-qr" width="220" height="220" alt="${esc(t("رمز الاستجابة السريعة الخاص بتذكرة الدخول"))}" style="display:block;max-width:100%;margin:auto"><p dir="ltr" style="font-size:17px;letter-spacing:2px;color:#0082bf">${esc(registration.registration_number)}</p>${button(t("تحميل التذكرة"), url)}${button(t("موقع كلية مكة الأهلية"), event.maps, true)}<br>${button(t("أضف الموعد إلى تقويمك"), calendar, true)}</div>
   <p style="font-size:13px;line-height:1.9;color:#47627c">${esc(arrival)}</p><h2 style="font-size:19px;margin-top:28px">${esc(t("اختيارك للورش"))}</h2><p style="border:1px solid #b6dff1;background:#f6fbfe;padding:15px;border-radius:8px;font-size:14px;line-height:1.8">${esc(workshop)}</p>
+  ${workshopFollowup}
   <h2 style="font-size:19px;margin-top:28px">${esc(pick("بيانات تسجيلك", "Your registration details"))}</h2><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:${en ? "left" : "right"}">${profile}</table>
   <h2 style="font-size:19px;margin-top:30px">${esc(pick("برنامج يومك كاملًا", "Your complete event programme"))}</h2><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:${en ? "left" : "right"}">${schedule}</table>
   <h2 style="font-size:19px;margin-top:28px">${esc(t("ورش العمل"))}</h2><p style="font-size:12px;color:#607b94">${esc(t("يمكنك اختيار ورشة واحدة عند تأكيد حضورك."))}</p><table width="100%" cellspacing="0" cellpadding="0">${workshopTable}</table>
@@ -110,6 +118,17 @@ export function ticketEmail(registration: Registration, base: string) {
     t(event.location),
     arrival,
     workshop,
+    ...(selected
+      ? [
+          t("خطوة مطلوبة لتأكيد الورشة"),
+          t(selected.title),
+          t("قبل فتح النموذج، احتفظ بنسخة من رمز الدخول."),
+          t(
+            "بعد تأكيد حضور الفعالية، يلزم تعبئة نموذج الورشة المختارة وإرساله.",
+          ),
+          selected.formUrl,
+        ]
+      : []),
     ...details.map(([k, v]) => `${k}: ${v}`),
     `${t("تحميل التذكرة")}: ${url}`,
     `${t("موقع كلية مكة الأهلية")}: ${event.maps}`,
