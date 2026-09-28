@@ -12,7 +12,7 @@ export function Footer() {
         <div className="footer-top">
           <div>
             <img
-              src="/images/college-logo.svg"
+              src="/images/college-logo.webp"
               alt={t("كلية مكة الأهلية")}
               width="215"
               height="81"

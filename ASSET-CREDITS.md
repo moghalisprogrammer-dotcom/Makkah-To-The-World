@@ -1,7 +1,7 @@
 # Visual identity and image sources
 
-- College wordmark: user-provided `تصميم بدون عنوان.svg`, copied unchanged to `public/images/college-logo.svg`.
-- College seal: original image extracted from the user-provided visual identity PDF, without recoloring.
+- College wordmark: user-provided `تصميم بدون عنوان.svg`, kept as the source in `assets/college-logo-source.svg`. The browser-ready `public/images/college-logo.webp` is a lossless render at the source's full 2048 × 773 pixel size; every rendered pixel was verified identical to that render.
+- College seal: original image extracted from the user-provided visual identity PDF, losslessly encoded as `public/images/college-seal.webp`; decoded pixels are identical to the PNG source.
 - Brand palette: `#041B3D`, `#082B65`, `#0082BF`, `#2C97D2`, `#FFFFFF`, from the provided guide.
 - AlUla photograph: Khawaja Umer Farooq, [Unsplash](https://unsplash.com/photos/AT9KXQzmfks), [Unsplash License](https://unsplash.com/license).
 - Historic Jeddah photograph: muhammad ahkamul hakim, [Unsplash](https://unsplash.com/photos/FDGA5A7IQF4), [Unsplash License](https://unsplash.com/license).
@@ -11,7 +11,7 @@
 - Icons: Lucide, ISC license.
 - Current music: original 40-second synthesized instrumental, `public/audio/saudi-invitation.mp3`, created by `scripts/create-invitation-audio.py`. Original melody and sound synthesis, no sampled recordings. Inspired by the drum framework described in [Saudipedia](https://saudipedia.com/en/saudi-ardah-rhythms). It is a contemporary original cue inspired by Saudi Ardah rhythm, not an authentic traditional performance or official tourism song. The added synthetic oud is a contemporary compositional layer, not a claim about traditional Ardah instrumentation. 160 kbps MP3, decoded true peak −4.07 dBFS, no clipping.
 - Previous, unused music: “Desert City” by Kevin MacLeod ([official track](https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100564)), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Kept as a local earlier asset, no longer played by the site.
-- Kaizen: organizer-supplied image, with a web-ready derivative produced using the built-in image editing tool; saved as `public/images/kaizen-logo.png`. Prompt: “Prepare the attached KAIZEN GROUP logo for the website, crop white margins, preserve teal symbol and black lettering, geometry, spacing, and colors; no redesign, embellishment or new text.” The original image attached in the conversation is the reference; the generated derivative is not claimed to be a byte-identical original or vector master.
+- Kaizen: organizer-supplied logo. `assets/kaizen-logo-source.png` retains the website-ready image supplied earlier; `public/images/kaizen-logo.webp` is a lossless encoding with identical pixels and dimensions.
 - Rijal Almaa: Satishaa Javali, [Unsplash](https://unsplash.com/photos/L08hlqtD_qE), [Unsplash License](https://unsplash.com/license), `public/images/rijal-almaa.jpg`.
 - Diriyah: Ibrahim Abdullah, [Unsplash](https://unsplash.com/photos/XVeesLYfWIo), [Unsplash License](https://unsplash.com/license), `public/images/diriyah.jpg`.
 - At-Turaif: ほっきー, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:At-Turaif_District_in_ad-Dir%27iyah_2025.jpg), [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), `public/images/turaif.jpg`.

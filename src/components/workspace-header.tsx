@@ -10,7 +10,7 @@ export function WorkspaceHeader({ user }: { user: User }) {
     <header className="workspace-header">
       <div className="container workspace-bar">
         <Link href="/" aria-label="العودة للرئيسية">
-          <img src="/images/college-logo.svg" alt="كلية مكة الأهلية" />
+          <img src="/images/college-logo.webp" alt="كلية مكة الأهلية" />
         </Link>
         <div className="workspace-user">
           {user.role === "ADMIN" && (

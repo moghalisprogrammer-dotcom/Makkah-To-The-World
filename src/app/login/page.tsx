@@ -8,7 +8,7 @@ export default function Login() {
       <Header simple />
       <main className="light-page">
         <div className="auth-card">
-          <img src="/images/college-seal.png" alt="شعار كلية مكة الأهلية" />
+          <img src="/images/college-seal.webp" alt="شعار كلية مكة الأهلية" />
           <h1>أهلًا بفريق التنظيم</h1>
           <p>
             يوم السياحة العالمي 2026

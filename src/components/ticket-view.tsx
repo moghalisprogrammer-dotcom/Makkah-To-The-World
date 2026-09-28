@@ -80,7 +80,7 @@ export function TicketView({
       ctx.fillStyle = "#041B3D";
       ctx.fillRect(0, 0, 1000, 280);
       const seal = new Image();
-      seal.src = "/images/college-seal.png";
+      seal.src = "/images/college-seal.webp";
       await seal.decode();
       ctx.drawImage(seal, 875, 28, 82, 82);
       ctx.textAlign = "center";
@@ -217,7 +217,7 @@ export function TicketView({
               <article className="ticket">
                 <div className="ticket-head">
                   <img
-                    src="/images/college-seal.png"
+                    src="/images/college-seal.webp"
                     alt={t("كلية مكة الأهلية")}
                   />
                   <div>

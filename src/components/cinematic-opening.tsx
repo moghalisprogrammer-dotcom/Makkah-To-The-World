@@ -70,6 +70,14 @@ export function CinematicOpening({
     return () => document.removeEventListener("visibilitychange", visibility);
   }, []);
   useEffect(() => {
+    for (const { src } of shots.slice(1)) {
+      const image = new Image();
+      image.decoding = "async";
+      image.fetchPriority = "low";
+      image.src = src;
+    }
+  }, []);
+  useEffect(() => {
     if (!ready || !visible) return;
     const timer = setTimeout(
       () => {
@@ -127,7 +135,9 @@ export function CinematicOpening({
             src={shots[shot].src}
             alt=""
             style={{ objectPosition: shots[shot].position }}
-            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            fetchPriority={shot === 0 ? "high" : "auto"}
           />
         </motion.div>
       </AnimatePresence>

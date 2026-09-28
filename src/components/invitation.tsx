@@ -243,20 +243,9 @@ export function Invitation() {
   const { cue, setEnabled } = useTourismSound();
   const finishOpening = useCallback(() => {
     setOpening(false);
-    try {
-      sessionStorage.setItem("makkah_intro_seen", "true");
-    } catch {}
     requestAnimationFrame(() =>
       document.getElementById("cinema-main")?.focus({ preventScroll: true }),
     );
-  }, []);
-  useEffect(() => {
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem("makkah_intro_seen") === "true";
-    } catch {}
-    if (seen || (location.hash && location.hash !== "#welcome"))
-      setOpening(false);
   }, []);
   const router = useRouter();
   const reduced = useReducedMotion();
@@ -485,6 +474,9 @@ export function Invitation() {
                 alt=""
                 style={{ objectPosition: destination.position }}
                 className={reduced ? "" : "photo-living"}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
             </motion.div>
           </AnimatePresence>

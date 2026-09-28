@@ -16,7 +16,7 @@ export function Header({ simple = false }: { simple?: boolean }) {
           aria-label={t("كلية مكة الأهلية — الرئيسية")}
         >
           <img
-            src="/images/college-logo.svg"
+            src="/images/college-logo.webp"
             alt={t("كلية مكة الأهلية")}
             width="206"
             height="78"
