@@ -5,7 +5,13 @@ import Image from "next/image";
 export function Sponsor() {
   const { t } = useLocale();
   return (
-    <div className="invite-sponsor">
+    <a
+      className="invite-sponsor"
+      href={brand.kaizenWebsite}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${t("كايزن جروب")} — ${t(brand.kaizenRole)} (${brand.kaizenWebsite})`}
+    >
       {brand.kaizenLogo ? (
         <Image
           src={brand.kaizenLogo}
@@ -22,6 +28,6 @@ export function Sponsor() {
         </strong>
       )}
       <span>{t(brand.kaizenRole)}</span>
-    </div>
+    </a>
   );
 }

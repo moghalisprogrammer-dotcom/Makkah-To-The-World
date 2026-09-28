@@ -100,7 +100,7 @@ export function ticketEmail(registration: Registration, base: string) {
   <h2 style="font-size:19px;margin-top:30px">${esc(pick("برنامج يومك كاملًا", "Your complete event programme"))}</h2><table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;text-align:${en ? "left" : "right"}">${schedule}</table>
   <h2 style="font-size:19px;margin-top:28px">${esc(t("ورش العمل"))}</h2><p style="font-size:12px;color:#607b94">${esc(t("يمكنك اختيار ورشة واحدة عند تأكيد حضورك."))}</p><table width="100%" cellspacing="0" cellpadding="0">${workshopTable}</table>
   <h2 style="font-size:19px;margin-top:28px">${esc(t("دليل الزيارة"))}</h2><p style="font-size:13px;line-height:1.9">${esc(floorGuide)}</p><div style="text-align:center">${button(t("موقع كلية مكة الأهلية"), event.maps)}${button(pick("الموقع الرسمي للكلية", "College website"), event.website, true)}${button(pick("عرض الدعوة والبرنامج", "View invitation & agenda"), `${base}/?lang=${locale}#agenda`, true)}</div>
-  </td></tr><tr><td class="email-padding" style="padding:25px 34px;background:#f0f6fa;text-align:center"><p style="font-size:12px;line-height:1.8">${esc(t(event.organizer))}</p><a href="mailto:${event.email}" style="color:#0082bf;font-size:12px">${event.email}</a><div style="margin:20px auto 8px"><img src="cid:kaizen-logo" width="145" alt="Kaizen Group" style="max-width:145px;height:auto"></div><p style="font-size:11px;color:#58758c">${esc(t("الراعي الاستراتيجي والمنظّم"))}</p></td></tr></table></td></tr></table></body></html>`;
+  </td></tr><tr><td class="email-padding" style="padding:25px 34px;background:#f0f6fa;text-align:center"><p style="font-size:12px;line-height:1.8">${esc(t(event.organizer))}</p><a href="mailto:${event.email}" style="color:#0082bf;font-size:12px">${event.email}</a><div style="margin:20px auto 8px"><a href="https://kaizenksa.com"><img src="cid:kaizen-logo" width="145" alt="Kaizen Group" style="max-width:145px;height:auto"></a></div><p style="font-size:11px;color:#58758c">${esc(t("شريك استراتيجي للخدمات التسويقية وتنظيم المعارض والمؤتمرات"))}</p></td></tr></table></td></tr></table></body></html>`;
   const text = [
     greeting,
     note,
@@ -133,7 +133,8 @@ export function ticketEmail(registration: Registration, base: string) {
     floorGuide,
     t(event.organizer),
     event.email,
-    `${t("كايزن")} — ${t("الراعي الاستراتيجي والمنظّم")}`,
+    `${t("كايزن جروب")} — ${t("شريك استراتيجي للخدمات التسويقية وتنظيم المعارض والمؤتمرات")}`,
+    "https://kaizenksa.com",
   ].join("\n\n");
   return { subject, html, text };
 }

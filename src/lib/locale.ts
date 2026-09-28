@@ -313,9 +313,11 @@ export const english: Record<string, string> = {
   "دليل الوصول داخل الكلية": "campus directions",
   "العودة إلى صفحة الفعالية": "Back to the event",
   "يرجى إبراز رمز QR عند الدخول": "Please show your QR code at the entrance",
-  كايزن: "Kaizen",
+  كايزن: "Kaizen Group",
   "كايزن جروب": "Kaizen Group",
   "الراعي الاستراتيجي والمنظّم": "Strategic sponsor & organiser",
+  "شريك استراتيجي للخدمات التسويقية وتنظيم المعارض والمؤتمرات":
+    "Strategic partner for marketing services and exhibition and conference organisation",
   "كلية مكة الأهلية — الرئيسية": "Makkah National College — home",
   "عن الفعالية": "About",
   "البرنامج والورش": "Agenda & workshops",
