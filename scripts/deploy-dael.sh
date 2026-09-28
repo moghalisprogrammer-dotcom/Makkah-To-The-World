@@ -129,10 +129,10 @@ chmod 644 "$site"
 ln -sfn "$site" "$enabled"
 nginx -t
 systemctl reload nginx
-curl -fsS --max-time 20 --resolve daeloffice.com:443:127.0.0.1 https://daeloffice.com/api/health
-curl -fsS --max-time 20 https://daeloffice.com/api/health
-curl -fsS --max-time 20 https://daeloffice.com/ -o /dev/null
-curl -fsS --max-time 20 https://daeloffice.com/login -o /dev/null
+curl -fsS --retry 8 --retry-delay 2 --retry-all-errors --max-time 20 --resolve daeloffice.com:443:127.0.0.1 https://daeloffice.com/api/health
+curl -fsS --retry 8 --retry-delay 2 --retry-all-errors --max-time 20 https://daeloffice.com/api/health
+curl -fsS --retry 8 --retry-delay 2 --retry-all-errors --max-time 20 https://daeloffice.com/ -o /dev/null
+curl -fsS --retry 8 --retry-delay 2 --retry-all-errors --max-time 20 https://daeloffice.com/login -o /dev/null
 trap - ERR
 ln -sfn "$release" "$base/dael-current"
 mkdir -p /etc/letsencrypt/renewal-hooks/deploy
