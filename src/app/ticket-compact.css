@@ -806,7 +806,66 @@
   .ticket-download-status {
     display: none !important;
   }
+  .ticket-device-note,
+  .ticket-personal-details {
+    display: none !important;
+  }
   .ticket-pass-panel {
     display: block !important;
   }
+}
+
+.ticket-personal-details {
+  width: 100%;
+  border: 1px solid #cadce9;
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px 16px;
+  text-align: start;
+}
+.ticket-personal-details summary {
+  cursor: pointer;
+  color: #006ea1;
+  font-size: 13px;
+  font-weight: 600;
+}
+.ticket-personal-details dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 15px 0 0;
+}
+.ticket-personal-details dt {
+  font-size: 11px;
+  color: #526d82;
+}
+.ticket-personal-details dd {
+  margin: 3px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  color: #082b65;
+}
+.ticket-device-note {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #e4eef5;
+  color: #37546e;
+  text-align: center;
+}
+.ticket-device-note p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.ticket-device-note button {
+  min-height: 40px;
+  border: 0;
+  background: transparent;
+  color: #006a9d;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }

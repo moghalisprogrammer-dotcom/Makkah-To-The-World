@@ -2301,3 +2301,50 @@
 .cinematic-invitation[data-scene="welcome"] .cinema-location-caption {
   display: flex;
 }
+/* The visitor's saved ticket is available throughout the invitation. */
+.cinema-visitor-tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+.saved-ticket-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid #8bc9ef;
+  border-radius: 10px;
+  background: #e9f7ff;
+  color: #063765;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.saved-ticket-link:hover {
+  background: #fff;
+}
+.saved-ticket-link:focus-visible {
+  outline: 3px solid #8bc9ef;
+  outline-offset: 4px;
+}
+.opening-ticket-access {
+  margin: 0 6% 16px;
+}
+.opening-ticket-access:empty {
+  display: none;
+}
+@media (max-width: 600px) {
+  .cinema-visitor-tools .saved-ticket-link {
+    font-size: 10px;
+    gap: 4px;
+    padding: 7px;
+  }
+  .cinema-visitor-tools .saved-ticket-link svg {
+    width: 15px;
+    flex-shrink: 0;
+  }
+}

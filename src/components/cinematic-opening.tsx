@@ -7,6 +7,7 @@ import { CollegeIdentity } from "./college-identity";
 import { Sponsor } from "./sponsor";
 import { useAccessibleReducedMotion } from "./use-reduced-motion";
 import { appPath } from "@/lib/base-path";
+import { SavedTicketLink } from "./saved-ticket-link";
 const shots = [
   {
     src: "/images/alula.jpg",
@@ -98,7 +99,11 @@ export function CinematicOpening({
       className="cinema-opening"
       role="dialog"
       aria-modal="true"
-      aria-label={en ? "A welcome from Makkah National College" : "ترحيب من كلية مكة الأهلية"}
+      aria-label={
+        en
+          ? "A welcome from Makkah National College"
+          : "ترحيب من كلية مكة الأهلية"
+      }
       initial={false}
       exit={{
         opacity: 0,
@@ -109,8 +114,8 @@ export function CinematicOpening({
       onKeyDown={(e) => {
         if (e.key === "Escape") onComplete();
         if (e.key === "Tab") {
-          const buttons = e.currentTarget.querySelectorAll<HTMLButtonElement>(
-            "button:not(:disabled)",
+          const buttons = e.currentTarget.querySelectorAll<HTMLElement>(
+            "button:not(:disabled), a[href]",
           );
           const first = buttons[0],
             last = buttons[buttons.length - 1];
@@ -176,8 +181,11 @@ export function CinematicOpening({
           )}
         </AnimatePresence>
       </div>
+      <div className="opening-ticket-access">
+        <SavedTicketLink />
+      </div>
       <footer className="opening-footer">
-        <button onClick={onSound} aria-pressed={sound}>
+        <button onClick={onSound} aria-pressed={sound} data-audio-toggle>
           {sound ? <Volume2 size={18} /> : <VolumeX size={18} />}
           <span>
             {en

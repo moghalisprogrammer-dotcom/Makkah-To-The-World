@@ -3,6 +3,8 @@ import { LanguageSwitch, useLocale } from "./locale-provider";
 import { CollegeIdentity } from "./college-identity";
 import { CinematicOpening } from "./cinematic-opening";
 import { useTourismSound } from "./tourism-sound";
+import { useInvitationAudio } from "./use-invitation-audio";
+import { SavedTicketLink } from "./saved-ticket-link";
 import {
   useCallback,
   useEffect,
@@ -262,9 +264,11 @@ export function Invitation() {
   const [formStep, setFormStep] = useState(0);
   const [pageSize, setPageSize] = useState(4);
   const [keyboardOpen, setKeyboardOpen] = useState(false);
-  const [playing, setPlaying] = useState(false);
-  const [audioError, setAudioError] = useState(false);
   const audio = useRef<HTMLAudioElement>(null);
+  const { playing, audioError, toggleSound } = useInvitationAudio(
+    audio,
+    setEnabled,
+  );
   const [shift, setShift] = useState(0);
   const sceneRef = useRef<HTMLElement>(null);
   const interacted = useRef(false);
@@ -349,17 +353,6 @@ export function Invitation() {
     }, 14000);
     return () => clearInterval(timer);
   }, [reduced, active]);
-  useEffect(() => {
-    const pause = () => {
-      if (document.hidden) {
-        audio.current?.pause();
-        void setEnabled(false);
-        setPlaying(false);
-      }
-    };
-    document.addEventListener("visibilitychange", pause);
-    return () => document.removeEventListener("visibilitychange", pause);
-  }, [setEnabled]);
   const destination =
     active === 1
       ? destinations[tracks[track].destination]
@@ -398,24 +391,6 @@ export function Invitation() {
     }
     go(active + 1);
   }, [active, count, currentAgendaPage, go, track, venueTab, workshop]);
-  async function toggleSound() {
-    if (!audio.current) return;
-    if (playing) {
-      audio.current.pause();
-      void setEnabled(false);
-      setPlaying(false);
-      return;
-    }
-    try {
-      audio.current.volume = 0.32;
-      await Promise.all([audio.current.play(), setEnabled(true)]);
-      setPlaying(true);
-      setAudioError(false);
-    } catch {
-      void setEnabled(false);
-      setAudioError(true);
-    }
-  }
   const modes = [
     { scale: 1.03, y: 10, rotate: 0 },
     { scale: 1.02, y: 8, rotate: 0 },
@@ -496,7 +471,10 @@ export function Invitation() {
           >
             <CollegeIdentity />
           </a>
-          <LanguageSwitch />
+          <div className="cinema-visitor-tools">
+            <LanguageSwitch />
+            <SavedTicketLink />
+          </div>
           <Sponsor />
         </header>
         <nav className="cinema-progress" aria-label={t("شرائح الدعوة")}>
@@ -689,7 +667,9 @@ export function Invitation() {
                     </p>
                     <a
                       className="calendar-link"
-                      href={appPath(locale === "en" ? "/event-en.ics" : "/event.ics")}
+                      href={appPath(
+                        locale === "en" ? "/event-en.ics" : "/event.ics",
+                      )}
                       download
                     >
                       <CalendarDays size={16} />
@@ -1018,7 +998,9 @@ export function Invitation() {
                     setData={setDraft}
                     step={formStep}
                     setStep={setFormStep}
-                    onSuccess={() => router.push("/registration/success")}
+                    onSuccess={(token) =>
+                      router.push(`/registration/success?ticket=${token}`)
+                    }
                   />
                 </div>
               )}
@@ -1030,6 +1012,7 @@ export function Invitation() {
             <button
               className={`cinema-sound ${playing ? "is-playing" : ""}`}
               onClick={toggleSound}
+              data-audio-toggle
               aria-label={playing ? t("إيقاف الموسيقى") : t("تشغيل الموسيقى")}
               aria-pressed={playing}
             >
@@ -1045,7 +1028,10 @@ export function Invitation() {
               <i />
               <i />
             </button>
-            <a href={appPath("/credits")} aria-label={t("حقوق الصور والموسيقى")}>
+            <a
+              href={appPath("/credits")}
+              aria-label={t("حقوق الصور والموسيقى")}
+            >
               {t("الحقوق")}
             </a>
           </div>
@@ -1080,7 +1066,7 @@ export function Invitation() {
         ref={audio}
         src={appPath("/audio/saudi-invitation.mp3")}
         loop
-        preload="none"
+        preload="auto"
       />
     </div>
   );

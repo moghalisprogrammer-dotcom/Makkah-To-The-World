@@ -309,6 +309,11 @@ export const english: Record<string, string> = {
   "بعد تأكيد حضور الفعالية، يلزم تعبئة نموذج الورشة المختارة وإرساله.":
     "After your event RSVP, you must complete and submit the selected workshop's form.",
   "رمز الدخول": "Entry QR code",
+  "تذكرتي ورمز الدخول": "My ticket & QR",
+  "بيانات تسجيلك": "Your registration details",
+  "تذكرتك محفوظة في هذا المتصفح. عند عودتك للموقع، افتح «تذكرتي ورمز الدخول».":
+    "Your ticket is saved in this browser. When you return, open My ticket & QR.",
+  "إزالة التذكرة من هذا الجهاز": "Remove ticket from this device",
   "تسجيل الورشة": "Workshop registration",
   "خطوات تأكيد الحضور": "Your attendance steps",
   "احفظ رمز الدخول أولًا": "Save your entry QR code first",

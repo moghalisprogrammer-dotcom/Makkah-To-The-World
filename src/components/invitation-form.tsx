@@ -22,6 +22,7 @@ import {
 import { ageGroups, ageLabels } from "@/lib/event";
 import { arabicTime, workshops } from "@/lib/agenda";
 import { api } from "@/lib/client";
+import { rememberTicket } from "@/lib/saved-ticket";
 
 export const emptyInvitation = {
   full_name: "",
@@ -165,8 +166,8 @@ export function InvitationForm({
           locale,
         },
       );
+      rememberTicket(result.token);
       try {
-        sessionStorage.setItem("makkah_ticket", result.token);
         sessionStorage.setItem("makkah_email_sent", String(result.emailSent));
         sessionStorage.setItem("makkah_registration_email", data.email.trim());
       } catch {

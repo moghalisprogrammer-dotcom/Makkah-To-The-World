@@ -21,12 +21,22 @@ import {
   type WorkshopId,
 } from "@/lib/workshops";
 import { appPath } from "@/lib/base-path";
+import {
+  forgetTicket,
+  readSavedTicket,
+  rememberTicket,
+} from "@/lib/saved-ticket";
 interface TicketData {
   full_name: string;
   registration_number: string;
   status: string;
   qr: string;
   workshop_id: WorkshopId | null;
+  email?: string;
+  phone?: string;
+  company?: string;
+  job_title?: string;
+  age_group?: string;
 }
 export function TicketView({
   token,
@@ -38,7 +48,9 @@ export function TicketView({
   const { t, locale } = useLocale();
   const [ticket, setTicket] = useState<TicketData | null>(null);
   const [error, setError] = useState("");
-  const [emailSent, setEmailSent] = useState(true);
+  const [emailSent, setEmailSent] = useState<boolean | null>(null);
+  const [savedOnDevice, setSavedOnDevice] = useState(false);
+  const activeToken = useRef<string | null>(null);
   const [registrationEmail, setRegistrationEmail] = useState("");
   const [downloading, setDownloading] = useState(false);
   const [downloadRequested, setDownloadRequested] = useState(false);
@@ -50,7 +62,11 @@ export function TicketView({
     if (stage === "workshop") followupHeading.current?.focus();
   }, [stage]);
   useEffect(() => {
-    const key = token || sessionStorage.getItem("makkah_ticket");
+    const key =
+      token ||
+      new URLSearchParams(location.search).get("ticket") ||
+      readSavedTicket();
+    activeToken.current = key;
     if (!key) {
       setError(
         t(
@@ -60,10 +76,13 @@ export function TicketView({
       return;
     }
     if (success) {
-      setEmailSent(sessionStorage.getItem("makkah_email_sent") === "true");
-      setRegistrationEmail(
-        sessionStorage.getItem("makkah_registration_email") || "",
-      );
+      try {
+        const sent = sessionStorage.getItem("makkah_email_sent");
+        setEmailSent(sent === null ? null : sent === "true");
+        setRegistrationEmail(
+          sessionStorage.getItem("makkah_registration_email") || "",
+        );
+      } catch {}
     }
     const controller = new AbortController();
     fetch(appPath(`/api/ticket/${key}`), {
@@ -72,8 +91,12 @@ export function TicketView({
     })
       .then(async (r) => {
         const data = await r.json();
-        if (!r.ok) throw new Error(data.error);
+        if (!r.ok) {
+          if (r.status === 404) forgetTicket(key);
+          throw new Error(data.error);
+        }
         setTicket(data);
+        setSavedOnDevice(rememberTicket(key));
       })
       .catch((e) => {
         if (e.name !== "AbortError") setError(e.message);
@@ -253,7 +276,7 @@ export function TicketView({
               </a>
             </section>
           )}
-          {success && !emailSent && stage === "ticket" && (
+          {success && emailSent === false && stage === "ticket" && (
             <div className="notice warning">
               {t(
                 "تسجيلك مؤكد وتذكرتك محفوظة. تعذر إرسال البريد حاليًا؛ احفظ تذكرتك من هنا، أو تواصل مع فريق التنظيم.",
@@ -377,6 +400,29 @@ export function TicketView({
                   </button>
                 )}
               </div>
+              {ticket.email && stage === "ticket" && (
+                <details className="ticket-personal-details">
+                  <summary>{t("بيانات تسجيلك")}</summary>
+                  <dl>
+                    {[
+                      [t("البريد الإلكتروني"), ticket.email],
+                      [t("الجوال"), ticket.phone],
+                      [t("جهة العمل أو الدراسة"), ticket.company],
+                      [t("المسمى الوظيفي"), ticket.job_title],
+                      [t("الفئة العمرية"), ticket.age_group],
+                    ]
+                      .filter(([, value]) => value)
+                      .map(([label, value]) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd>
+                            <bdi>{value}</bdi>
+                          </dd>
+                        </div>
+                      ))}
+                  </dl>
+                </details>
+              )}
               {hasWorkshop && selected && stage === "workshop" && (
                 <section
                   className="ticket-workshop-followup"
@@ -486,6 +532,24 @@ export function TicketView({
         <div className="notice error" role="alert">
           {t(error)}
         </div>
+      )}
+      {ticket && savedOnDevice && (
+        <aside className="ticket-device-note">
+          <p>
+            {t(
+              "تذكرتك محفوظة في هذا المتصفح. عند عودتك للموقع، افتح «تذكرتي ورمز الدخول».",
+            )}
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              forgetTicket(activeToken.current || undefined);
+              setSavedOnDevice(false);
+            }}
+          >
+            {t("إزالة التذكرة من هذا الجهاز")}
+          </button>
+        </aside>
       )}
       <a className="text-link" style={{ color: "#0082BF" }} href={appPath("/")}>
         {t("العودة إلى صفحة الفعالية")}

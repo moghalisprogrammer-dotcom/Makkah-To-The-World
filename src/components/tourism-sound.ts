@@ -70,7 +70,8 @@ export function useTourismSound() {
       enabled.current = value;
       if (value) {
         try {
-          context.current ||= new AudioContext();
+          if (!context.current || context.current.state === "closed")
+            context.current = new AudioContext();
           await context.current.resume();
           cue();
         } catch {
