@@ -1,6 +1,33 @@
 export type Locale = "ar" | "en";
 // Source phrases remain Arabic so content and translations can be reviewed together.
 export const english: Record<string, string> = {
+  "بهو الكلية": "College lobby",
+  "9:00 صباحًا – 1:30 مساءً": "9:00 AM – 1:30 PM",
+  "إرث حيّ، وحكايات أصيلة، وحفاوة القهوة السعودية.":
+    "Living heritage, authentic stories and the hospitality of Saudi coffee.",
+  "البرنامج المعتمد": "Approved programme",
+  "بداية الجولة": "Tour starts",
+  "ثلاث ورش متزامنة في القاعات 201 و202 و203.":
+    "Three simultaneous workshops in Rooms 201, 202 and 203.",
+  "الورش الثلاث من 12:00 ظهرًا إلى 1:00 مساءً":
+    "All three workshops run from 12:00 PM to 1:00 PM",
+  "استقبال الضيوف والتسجيل والافتتاح.":
+    "Guest reception, registration and opening.",
+  "المسرح في الدور 2. الورش: الظهور المهني 203، سلامة الأغذية 202، مطابخ حول العالم 201.":
+    "Theatre: floor 2. Workshops: Digital presence 203, Food safety 202, Kitchens around the world 201.",
+  "قاعة 201": "Room 201",
+  "قاعة 202": "Room 202",
+  "قاعة 203": "Room 203",
+  الافتتاح: "Opening",
+  "السياحة بين الماضي والحاضر ورؤيتنا المستقبلية":
+    "Tourism: past, present and our future vision",
+  "بدء الجولة الرسمية للعميد": "Dean’s official tour begins",
+  "بهو الكلية · الورش · الجلسة الحوارية":
+    "College lobby · Workshops · Panel discussion",
+  "مسرح الكلية · الدور 2": "College theatre · Floor 2",
+  "تكريم الشركاء والجهات والمتحدثين والمشاركين":
+    "Recognition of partners, organisations, speakers and participants",
+  "تحميل الأجندة PDF": "Download agenda PDF",
   الدعوة: "Invitation",
   التجربة: "Experience",
   البرنامج: "Agenda",
@@ -174,7 +201,7 @@ export const english: Record<string, string> = {
   "ما فئتك العمرية؟": "What is your age group?",
   "اختر الإجابة الأقرب لك.": "Choose the option that applies to you.",
   "الفئة العمرية": "Age group",
-  "هل ترغب بحضور ورشة؟": "Would you like to join a workshop?",
+  "هل ترغب بحضور ورشة؟": "Join a workshop?",
   "اختر ورشة واحدة؛ مواعيدها متداخلة.":
     "Choose one workshop; their times overlap.",
   "اختيار ورشة العمل": "Workshop choice",

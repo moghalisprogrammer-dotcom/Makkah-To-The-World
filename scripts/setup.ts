@@ -2,15 +2,16 @@ import { readFile } from "node:fs/promises";
 import { db } from "../src/lib/db";
 import { hashPassword } from "../src/lib/security";
 import { migrateWorkshops } from "./migrations";
+import { validAccountPasswords } from "./account-passwords";
 async function main() {
   const production = process.argv.includes("--production");
   const passwords = [
     process.env.ADMIN_PASSWORD,
     ...[1, 2, 3, 4].map((n) => process.env[`STAFF_${n}_PASSWORD`]),
   ];
-  if (passwords.some((p) => !p || p.length < 16 || p.includes("REPLACE_")))
+  if (!validAccountPasswords(passwords))
     throw new Error(
-      "Set five unique passwords of at least 16 characters in .env.local",
+      "Set five unique passwords of at least 12 characters in the environment file",
     );
   if (new Set(passwords).size !== 5)
     throw new Error("Every account needs its own password");

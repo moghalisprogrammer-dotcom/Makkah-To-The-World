@@ -5,9 +5,9 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:world-tourism-day-2026@mnc.edu.sa
-DTSTAMP:20260928T000000Z
+DTSTAMP:20260930T000000Z
 DTSTART:20261001T060000Z
-DTEND:20261001T120000Z
+DTEND:20261001T103000Z
 SUMMARY:World Tourism Day 2026 - Makkah National College
 DESCRIPTION:World Tourism Day and International Saudi Coffee Day.\n
  Tourism & Hospitality Department - Makkah National College.\n

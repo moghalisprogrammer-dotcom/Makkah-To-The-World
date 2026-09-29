@@ -1,4 +1,5 @@
 import { translate } from "../src/lib/locale.ts";
+import { agenda } from "../src/lib/agenda.ts";
 const englishRun = process.env.TEST_LOCALE === "en";
 const t = (value) => translate(value, englishRun ? "en" : "ar");
 import { chromium, expect } from "@playwright/test";
@@ -197,7 +198,10 @@ try {
   }
   await next.click();
   await expect(page.locator(".scene-agenda")).toHaveCSS("opacity", "1");
-  for (let i = 1; i < 3; i++) {
+  const agendaPageCount = await page
+    .locator(".scene-pager > div > button")
+    .count();
+  for (let i = 1; i < agendaPageCount; i++) {
     await next.click();
     await expect(
       page.locator(".scene-pager > div > button").nth(i),
@@ -249,7 +253,9 @@ try {
       if (id === "agenda") {
         const pages = page.locator(".scene-pager > div > button");
         const count = await pages.count();
-        expect(count).toBe(viewport.height < 740 ? 4 : 3);
+        expect(count).toBe(
+          Math.ceil(agenda.length / (viewport.height < 740 ? 3 : 4)),
+        );
         const titles = new Set();
         for (let i = 0; i < count; i++) {
           await pages.nth(i).click();
@@ -261,7 +267,7 @@ try {
             titles.add(title);
           await checkLayout(page, `agenda-page-${i}`);
         }
-        expect(titles.size).toBe(12);
+        expect(titles.size).toBe(agenda.length);
       }
       if (id === "workshops") {
         const tabs = page.locator(".workshop-selector button");
@@ -273,17 +279,14 @@ try {
             "opacity",
             "1",
           );
-          await expect(page.locator(".workshop-start")).toContainText(
-            i === 0 ? "12:15" : "12:00",
-          );
+          await expect(page.locator(".workshop-start")).toContainText("12:00");
           await checkLayout(page, `workshop-${i}`);
         }
         await page.getByRole("button", { name: t("شاهد موقع الورش") }).click();
         await expect(page.locator(".scene-location")).toHaveCSS("opacity", "1");
-        await expect(page.locator(".location-tabs button").nth(1)).toHaveAttribute(
-          "aria-selected",
-          "true",
-        );
+        await expect(
+          page.locator(".location-tabs button").nth(1),
+        ).toHaveAttribute("aria-selected", "true");
         await scene(page, "workshops", t("الورش"));
       }
       if (id === "location") {
@@ -377,7 +380,7 @@ try {
     "Every scene, tab, agenda page, and question must fit without document or main scrolling",
   ).toEqual([]);
   console.log(
-    "PASS: history, RTL keyboard, deep links, reduced motion, 6 scenes, all experience/location tabs, all 12 agenda items, 3 workshop details, 7 questions, explicit single/none workshop selection, retained draft, and no viewport scrolling at 360x640, 390x844 and 1440x900.",
+    `PASS: history, RTL keyboard, deep links, reduced motion, 6 scenes, all experience/location tabs, all ${agenda.length} agenda items, 3 workshop details, 7 questions, explicit single/none workshop selection, retained draft, and no viewport scrolling at 360x640, 390x844 and 1440x900.`,
   );
 } finally {
   await browser.close();

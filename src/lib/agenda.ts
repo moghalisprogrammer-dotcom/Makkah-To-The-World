@@ -1,8 +1,8 @@
-// Source: user-provided «الاجندة مع اوقاتها.docx».
-// The source's time columns are visually reversed; ranges follow the chronological 09:00–15:00 sequence.
+// Approved source: user-provided «أجندة فعالية اليوم العالمي للسياحة.pdf».
+// The official tour has a start time only; do not invent an end time.
 export interface AgendaItem {
   start: string;
-  end: string;
+  end?: string;
   title: string;
   category:
     "welcome" | "session" | "experience" | "tour" | "workshop" | "closing";
@@ -10,103 +10,15 @@ export interface AgendaItem {
   speaker?: string;
   note?: string;
 }
-export const agenda: AgendaItem[] = [
-  {
-    start: "09:00",
-    end: "09:30",
-    title: "استقبال الضيوف والتسجيل",
-    category: "welcome",
-    note: "تقديم القهوة السعودية وبدء استقبال الزوار في الأركان.",
-  },
-  {
-    start: "09:30",
-    end: "09:40",
-    title: "الافتتاح الرسمي",
-    category: "welcome",
-    note: "الترحيب بضيوف الفعالية.",
-  },
-  {
-    start: "09:40",
-    end: "10:00",
-    title: "كلمة كلية مكة الأهلية",
-    category: "welcome",
-    note: "التعريف برسالة الفعالية وأهدافها.",
-  },
-  {
-    start: "10:00",
-    end: "10:30",
-    title: "الجولة الرسمية",
-    category: "tour",
-    note: "جولة العميد وضيوف الجهات على مسارات وأركان الفعالية.",
-    location: "المعرض والأركان · دور M",
-  },
-  {
-    start: "10:30",
-    end: "11:15",
-    title: "مستقبل السياحة بين الإنسان والتقنية والتجربة",
-    category: "session",
-    location: "المسرح · الدور الثاني",
-  },
-  {
-    start: "11:15",
-    end: "11:45",
-    title: "عرض وتجربة في السياحة والضيافة الذكية",
-    category: "experience",
-    location: "دور M",
-  },
-  {
-    start: "11:45",
-    end: "12:15",
-    title: "تجربة القهوة السعودية للمناطق الأربع",
-    category: "experience",
-    speaker: "سارة الشهري",
-  },
-  {
-    start: "12:15",
-    end: "13:00",
-    title: "أساسيات الظهور المهني الرقمي",
-    category: "workshop",
-    location: "الدور الثاني",
-    note: "ورشة عمل ضمن برنامج الفعالية.",
-  },
-  {
-    start: "13:00",
-    end: "13:30",
-    title: "لقاء ملهم / مشاركة قطاعية",
-    category: "session",
-  },
-  {
-    start: "13:30",
-    end: "14:10",
-    title: "جولة مفتوحة وتجارب تفاعلية",
-    category: "tour",
-    note: "زيارة الأركان، والتواصل المهني، والتجارب التقنية التفاعلية، والمعرض الفني.",
-    location: "المعرض والأركان · دور M",
-  },
-  {
-    start: "14:10",
-    end: "14:30",
-    title: "تكريم شركاء النجاح",
-    category: "closing",
-    note: "تكريم الشركاء والجهات والمتحدثين والمشاركين.",
-  },
-  {
-    start: "14:30",
-    end: "15:00",
-    title: "الصور الرسمية والتغطية الإعلامية",
-    category: "closing",
-    note: "استكمال زيارة المعرض والأركان.",
-  },
-];
 export const workshops = [
   {
     id: "digital",
     number: "01",
     title: "أساسيات الظهور المهني الرقمي",
     formUrl: "https://forms.gle/6tieMndiVakSni1o8",
-    start: "12:15",
+    start: "12:00",
     end: "13:00",
-    location: "الدور الثاني",
+    location: "قاعة 203",
     pending: false,
   },
   {
@@ -117,7 +29,7 @@ export const workshops = [
       "https://docs.google.com/forms/d/e/1FAIpQLScSl_3X2OnsCVkTo8nBeqqmUt2eI7PZ2xlUv70ZZCPWXDqRCg/viewform?pli=1",
     start: "12:00",
     end: "13:00",
-    location: "الدور الثاني",
+    location: "قاعة 201",
     pending: false,
   },
   {
@@ -128,15 +40,58 @@ export const workshops = [
       "https://docs.google.com/forms/d/e/1FAIpQLSdEvIOFyUXG10_0Pq5o5QaiKWTdppr3U72uqIVy0gLF_j7XGQ/viewform",
     start: "12:00",
     end: "13:00",
-    location: "الدور الثاني",
+    location: "قاعة 202",
     pending: false,
+  },
+];
+export const agenda: AgendaItem[] = [
+  {
+    start: "09:00",
+    end: "09:30",
+    title: "استقبال الضيوف والتسجيل",
+    category: "welcome",
+    location: "بهو الكلية",
+  },
+  {
+    start: "09:30",
+    end: "10:00",
+    title: "الافتتاح",
+    category: "welcome",
+    location: "بهو الكلية",
+  },
+  {
+    start: "11:15",
+    end: "13:15",
+    title: "السياحة بين الماضي والحاضر ورؤيتنا المستقبلية",
+    category: "session",
+    location: "مسرح الكلية · الدور 2",
+  },
+  {
+    start: "11:30",
+    title: "بدء الجولة الرسمية للعميد",
+    category: "tour",
+    location: "بهو الكلية · الورش · الجلسة الحوارية",
+  },
+  ...[workshops[0], workshops[2], workshops[1]].map((workshop): AgendaItem => ({
+    start: workshop.start,
+    end: workshop.end,
+    title: workshop.title,
+    category: "workshop",
+    location: workshop.location,
+  })),
+  {
+    start: "13:15",
+    end: "13:30",
+    title: "تكريم الشركاء والجهات والمتحدثين والمشاركين",
+    category: "closing",
+    location: "مسرح الكلية · الدور 2",
   },
 ];
 export const categoryLabels = {
   welcome: "الاستقبال والافتتاح",
-  session: "لقاء ملهم",
+  session: "جلسة حوارية",
   experience: "تجربة تفاعلية",
-  tour: "جولة وتواصل",
+  tour: "الجولة الرسمية",
   workshop: "ورشة عمل",
   closing: "التكريم والختام",
 };

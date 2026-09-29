@@ -25,7 +25,12 @@ for config in /etc/nginx/sites-enabled/* /etc/nginx/conf.d/*.conf; do
   fi
 done
 tar -xzf "$archive" -C "$release"
-cp "$base/app/.env.production.local" "$release/.env.production.local"
+# Keep the live email configuration and current account settings when updating.
+env_source="$base/app/.env.production.local"
+if [ -f "$base/dael-current/.env.production.local" ]; then
+  env_source="$base/dael-current/.env.production.local"
+fi
+cp "$env_source" "$release/.env.production.local"
 cd "$release"
 node --input-type=module <<'NODE'
 import fs from 'node:fs';

@@ -19,7 +19,7 @@ export function ticketEmail(registration: Registration, base: string) {
   const pick = (ar: string, english: string) => (en ? english : ar);
   const url = `${base}/ticket/${registration.secure_token}?lang=${locale}`;
   const calendar = `${base}/${en ? "event-en.ics" : "event.ics"}`;
-  const workshop = `${workshopLabel(registration.workshop_id, locale)}${registration.workshop_id ? ` · ${workshopTime(registration.workshop_id, locale)} · ${t("الدور الثاني")}` : ""}`;
+  const workshop = `${workshopLabel(registration.workshop_id, locale)}${registration.workshop_id ? ` · ${workshopTime(registration.workshop_id, locale)} · ${t(selectedWorkshop(registration.workshop_id)?.location || "")}` : ""}`;
   const selected =
     registration.status === "CANCELLED"
       ? null
@@ -61,7 +61,7 @@ export function ticketEmail(registration: Registration, base: string) {
   const schedule = agenda
     .map(
       (item) =>
-        `<tr><td style="padding:11px 8px;border-bottom:1px solid #e3edf5;vertical-align:top;white-space:nowrap;color:#0082bf;font-size:12px;direction:ltr">${time(item.start)}<br>${time(item.end)}</td><td style="padding:11px 8px;border-bottom:1px solid #e3edf5"><strong style="font-size:13px">${esc(t(item.title))}</strong><br><span style="font-size:11px;color:#607b94">${esc(
+        `<tr><td style="padding:11px 8px;border-bottom:1px solid #e3edf5;vertical-align:top;white-space:nowrap;color:#0082bf;font-size:12px;direction:ltr">${time(item.start)}${item.end ? `<br>${time(item.end)}` : ""}</td><td style="padding:11px 8px;border-bottom:1px solid #e3edf5"><strong style="font-size:13px">${esc(t(item.title))}</strong><br><span style="font-size:11px;color:#607b94">${esc(
           [item.location, item.speaker, item.note]
             .filter(Boolean)
             .map((s) => t(s!))
@@ -95,8 +95,8 @@ export function ticketEmail(registration: Registration, base: string) {
     "Save your QR code and show it to the reception team on arrival. The event begins at 9:00 AM, with 4 entry gates. Your selected workshop is your only workshop choice because the sessions overlap.",
   );
   const floorGuide = pick(
-    "دور M: المعرض والأركان وتجربة الضيافة الذكية. الدور الثاني: المسرح والورش الثلاث.",
-    "Floor M: exhibition, experiences and smart hospitality. Second floor: theatre and all three workshops.",
+    "بهو الكلية: الاستقبال والافتتاح. مسرح الكلية في الدور 2: الجلسة الحوارية والتكريم. ورش العمل: الظهور المهني في قاعة 203، سلامة الأغذية في قاعة 202، مطابخ حول العالم في قاعة 201.",
+    "College lobby: reception and opening. College theatre, floor 2: panel discussion and recognition. Workshops: Digital professional presence in Room 203, Food safety in Room 202, Kitchens around the world in Room 201.",
   );
   const html = `<!doctype html><html lang="${locale}" dir="${en ? "ltr" : "rtl"}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>@media(max-width:480px){.email-padding{padding:22px 16px!important}.email-title{font-size:25px!important}}</style></head><body style="margin:0;background:#edf3f8;font-family:Tahoma,Arial,sans-serif;color:#041b3d"><div style="display:none;max-height:0;overflow:hidden">${esc(pick("تذكرتك وبرنامج يومك وموقع الكلية، كلها هنا.", "Your ticket, full agenda and directions, all in one place."))}</div><table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td align="center" style="padding:24px 10px"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#fff;border:1px solid #dce7f0;border-radius:16px;overflow:hidden">
   <tr><td class="email-padding" style="padding:28px 34px;background:#041b3d;color:white;text-align:center"><img src="cid:college-seal" width="62" height="62" alt="" style="display:block;margin:auto"><p style="margin:10px 0 2px;font-size:18px;color:white" lang="ar" dir="rtl">كلية مكة الأهلية</p><p style="margin:0;font-size:11px;letter-spacing:1px;color:#a9d9f3" lang="en" dir="ltr">MAKKAH NATIONAL COLLEGE</p><p style="font-size:11px;color:#88cef5;margin:25px 0 8px">${esc(t("من مكة إلى العالم"))}</p><h1 class="email-title" style="font-size:30px;line-height:1.5;margin:0;color:white">${esc(t("يوم السياحة العالمي 2026"))}</h1><p style="font-size:12px;color:#cae3f5;margin:8px 0 0">${esc(t(event.companion))}</p></td></tr>
@@ -136,7 +136,7 @@ export function ticketEmail(registration: Registration, base: string) {
     `${t("أضف الموعد إلى تقويمك")}: ${calendar}`,
     ...agenda.map(
       (i) =>
-        `${time(i.start)}–${time(i.end)} · ${t(i.title)} · ${[
+        `${time(i.start)}${i.end ? `–${time(i.end)}` : ""} · ${t(i.title)} · ${[
           i.location,
           i.speaker,
           i.note,

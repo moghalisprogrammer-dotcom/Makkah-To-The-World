@@ -84,7 +84,7 @@ try {
       await expect(page.locator(".cinema-agenda-item")).toHaveCount(4);
     if (id === "workshops") {
       await expect(page.locator(".workshop-selector button")).toHaveCount(3);
-      await expect(page.locator(".workshop-start")).toContainText("12:15");
+      await expect(page.locator(".workshop-start")).toContainText("12:00");
       await page.locator(".workshop-selector button").nth(1).click();
       await expect(page.locator(".workshop-spotlight")).toHaveCount(1);
       await expect(page.locator(".workshop-spotlight")).toHaveCSS(

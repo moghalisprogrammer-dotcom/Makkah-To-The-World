@@ -101,7 +101,7 @@ const tracks = [
     Icon: Landmark,
     title: "حكايتنا، هويتنا.",
     label: "الثقافة والقهوة السعودية",
-    text: "إرث حيّ، وحكايات أصيلة، وتجربة قهوة من أربع مناطق سعودية مع سارة الشهري.",
+    text: "إرث حيّ، وحكايات أصيلة، وحفاوة القهوة السعودية.",
     destination: 1,
   },
   {
@@ -558,7 +558,7 @@ export function Invitation() {
                       </span>
                       <span>
                         <Clock3 size={16} />
-                        {t("9 صباحًا — 3 مساءً")}
+                        {t(event.time)}
                       </span>
                     </div>
                     <p className="welcome-note">
@@ -663,32 +663,34 @@ export function Invitation() {
                     </p>
                     <Reveal>{t("برنامج اليوم، كما سيُقام.")}</Reveal>
                     <p className="scene-description">
-                      {t("الخميس، 1 أكتوبر · من 9 صباحًا إلى 3 مساءً")}
+                      {t(event.date)} · {t(event.time)}
                     </p>
-                    <a
-                      className="calendar-link"
-                      href={appPath(
-                        locale === "en" ? "/event-en.ics" : "/event.ics",
-                      )}
-                      download
-                    >
-                      <CalendarDays size={16} />
-                      {t("أضف الموعد إلى تقويمك")}
-                      <ArrowUpLeft size={13} />
-                    </a>
+                    <div className="agenda-downloads">
+                      <a
+                        className="calendar-link"
+                        href={appPath(
+                          locale === "en" ? "/event-en.ics" : "/event.ics",
+                        )}
+                        download
+                      >
+                        <CalendarDays size={16} />
+                        {t("أضف الموعد إلى تقويمك")}
+                        <ArrowUpLeft size={13} />
+                      </a>
+                      <a
+                        className="calendar-link"
+                        href={appPath("/agenda.pdf")}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t("تحميل الأجندة PDF")}
+                        <ArrowUpLeft size={13} />
+                      </a>
+                    </div>
                   </div>
                   <div className="agenda-focus">
                     <div className="agenda-period">
-                      <span>
-                        {
-                          [
-                            t("الاستقبال والافتتاح"),
-                            t("الجولة والعروض"),
-                            t("الورش واللقاءات"),
-                            t("التكريم والختام"),
-                          ][currentAgendaPage]
-                        }
-                      </span>
+                      <span>{t("البرنامج المعتمد")}</span>
                       <small>{t("بتوقيت مكة المكرمة")}</small>
                     </div>
                     <AnimatePresence mode="wait">
@@ -708,11 +710,15 @@ export function Invitation() {
                           .map((item) => (
                             <article
                               className="cinema-agenda-item"
-                              key={item.start}
+                              key={item.start + item.title}
                             >
                               <div className="item-clock">
                                 <b>{arabicTime(item.start)}</b>
-                                <span>{arabicTime(item.end)}</span>
+                                <span>
+                                  {item.end
+                                    ? arabicTime(item.end)
+                                    : t("بداية الجولة")}
+                                </span>
                               </div>
                               <div>
                                 <h3>{t(item.title)}</h3>
@@ -747,7 +753,7 @@ export function Invitation() {
                     </p>
                     <Reveal>{t("اختر ورشة واحدة.")}</Reveal>
                     <p className="scene-description">
-                      {t("ثلاث ورش متزامنة في الدور الثاني.")}
+                      {t("ثلاث ورش متزامنة في القاعات 201 و202 و203.")}
                       <br />
                       {t("يمكنك اختيار ورشة واحدة عند تأكيد حضورك.")}
                     </p>
@@ -812,7 +818,7 @@ export function Invitation() {
                         <div className="workshop-foot">
                           <span>
                             <MapPin size={15} />
-                            {t("الدور الثاني")}
+                            {t(workshops[workshop].location)}
                           </span>
                           <button
                             onClick={() => {
@@ -827,7 +833,7 @@ export function Invitation() {
                       </motion.article>
                     </AnimatePresence>
                     <p className="workshop-disclaimer">
-                      {t("الظهور المهني 12:15 · الورشتان الأخريان 12:00")}
+                      {t("الورش الثلاث من 12:00 ظهرًا إلى 1:00 مساءً")}
                     </p>
                   </div>
                 </div>
@@ -925,12 +931,12 @@ export function Invitation() {
                         ) : venueTab === 1 ? (
                           <>
                             <div className="floor-item">
-                              <b>M</b>
+                              <b>
+                                <MapPin size={22} />
+                              </b>
                               <p>
-                                <strong>{t("المعرض والأركان")}</strong>
-                                {t(
-                                  "التجارب التفاعلية، المعرض الفني ومساحات التواصل.",
-                                )}
+                                <strong>{t("بهو الكلية")}</strong>
+                                {t("استقبال الضيوف والتسجيل والافتتاح.")}
                               </p>
                             </div>
                             <div className="floor-item">
@@ -938,7 +944,7 @@ export function Invitation() {
                               <p>
                                 <strong>{t("المسرح وورش العمل")}</strong>
                                 {t(
-                                  "جلسة مستقبل السياحة والورش الثلاث في الدور الثاني.",
+                                  "المسرح في الدور 2. الورش: الظهور المهني 203، سلامة الأغذية 202، مطابخ حول العالم 201.",
                                 )}
                               </p>
                             </div>

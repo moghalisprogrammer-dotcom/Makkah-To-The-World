@@ -162,7 +162,17 @@ export function TicketView({
       ctx.font = `500 25px ${ticketFont}`;
       ctx.fillText(workshopLabel(ticket.workshop_id, locale), 500, 1230, 920);
       ctx.font = `400 23px ${ticketFont}`;
-      ctx.fillText(workshopTime(ticket.workshop_id, locale), 500, 1275);
+      ctx.fillText(
+        [
+          workshopTime(ticket.workshop_id, locale),
+          selected ? t(selected.location) : "",
+        ]
+          .filter(Boolean)
+          .join(" · "),
+        500,
+        1275,
+        920,
+      );
       if (selected) {
         ctx.font = `400 19px ${ticketFont}`;
         ctx.fillText(
@@ -340,7 +350,10 @@ export function TicketView({
                         {workshopLabel(ticket.workshop_id, locale)}
                       </strong>
                       {ticket.workshop_id && (
-                        <span>{workshopTime(ticket.workshop_id, locale)}</span>
+                        <span>
+                          {workshopTime(ticket.workshop_id, locale)}
+                          {selected ? ` · ${t(selected.location)}` : ""}
+                        </span>
                       )}
                     </div>
                   </div>

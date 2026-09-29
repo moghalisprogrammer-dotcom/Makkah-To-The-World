@@ -37,8 +37,8 @@ const icons = {
 };
 const filters = [
   { id: "all", label: "البرنامج كاملًا" },
-  { id: "sessions", label: "الجلسات والتجارب" },
-  { id: "tours", label: "الجولات والتواصل" },
+  { id: "sessions", label: "الجلسات والورش" },
+  { id: "tours", label: "الجولة الرسمية" },
 ] as const;
 const workshopIcons = [Laptop, ChefHat, ShieldCheck, Compass];
 export function Agenda() {
@@ -81,7 +81,8 @@ export function Agenda() {
             الخميس، 1 أكتوبر 2026
           </span>
           <span>
-            <Clock3 size={18} />9 صباحًا — 3 مساءً
+            <Clock3 size={18} />
+            9:00 صباحًا — 1:30 مساءً
           </span>
           <a href="#workshops">
             ورش العمل <ArrowDown size={15} />
@@ -107,7 +108,7 @@ export function Agenda() {
           {shown.map((item) => {
             const Icon = icons[item.category];
             return (
-              <article className="agenda-row" key={item.start}>
+              <article className="agenda-row" key={item.start + item.title}>
                 <div className="agenda-time">
                   <strong>
                     <time dateTime={`2026-10-01T${item.start}:00+03:00`}>
@@ -115,12 +116,18 @@ export function Agenda() {
                     </time>
                     <span>{period(item.start)}</span>
                   </strong>
-                  <small>
-                    حتى {arabicTime(item.end)} {period(item.end)}
-                  </small>
-                  <span className="agenda-duration">
-                    {duration(item.start, item.end)} دقيقة
-                  </span>
+                  {item.end ? (
+                    <>
+                      <small>
+                        حتى {arabicTime(item.end)} {period(item.end)}
+                      </small>
+                      <span className="agenda-duration">
+                        {duration(item.start, item.end)} دقيقة
+                      </span>
+                    </>
+                  ) : (
+                    <small>بداية الجولة</small>
+                  )}
                 </div>
                 <div className="timeline-line">
                   <span>
@@ -170,7 +177,7 @@ export function Agenda() {
               <Clock3 size={21} />
               <span>
                 <strong>12:00 ظهرًا — 1:00 مساءً</strong>
-                <small>الظهور المهني يبدأ 12:15 · الدور الثاني</small>
+                <small>القاعات 201 و202 و203</small>
               </span>
             </div>
           </div>
@@ -205,9 +212,8 @@ export function Agenda() {
           </div>
           <p className="workshop-pending">
             <Info size={15} />
-            تبدأ ورشتا مطابخ حول العالم وسلامة الأغذية الساعة 12 ظهرًا، وورشة
-            أساسيات الظهور المهني الرقمي الساعة 12:15. تنتهي الورش الثلاث الساعة
-            1 مساءً.
+            تبدأ الورش الثلاث الساعة 12 ظهرًا وتنتهي الساعة 1 مساءً. اختر ورشة
+            واحدة فقط.
           </p>
         </div>
         <div className="venue-guide" id="venue-guide">
@@ -218,15 +224,11 @@ export function Agenda() {
           </div>
           <div className="floor-card">
             <span className="floor-number" dir="ltr">
-              M
+              <MapPin size={26} />
             </span>
             <div>
-              <h4>دور M</h4>
-              <p>
-                المعرض والأركان
-                <br />
-                عرض وتجربة السياحة والضيافة الذكية
-              </p>
+              <h4>بهو الكلية</h4>
+              <p>استقبال الضيوف والتسجيل والافتتاح</p>
             </div>
           </div>
           <div className="floor-card">
@@ -234,9 +236,10 @@ export function Agenda() {
             <div>
               <h4>الدور الثاني</h4>
               <p>
-                المسرح: جلسة مستقبل السياحة
+                المسرح: الجلسة الحوارية والتكريم
                 <br />
-                قاعات ورش العمل
+                الورش: الظهور المهني 203 · سلامة الأغذية 202 · مطابخ حول العالم
+                201
               </p>
             </div>
           </div>

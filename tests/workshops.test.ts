@@ -76,7 +76,7 @@ test("each workshop persists as one SQL value and authenticated staff receives v
     assert.equal("secure_token" in staff, false);
     assert.ok(workshopLabel(stored.workshop_id));
   }
-  assert.match(workshopTime("digital"), /12:15/);
+  assert.match(workshopTime("digital"), /12:00/);
   assert.match(workshopTime("kitchens"), /12:00/);
   assert.match(workshopTime("food-safety"), /12:00/);
   assert.equal(workshopTime(null), "");
