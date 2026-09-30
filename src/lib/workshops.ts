@@ -1,4 +1,4 @@
-import { arabicTime, workshops } from "./agenda";
+import { arabicTime, period, workshops } from "./agenda";
 import { translate, type Locale } from "./locale";
 
 export const workshopIds = ["digital", "kitchens", "food-safety"] as const;
@@ -24,6 +24,6 @@ export function workshopTime(
 ) {
   const workshop = selectedWorkshop(id);
   return workshop
-    ? `${arabicTime(workshop.start)} – ${arabicTime(workshop.end)} ${locale === "en" ? "PM" : "ظهرًا"}`
+    ? `${arabicTime(workshop.start)} – ${arabicTime(workshop.end)} ${translate(period(workshop.end), locale)}`
     : "";
 }

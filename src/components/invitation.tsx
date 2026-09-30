@@ -39,7 +39,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { event } from "@/lib/event";
-import { agenda, arabicTime, workshops } from "@/lib/agenda";
+import { agenda, arabicTime, period, workshops } from "@/lib/agenda";
 import { Sponsor } from "./sponsor";
 import { appPath } from "@/lib/base-path";
 import { InvitationForm, emptyInvitation } from "./invitation-form";
@@ -812,8 +812,7 @@ export function Invitation() {
                         <span className="workshop-start">
                           <Clock3 size={17} />
                           {arabicTime(workshops[workshop].start)}
-                          {t("ظهرًا")}
-                          <i>—</i> {t("1:00 مساءً")}
+                          <i>—</i> {arabicTime(workshops[workshop].end)} {t(period(workshops[workshop].end))}
                         </span>
                         <h3>{t(workshops[workshop].title)}</h3>
                         <div className="workshop-presenter"><img src={appPath(workshops[workshop].presenterImage)} alt={t(workshops[workshop].presenter)} width={64} height={64}/><div><small>{t("تقديم")}</small><strong>{t(workshops[workshop].presenter)}</strong></div></div>

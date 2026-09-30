@@ -20,7 +20,7 @@ import {
   TicketCheck,
 } from "lucide-react";
 import { ageGroups, ageLabels } from "@/lib/event";
-import { arabicTime, workshops } from "@/lib/agenda";
+import { arabicTime, period, workshops } from "@/lib/agenda";
 import { api } from "@/lib/client";
 import { rememberTicket } from "@/lib/saved-ticket";
 
@@ -400,7 +400,7 @@ export function InvitationForm({
                         </span>
                         <small>
                           <b>{arabicTime(workshop.start)}</b>
-                          {t("ظهرًا")}
+                          {t(period(workshop.start))}
                         </small>
                       </label>
                     );

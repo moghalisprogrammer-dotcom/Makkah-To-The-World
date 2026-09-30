@@ -201,7 +201,7 @@ export function Agenda() {
                   <div>
                     <span>
                       <Clock3 size={15} />
-                      {arabicTime(w.start)} ظهرًا — {arabicTime(w.end)} مساءً
+                      {arabicTime(w.start)} — {arabicTime(w.end)} {period(w.end)}
                     </span>
                     <span>
                       <MapPin size={15} />
@@ -214,7 +214,7 @@ export function Agenda() {
           </div>
           <p className="workshop-pending">
             <Info size={15} />
-            تبدأ الورش الثلاث الساعة 12 ظهرًا وتنتهي الساعة 1 مساءً. اختر ورشة
+            تبدأ الورش الثلاث الساعة 1 مساءً وتنتهي الساعة 2 مساءً. اختر ورشة
             واحدة فقط.
           </p>
         </div>

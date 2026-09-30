@@ -165,6 +165,7 @@ export const english: Record<string, string> = {
   "سلامة الأغذية": "Food safety",
   ظهرًا: "PM",
   "1:00 مساءً": "1:00 PM",
+  "مساءً": "PM",
   "لنبني حضورًا مهنيًا يعبّر عنّا.":
     "Build a professional presence that reflects you.",
   "رحلة معرفة عبر ثقافات الطهي.": "Explore knowledge across culinary cultures.",

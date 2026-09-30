@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { agenda, workshops } from "../src/lib/agenda";
 import { translate } from "../src/lib/locale";
+import { workshopIds, workshopTime } from "../src/lib/workshops";
 import { ticketEmail } from "../src/lib/ticket-email";
 import type { Registration } from "../src/lib/db";
 import {
@@ -13,6 +14,10 @@ import {
 import { hashPassword, verifyPassword } from "../src/lib/security";
 
 test("approved schedule preserves the overlap and start-only official tour", () => {
+  for (const id of workshopIds) {
+    assert.equal(workshopTime(id), "1:00 – 2:00 مساءً");
+    assert.equal(workshopTime(id, "en"), "1:00 – 2:00 PM");
+  }
   assert.equal(agenda.length, 8);
   assert.deepEqual(
     agenda.filter((x) => x.category === "session").map((x) => [x.start, x.end]),
