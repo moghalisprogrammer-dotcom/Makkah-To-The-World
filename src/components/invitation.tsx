@@ -726,7 +726,7 @@ export function Invitation() {
                               <div>
                                 <h3>{t(item.title)}</h3>
                                 <SessionParticipants item={item} />
-                                {item.speaker && (
+                                {item.speaker && !item.participants && (
                                   <div className="agenda-moderator">
                                     {item.speakerImage && <img src={appPath(item.speakerImage)} alt={t(item.speaker)} width={38} height={38} />}
                                     <span>{t(item.speaker)}</span>
@@ -816,15 +816,7 @@ export function Invitation() {
                           <i>—</i> {t("1:00 مساءً")}
                         </span>
                         <h3>{t(workshops[workshop].title)}</h3>
-                        <p>
-                          {
-                            [
-                              t("لنبني حضورًا مهنيًا يعبّر عنّا."),
-                              t("رحلة معرفة عبر ثقافات الطهي."),
-                              t("معرفة تُعزز جودة الضيافة وسلامتها."),
-                            ][workshop]
-                          }
-                        </p>
+                        <div className="workshop-presenter"><img src={appPath(workshops[workshop].presenterImage)} alt={t(workshops[workshop].presenter)} width={64} height={64}/><div><small>{t("تقديم")}</small><strong>{t(workshops[workshop].presenter)}</strong></div></div>
                         <div className="workshop-foot">
                           <span>
                             <MapPin size={15} />

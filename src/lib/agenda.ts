@@ -15,6 +15,8 @@ export interface AgendaItem {
 export const workshops = [
   {
     id: "digital",
+    presenter: "بندر الحارثي",
+    presenterImage: "/people/bandar.jpg",
     number: "01",
     title: "أساسيات الظهور المهني الرقمي",
     formUrl: "https://forms.gle/6tieMndiVakSni1o8",
@@ -25,6 +27,8 @@ export const workshops = [
   },
   {
     id: "kitchens",
+    presenter: "ايناس محمد خضري",
+    presenterImage: "/people/enas.jpg",
     number: "02",
     title: "مطابخ حول العالم",
     formUrl:
@@ -36,6 +40,8 @@ export const workshops = [
   },
   {
     id: "food-safety",
+    presenter: "آلاء خالد زهدي",
+    presenterImage: "/people/alaa.jpg",
     number: "03",
     title: "سلامة الأغذية من الاستلام حتى التقديم الآمن",
     formUrl:
@@ -67,11 +73,12 @@ export const agenda: AgendaItem[] = [
     title: "السياحة بين الماضي والحاضر ورؤيتنا المستقبلية",
     category: "session",
     speaker: "مدير الحوار: صهيب تركستاني",
+    speakerImage: "/people/sohaib.jpg",
     participants: [
-      { name: "صهيب تركستاني", role: "مدير الحوار" },
-      { name: "سمير قمصاني", role: "المتحاور الأول" },
-      { name: "سامي محمد احمد خياري", role: "المتحاور الثاني" },
-      { name: "طارق الشلبي", role: "المتحاور الثالث" },
+      { name: "صهيب تركستاني", role: "مدير الحوار", image: "/people/sohaib.jpg" },
+      { name: "سمير قمصاني", role: "المتحاور الأول", image: "/people/samir.jpg" },
+      { name: "سامي محمد احمد خياري", role: "المتحاور الثاني", image: "/people/sami.jpg" },
+      { name: "طارق الشلبي", role: "المتحاور الثالث", image: "/people/tariq.jpg" },
     ],
     location: "مسرح الكلية · الدور 2",
   },
@@ -85,6 +92,8 @@ export const agenda: AgendaItem[] = [
     start: workshop.start,
     end: workshop.end,
     title: workshop.title,
+    speaker: workshop.presenter,
+    speakerImage: workshop.presenterImage,
     category: "workshop",
     location: workshop.location,
   })),

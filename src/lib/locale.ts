@@ -2,6 +2,10 @@ export type Locale = "ar" | "en";
 // Source phrases remain Arabic so content and translations can be reviewed together.
 export const english: Record<string, string> = {
   "مدير الحوار: صهيب تركستاني": "Moderator: Sohaib Turkistani",
+  "بندر الحارثي": "Bandar Al-Harthi",
+  "ايناس محمد خضري": "Enas Mohammed Khudri",
+  "آلاء خالد زهدي": "Alaa Khaled Zuhdi",
+  "تقديم": "Presented by",
   "اكتشف برامج القسم": "Explore our programmes",
   "برامج قسم السياحة والضيافة": "Tourism & Hospitality Programmes",
   "المسارات الأكاديمية": "Academic pathways",
@@ -165,8 +169,6 @@ export const english: Record<string, string> = {
   "الدور الثاني": "Second floor",
   "أرغب بهذه الورشة": "Choose this workshop",
   "شاهد موقع الورش": "See the workshop location",
-  "الظهور المهني 12:15 · الورشتان الأخريان 12:00":
-    "Digital presence: 12:15 PM · Other workshops: 12 PM",
   "نلتقي في مكة": "Meet us in Makkah",
   "الوصول إلى الفعالية": "Getting to the event",
   "نلتقي في بهو الكلية.": "Meet us in the college lobby.",
@@ -292,7 +294,6 @@ export const english: Record<string, string> = {
     "World Tourism Day 2026 celebration, coinciding with International Saudi Coffee Day",
   "بالتزامن مع اليوم الدولي للقهوة السعودية":
     "Coinciding with International Saudi Coffee Day",
-  "9:00 صباحًا – 3:00 مساءً": "9:00 AM – 3:00 PM",
   "كلية مكة الأهلية — بهو الكلية": "Makkah National College — college lobby",
   "قسم السياحة والضيافة — كلية مكة الأهلية":
     "Tourism & Hospitality Department — Makkah National College",
@@ -308,8 +309,6 @@ export const english: Record<string, string> = {
   "جولة العميد وضيوف الجهات على مسارات وأركان الفعالية.":
     "The dean and institutional guests tour the event.",
   "المعرض والأركان · دور M": "Exhibition & experiences · Floor M",
-  "مستقبل السياحة بين الإنسان والتقنية والتجربة":
-    "The future of tourism: people, technology & experience",
   "المسرح · الدور الثاني": "Theatre · Second floor",
   "عرض وتجربة في السياحة والضيافة الذكية":
     "Smart tourism & hospitality demonstration",
