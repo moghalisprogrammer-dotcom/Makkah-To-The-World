@@ -203,7 +203,6 @@ export const english: Record<string, string> = {
   "التسجيل متاح للجميع دون موافقة مسبقة حتى اكتمال العدد. إذا لم تصلك التذكرة، تحقق من البريد غير المرغوب فيه أو تواصل معنا.":
     "Registration is open to everyone until capacity is reached. If your ticket has not arrived, check your spam folder or contact us.",
   "مكانك بيننا": "You belong here",
-  "دعوتك، على بُعد خطوة.": "Your invitation is one step away.",
   "نتعرّف عليك، تختار تجربتك،":
     "Tell us about yourself, choose your experience,",
   "وتصل تذكرتك إلى بريدك.": "and receive your ticket by email.",

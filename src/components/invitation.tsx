@@ -979,7 +979,6 @@ export function Invitation() {
                       <span />
                       {t("مكانك بيننا")}
                     </p>
-                    <Reveal>{t("دعوتك، على بُعد خطوة.")}</Reveal>
                     <p className="scene-description">
                       {t("نتعرّف عليك، تختار تجربتك،")}
                       <br />

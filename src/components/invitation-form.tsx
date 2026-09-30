@@ -23,6 +23,7 @@ import { ageGroups, ageLabels } from "@/lib/event";
 import { arabicTime, period, workshops } from "@/lib/agenda";
 import { api } from "@/lib/client";
 import { rememberTicket } from "@/lib/saved-ticket";
+import type { WorkshopId } from "@/lib/workshops";
 
 export const emptyInvitation = {
   full_name: "",
@@ -53,12 +54,14 @@ export function InvitationForm({
   setData,
   step,
   setStep,
+  fixedWorkshopId,
 }: {
   onSuccess: (token: string, sent: boolean) => void;
   data: InvitationData;
   setData: Dispatch<SetStateAction<InvitationData>>;
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
+  fixedWorkshopId?: WorkshopId;
 }) {
   const { t, locale } = useLocale();
   const reducedMotion = useReducedMotion();
@@ -160,7 +163,7 @@ export function InvitationForm({
           company: data.company.trim(),
           job_title: data.job_title.trim(),
           age_group: data.age_group,
-          workshop_id: data.workshop_id,
+          workshop_id: fixedWorkshopId ?? data.workshop_id,
           consent: data.consent,
           website: data.website,
           locale,
@@ -357,8 +360,8 @@ export function InvitationForm({
             {step === 4 && (
               <>
                 <div className="question-heading">
-                  <h3 tabIndex={-1}>{t("هل ترغب بحضور ورشة؟")}</h3>
-                  <p>{t("اختر ورشة واحدة؛ مواعيدها متداخلة.")}</p>
+                  <h3 tabIndex={-1}>{t(fixedWorkshopId ? "ورشة العمل" : "هل ترغب بحضور ورشة؟")}</h3>
+                  {!fixedWorkshopId && <p>{t("اختر ورشة واحدة؛ مواعيدها متداخلة.")}</p>}
                   <p>
                     {t(
                       "بعد تأكيد حضور الفعالية، يلزم تعبئة نموذج الورشة المختارة وإرساله.",
@@ -369,7 +372,7 @@ export function InvitationForm({
                   className="question-choices question-workshops"
                   aria-label={t("اختيار ورشة العمل")}
                 >
-                  {workshops.map((workshop) => {
+                  {workshops.filter((workshop) => !fixedWorkshopId || workshop.id === fixedWorkshopId).map((workshop) => {
                     const selected =
                       data.workshop_answered &&
                       data.workshop_id === workshop.id;
@@ -405,7 +408,7 @@ export function InvitationForm({
                       </label>
                     );
                   })}
-                  <label
+                  {!fixedWorkshopId && <label
                     className={`question-choice question-no-workshop ${data.workshop_answered && data.workshop_id === null ? "is-selected" : ""}`}
                   >
                     <input
@@ -430,7 +433,7 @@ export function InvitationForm({
                       )}
                     </span>
                     <span>{t("أكتفي بحضور الفعالية")}</span>
-                  </label>
+                  </label>}
                 </fieldset>
               </>
             )}

@@ -1,0 +1,22 @@
+const {chromium}=require('@playwright/test');
+const assert=require('node:assert/strict'),fs=require('fs'),path=require('path'),sharp=require('sharp'),jsQR=require('jsqr'),QRCode=require('qrcode');
+(async()=>{
+ const out=path.resolve('tmp/digital-workshop');fs.mkdirSync(out,{recursive:true});
+ const image=await sharp('../output/social/digital-presence-snapchat-1080x1920.png').ensureAlpha().raw().toBuffer({resolveWithObject:true});
+ const qr=jsQR(new Uint8ClampedArray(image.data),image.info.width,image.info.height);assert.equal(qr?.data,'https://daeloffice.com/workshops/digital-presence');
+ const browser=await chromium.launch({channel:'chrome'});const page=await browser.newPage({viewport:{width:390,height:844},locale:'ar-SA'});let submitted=null;const token='a'.repeat(64);
+ await page.route('**/api/register',async route=>{submitted=route.request().postDataJSON();await route.fulfill({status:201,contentType:'application/json',body:JSON.stringify({token,emailSent:false})});});
+ await page.route('**/api/ticket/*',async route=>route.fulfill({contentType:'application/json',body:JSON.stringify({full_name:'زائر اختبار الورشة',registration_number:'EVT-TEST',status:'REGISTERED',workshop_id:'digital',qr:await QRCode.toDataURL('https://daeloffice.com/check-in?token='+token)})}));
+ await page.goto('http://127.0.0.1:3129/workshops/digital-presence?lang=ar');await page.locator('h1').waitFor();await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:path.join(out,'mobile.png'),fullPage:true});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ await page.locator('input[name=full_name]').fill('زائر اختبار الورشة');await page.locator('.question-next').click();
+ await page.locator('input[name=email]').fill('preview@example.invalid');await page.locator('.question-next').click();
+ await page.locator('input[name=phone]').fill('05012345678999');assert.equal(await page.locator('input[name=phone]').inputValue(),'0501234567');await page.locator('.question-next').click();
+ await page.locator('input[name=age_group]').first().check();await page.locator('.question-next').click();
+ await page.locator('input[name=workshop_id]').waitFor({state:'attached'});assert.equal(await page.locator('input[name=workshop_id]').count(),1);assert.equal(await page.locator('input[name=workshop_id]').inputValue(),'digital');assert.equal(await page.locator('input[name=workshop_id]').isChecked(),true);await page.locator('.question-next').click();
+ await page.locator('input[name=company]').waitFor();await page.locator('.question-next').click();await page.locator('input[name=consent]').check();await page.locator('.question-next').click();await page.waitForURL('**/registration/success?ticket=*');
+ await page.getByText('EVT-TEST',{exact:true}).first().waitFor();assert.equal(submitted.workshop_id,'digital');assert.equal(submitted.locale,'ar');assert.equal(await page.evaluate(()=>localStorage.getItem('makkah_ticket')),token);await page.screenshot({path:path.join(out,'ticket.png'),fullPage:true});
+ await page.goto('http://127.0.0.1:3129/workshops/digital-presence?lang=en');await page.locator('h1').waitFor();await page.waitForFunction(()=>document.documentElement.lang==='en');assert.ok((await page.locator('h1').innerText()).includes('Digital'));await page.getByRole('link',{name:'Open my saved ticket'}).waitFor();await page.screenshot({path:path.join(out,'mobile-en.png'),fullPage:true});
+ await page.setViewportSize({width:1440,height:1000});await page.goto('http://127.0.0.1:3129/workshops/digital-presence?lang=ar');await page.waitForFunction(()=>document.documentElement.lang==='ar');await page.screenshot({path:path.join(out,'desktop.png'),fullPage:true});
+ await browser.close();console.log('PASS: story QR, mobile layout, fixed workshop, phone length, mocked registration-to-ticket, saved ticket, Arabic/English. No email sent or production data created.');
+})().catch(e=>{console.error(e);process.exit(1)});
