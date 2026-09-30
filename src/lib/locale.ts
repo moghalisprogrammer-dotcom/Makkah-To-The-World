@@ -28,9 +28,9 @@ export const english: Record<string, string> = {
   "تصفح الدورات": "Browse courses",
   "استفسر من القسم": "Contact the department",
   "صهيب تركستاني": "Sohaib Turkistani",
-  "سمير قمصاني": "Samir Qumsani",
+  "أ. سمير عبدالله قصماني": "Mr. Samir Abdullah Qasmani",
   "سامي محمد احمد خياري": "Sami Mohammed Ahmed Khayyari",
-  "طارق الشلبي": "Tariq Alshalabi",
+  "م. طارق حمزه شلبي": "Eng. Tariq Hamza Shalabi",
   "مدير الحوار": "Moderator",
   "المتحاور الأول": "First panelist",
   "المتحاور الثاني": "Second panelist",
@@ -38,15 +38,15 @@ export const english: Record<string, string> = {
   "تعرّف على ضيوف الحوار": "Meet the panel",
   "ضيوف الجلسة الحوارية": "Meet our speakers",
   "بهو الكلية": "College lobby",
-  "9:00 صباحًا – 1:30 مساءً": "9:00 AM – 1:30 PM",
+  "9:00 صباحًا – 2:00 مساءً": "9:00 AM – 2:00 PM",
   "إرث حيّ، وحكايات أصيلة، وحفاوة القهوة السعودية.":
     "Living heritage, authentic stories and the hospitality of Saudi coffee.",
   "البرنامج المعتمد": "Approved programme",
   "بداية الجولة": "Tour starts",
   "ثلاث ورش متزامنة في القاعات 201 و202 و203.":
     "Three simultaneous workshops in Rooms 201, 202 and 203.",
-  "الورش الثلاث من 12:00 ظهرًا إلى 1:00 مساءً":
-    "All three workshops run from 12:00 PM to 1:00 PM",
+  "الورش الثلاث من 1:00 إلى 2:00 مساءً":
+    "All three workshops run from 1:00 PM to 2:00 PM",
   "استقبال الضيوف والتسجيل والافتتاح.":
     "Guest reception, registration and opening.",
   "المسرح في الدور 2. الورش: الظهور المهني 203، سلامة الأغذية 202، مطابخ حول العالم 201.":
@@ -145,7 +145,7 @@ export const english: Record<string, string> = {
   "ختام يليق بكم": "A memorable close",
   "بتوقيت مكة المكرمة": "Makkah time · GMT+3",
   "جزء البرنامج": "Agenda page",
-  "برنامج اليوم، كما سيُقام.": "The day, as it will unfold.",
+  "برنامج اليوم": "Today's programme",
   "الاستقبال والافتتاح": "Welcome & opening",
   "الجولة والعروض": "Tour & demonstrations",
   "الورش واللقاءات": "Workshops & conversations",

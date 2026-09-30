@@ -83,7 +83,7 @@ export function Agenda() {
           </span>
           <span>
             <Clock3 size={18} />
-            9:00 صباحًا — 1:30 مساءً
+            9:00 صباحًا — 2:00 مساءً
           </span>
           <a href="#workshops">
             ورش العمل <ArrowDown size={15} />
@@ -178,7 +178,7 @@ export function Agenda() {
             <div className="workshop-time">
               <Clock3 size={21} />
               <span>
-                <strong>12:00 ظهرًا — 1:00 مساءً</strong>
+                <strong>1:00 — 2:00 مساءً</strong>
                 <small>القاعات 201 و202 و203</small>
               </span>
             </div>

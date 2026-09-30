@@ -664,7 +664,7 @@ export function Invitation() {
                       <span />
                       {t("برنامج يومك")}
                     </p>
-                    <Reveal>{t("برنامج اليوم، كما سيُقام.")}</Reveal>
+                    <Reveal>{t("برنامج اليوم")}</Reveal>
                     <p className="scene-description">
                       {t(event.date)} · {t(event.time)}
                     </p>
@@ -835,7 +835,7 @@ export function Invitation() {
                       </motion.article>
                     </AnimatePresence>
                     <p className="workshop-disclaimer">
-                      {t("الورش الثلاث من 12:00 ظهرًا إلى 1:00 مساءً")}
+                      {t("الورش الثلاث من 1:00 إلى 2:00 مساءً")}
                     </p>
                   </div>
                 </div>

@@ -25,7 +25,11 @@ test("approved schedule preserves the overlap and start-only official tour", () 
     ["13:15", "13:30"],
   );
   for (const w of workshops)
-    assert.deepEqual([w.start, w.end], ["12:00", "13:00"]);
+    assert.deepEqual([w.start, w.end], ["13:00", "14:00"]);
+  assert.deepEqual(
+    agenda.find((x) => x.category === "session")!.participants!.map((p) => p.name),
+    ["صهيب تركستاني", "أ. سمير عبدالله قصماني", "سامي محمد احمد خياري", "م. طارق حمزه شلبي"],
+  );
   assert.deepEqual(
     workshops.map((w) => [w.id, w.location]),
     [
@@ -58,7 +62,7 @@ test("email and both calendars use the new times and rooms without inventing a t
       "https://daeloffice.com",
     );
     assert.match(message.text, /203/);
-    assert.match(message.text, /1:30/);
+    assert.match(message.text, /2:00/);
     assert.doesNotMatch(message.text, /12:15|3:00|undefined|NaN/);
     assert.doesNotMatch(message.html, /undefined|NaN/);
     const ics = await readFile(
@@ -68,7 +72,7 @@ test("email and both calendars use the new times and rooms without inventing a t
       ),
       "utf8",
     );
-    assert.match(ics, /DTEND:20261001T103000Z/);
+    assert.match(ics, /DTEND:20261001T110000Z/);
   }
 });
 test("shorter team passwords are unique, hash correctly, and replace only account settings", async () => {
