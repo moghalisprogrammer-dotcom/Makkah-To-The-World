@@ -1,6 +1,17 @@
 export type Locale = "ar" | "en";
 // Source phrases remain Arabic so content and translations can be reviewed together.
 export const english: Record<string, string> = {
+  "مدير الحوار: صهيب تركستاني": "Moderator: Sohaib Turkistani",
+  "صهيب تركستاني": "Sohaib Turkistani",
+  "سمير قمصاني": "Samir Qumsani",
+  "سامي محمد احمد خياري": "Sami Mohammed Ahmed Khayyari",
+  "طارق الشلبي": "Tariq Alshalabi",
+  "مدير الحوار": "Moderator",
+  "المتحاور الأول": "First panelist",
+  "المتحاور الثاني": "Second panelist",
+  "المتحاور الثالث": "Third panelist",
+  "تعرّف على ضيوف الحوار": "Meet the panel",
+  "ضيوف الجلسة الحوارية": "Meet our speakers",
   "بهو الكلية": "College lobby",
   "9:00 صباحًا – 1:30 مساءً": "9:00 AM – 1:30 PM",
   "إرث حيّ، وحكايات أصيلة، وحفاوة القهوة السعودية.":

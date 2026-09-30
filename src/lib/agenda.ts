@@ -8,6 +8,8 @@ export interface AgendaItem {
     "welcome" | "session" | "experience" | "tour" | "workshop" | "closing";
   location?: string;
   speaker?: string;
+  speakerImage?: string;
+  participants?: { name: string; role: string; image?: string }[];
   note?: string;
 }
 export const workshops = [
@@ -64,6 +66,13 @@ export const agenda: AgendaItem[] = [
     end: "13:15",
     title: "السياحة بين الماضي والحاضر ورؤيتنا المستقبلية",
     category: "session",
+    speaker: "مدير الحوار: صهيب تركستاني",
+    participants: [
+      { name: "صهيب تركستاني", role: "مدير الحوار" },
+      { name: "سمير قمصاني", role: "المتحاور الأول" },
+      { name: "سامي محمد احمد خياري", role: "المتحاور الثاني" },
+      { name: "طارق الشلبي", role: "المتحاور الثالث" },
+    ],
     location: "مسرح الكلية · الدور 2",
   },
   {

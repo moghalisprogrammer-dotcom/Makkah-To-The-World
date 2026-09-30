@@ -5,6 +5,7 @@ import { CinematicOpening } from "./cinematic-opening";
 import { useTourismSound } from "./tourism-sound";
 import { useInvitationAudio } from "./use-invitation-audio";
 import { SavedTicketLink } from "./saved-ticket-link";
+import { SessionParticipants } from "./session-participants";
 import {
   useCallback,
   useEffect,
@@ -722,6 +723,13 @@ export function Invitation() {
                               </div>
                               <div>
                                 <h3>{t(item.title)}</h3>
+                                <SessionParticipants item={item} />
+                                {item.speaker && (
+                                  <div className="agenda-moderator">
+                                    {item.speakerImage && <img src={appPath(item.speakerImage)} alt={t(item.speaker)} width={38} height={38} />}
+                                    <span>{t(item.speaker)}</span>
+                                  </div>
+                                )}
                                 <p>
                                   {t(
                                     item.location ||

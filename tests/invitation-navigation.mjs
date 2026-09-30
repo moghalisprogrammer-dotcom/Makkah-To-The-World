@@ -262,7 +262,7 @@ try {
           await expect(page.locator(".agenda-pages")).toHaveCount(1);
           await expect(page.locator(".agenda-pages")).toHaveCSS("opacity", "1");
           for (const title of await page
-            .locator(".cinema-agenda-item h3")
+            .locator(".cinema-agenda-item > div > h3")
             .allTextContents())
             titles.add(title);
           await checkLayout(page, `agenda-page-${i}`);

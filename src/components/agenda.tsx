@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { appPath } from "@/lib/base-path";
+import { SessionParticipants } from "./session-participants";
 import {
   ArrowDown,
   ArrowLeft,
@@ -142,10 +143,11 @@ export function Agenda() {
                   {item.note && <p>{item.note}</p>}
                   {item.speaker && (
                     <span className="agenda-speaker">
-                      <Mic2 size={14} />
+                      {item.speakerImage ? <img className="agenda-speaker-photo" src={appPath(item.speakerImage)} alt={item.speaker} width={38} height={38} /> : <Mic2 size={14} />}
                       {item.speaker}
                     </span>
                   )}
+                  <SessionParticipants item={item} />
                 </div>
                 <div className="agenda-place">
                   {item.location && (
