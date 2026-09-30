@@ -54,10 +54,10 @@ const chapters = [
 ];
 const destinations = [
   {
-    src: "/images/alula.jpg",
-    title: "العُلا",
-    detail: "حكاية نحتها الزمن",
-    position: "50% 48%",
+    src: "/images/saudi-gold.webp",
+    title: "روح السعودية",
+    detail: "إرثٌ يضيء المستقبل",
+    position: "50% 75%",
   },
   {
     src: "/images/rijal-almaa.jpg",
@@ -441,7 +441,7 @@ export function Invitation() {
         <div className="cinema-world" aria-hidden="true">
           <AnimatePresence initial={false}>
             <motion.div
-              className="cinema-photo"
+              className={`cinema-photo${destination.src.includes("saudi-gold") ? " cinema-photo-gold" : ""}`}
               key={destination.src}
               initial={{ opacity: 0, scale: reduced ? 1 : 1.12 }}
               animate={{ opacity: 1, scale: 1 }}

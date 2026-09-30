@@ -2,6 +2,8 @@ export type Locale = "ar" | "en";
 // Source phrases remain Arabic so content and translations can be reviewed together.
 export const english: Record<string, string> = {
   "مدير الحوار: صهيب تركستاني": "Moderator: Sohaib Turkistani",
+  "روح السعودية": "The spirit of Saudi Arabia",
+  "إرثٌ يضيء المستقبل": "Heritage that lights the future",
   "بندر الحارثي": "Bandar Al-Harthi",
   "ايناس محمد خضري": "Enas Mohammed Khudri",
   "آلاء خالد زهدي": "Alaa Khaled Zuhdi",

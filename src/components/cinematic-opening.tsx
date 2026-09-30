@@ -10,14 +10,14 @@ import { appPath } from "@/lib/base-path";
 import { SavedTicketLink } from "./saved-ticket-link";
 const shots = [
   {
-    src: "/images/alula.jpg",
-    place: ["العُلا", "AlUla"],
-    title: ["أرضٌ تروي.", "A land of stories."],
+    src: "/images/saudi-gold.webp",
+    place: ["روح السعودية", "The spirit of Saudi Arabia"],
+    title: ["إرثٌ يضيء المستقبل.", "Heritage that lights the future."],
     subtitle: [
-      "من صمت الصخر، تبدأ الدهشة",
-      "Wonder, carved into the landscape",
+      "من أصالة الضيافة، تبدأ حكايتنا",
+      "Our story begins with the warmth of hospitality",
     ],
-    position: "40% 48%",
+    position: "50% 75%",
   },
   {
     src: "/images/rijal-almaa.jpg",
@@ -131,7 +131,7 @@ export function CinematicOpening({
     >
       <AnimatePresence initial={false}>
         <motion.div
-          className="opening-shot"
+          className={`opening-shot${shot === 0 ? " opening-shot-gold" : ""}`}
           key={shot}
           initial={{ opacity: 0, scale: reduced ? 1 : shot % 2 ? 0.93 : 1.16 }}
           animate={{ opacity: 1, scale: 1 }}
