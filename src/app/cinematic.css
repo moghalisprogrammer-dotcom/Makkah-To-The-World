@@ -2367,3 +2367,18 @@
     flex-shrink: 0;
   }
 }
+.department-trigger{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:9px 14px;border:1px solid #d7bd8480;border-radius:30px;background:#d7bd841a;color:#f0dba9;font:inherit;font-size:12px;cursor:pointer}
+.department-dialog{margin:auto;padding:0;width:min(600px,calc(100vw - 24px));max-height:calc(100dvh - 24px);border:1px solid #d7bd8470;border-radius:24px;background:#0b1a30;color:#fff;box-shadow:0 24px 100px #0009}
+.department-dialog::backdrop{background:#020b18dc;backdrop-filter:blur(8px)}
+.department-content{position:relative;padding:24px}
+.department-content header{padding-inline-end:28px}.department-content header>span{color:#d7bd84;font-size:11px}.department-content h2{font-size:22px!important;line-height:1.5!important;margin:8px 0 18px!important}
+.department-tabs{display:flex;gap:8px;margin-bottom:16px}.department-tabs button{flex:1;border:1px solid #ffffff25;border-radius:12px;padding:10px 6px;background:transparent;color:#c1cfde;font:inherit;font-size:12px;cursor:pointer}.department-tabs button[aria-pressed=true]{background:#d7bd841c;border-color:#d7bd84;color:#eed29b}
+.department-academic{display:grid;grid-template-columns:1fr 1fr;gap:12px}.department-academic article{border:1px solid #ffffff18;border-radius:14px;background:#ffffff04;padding:14px}.department-content h3{font-size:15px!important;line-height:1.5!important;color:#e9d09b!important;margin:0 0 8px!important}.department-content p{font-size:12px!important;line-height:1.8!important;margin:0!important;color:#c3cfde!important}
+.department-course{text-align:center;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}.department-course img{width:min(220px,60vw);height:auto;border:12px solid white;border-radius:12px}.department-course nav{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;margin-top:12px;font-size:12px}.department-course nav button{border:1px solid #ffffff30;border-radius:12px;background:#ffffff08;color:white;padding:10px 18px;font:inherit;cursor:pointer}.department-course nav button:disabled{opacity:.35;cursor:default}.department-open{display:inline-flex;align-items:center;gap:8px;color:#f0dba9}
+.department-contact{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid #ffffff20;color:#bfdcf5;font-size:12px;text-decoration:none}.department-contact small{display:block;font-size:11px;margin-top:4px}
+@media(max-width:400px){.department-content{padding:20px 14px}.department-content h2{font-size:18px!important}.department-academic{gap:8px}.department-academic article{padding:10px}.department-content h3{font-size:13px!important}.department-content p{font-size:11px!important}.department-trigger{margin-top:7px;padding:7px 11px}}
+.experience-panel::before{pointer-events:none}
+.department-trigger{position:relative;z-index:1}
+.experience-panel:has(.department-trigger) h3{margin:7px 0;font-size:clamp(20px,3vw,30px)}
+.experience-panel:has(.department-trigger) p{line-height:1.65}
+@media(max-height:740px){.experience-panel:has(.department-trigger){padding:12px}.experience-panel:has(.department-trigger) h3{font-size:19px}.experience-panel:has(.department-trigger) p{font-size:11px}.department-trigger{margin-top:6px;padding:6px 10px;font-size:11px}.department-course img{width:180px}}

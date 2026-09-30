@@ -6,6 +6,7 @@ import { useTourismSound } from "./tourism-sound";
 import { useInvitationAudio } from "./use-invitation-audio";
 import { SavedTicketLink } from "./saved-ticket-link";
 import { SessionParticipants } from "./session-participants";
+import { DepartmentPrograms } from "./department-programs";
 import {
   useCallback,
   useEffect,
@@ -650,6 +651,7 @@ export function Invitation() {
                         </span>
                         <h3>{t(tracks[track].title)}</h3>
                         <p>{t(tracks[track].text)}</p>
+                        {track === 3 && <DepartmentPrograms />}
                       </motion.article>
                     </AnimatePresence>
                   </div>
