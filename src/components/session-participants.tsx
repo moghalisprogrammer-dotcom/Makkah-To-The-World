@@ -23,6 +23,7 @@ export function SessionParticipants({ item }: { item: AgendaItem }) {
             {person.image && <img src={appPath(person.image)} alt={t(person.name)} width={140} height={160} loading="lazy" />}
             <span><Mic2 size={13} aria-hidden="true" />{t(person.role)}</span>
             <h3>{t(person.name)}</h3>
+            {person.expertise && <p className="speaker-expertise">{t(person.expertise)}</p>}
           </article>)}
         </div>
       </div>

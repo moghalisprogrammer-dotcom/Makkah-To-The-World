@@ -28,8 +28,15 @@ test("approved schedule preserves the overlap and start-only official tour", () 
     assert.deepEqual([w.start, w.end], ["13:00", "14:00"]);
   assert.deepEqual(
     agenda.find((x) => x.category === "session")!.participants!.map((p) => p.name),
-    ["صهيب تركستاني", "أ. سمير عبدالله قصماني", "سامي محمد احمد خياري", "م. طارق حمزه شلبي"],
+    ["الأستاذ صهيب محمد نور تركستاني", "الأستاذ سمير عبدالله قمصاني", "الأستاذ سامي محمد خياري", "المهندس طارق حمزة شلبي"],
   );
+  const people = agenda.find((x) => x.category === "session")!.participants!;
+  assert.deepEqual(people.map((p) => p.role), ["محاور الجلسة", "متحدث", "متحدث", "متحدث"]);
+  for (const person of people) {
+    assert.ok(person.expertise);
+    for (const value of [person.name, person.role, person.expertise!])
+      assert.notEqual(translate(value, "en"), value);
+  }
   assert.deepEqual(
     workshops.map((w) => [w.id, w.location]),
     [

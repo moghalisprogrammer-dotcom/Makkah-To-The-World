@@ -9,7 +9,7 @@ export interface AgendaItem {
   location?: string;
   speaker?: string;
   speakerImage?: string;
-  participants?: { name: string; role: string; image?: string }[];
+  participants?: { name: string; role: string; expertise?: string; image?: string }[];
   note?: string;
 }
 export const workshops = [
@@ -72,13 +72,13 @@ export const agenda: AgendaItem[] = [
     end: "13:15",
     title: "السياحة بين الماضي والحاضر ورؤيتنا المستقبلية",
     category: "session",
-    speaker: "مدير الحوار: صهيب تركستاني",
+    speaker: "محاور الجلسة: الأستاذ صهيب محمد نور تركستاني",
     speakerImage: "/people/sohaib.jpg",
     participants: [
-      { name: "صهيب تركستاني", role: "مدير الحوار", image: "/people/sohaib.jpg" },
-      { name: "أ. سمير عبدالله قصماني", role: "المتحاور الأول", image: "/people/samir.jpg" },
-      { name: "سامي محمد احمد خياري", role: "المتحاور الثاني", image: "/people/sami.jpg" },
-      { name: "م. طارق حمزه شلبي", role: "المتحاور الثالث", image: "/people/tariq.jpg" },
+      { name: "الأستاذ صهيب محمد نور تركستاني", role: "محاور الجلسة", expertise: "خبير تدريب وتطوير وسياحة", image: "/people/sohaib.jpg" },
+      { name: "الأستاذ سمير عبدالله قمصاني", role: "متحدث", expertise: "خبير ومستشار سياحي", image: "/people/samir.jpg" },
+      { name: "الأستاذ سامي محمد خياري", role: "متحدث", expertise: "خبير ومستشار سياحي", image: "/people/sami.jpg" },
+      { name: "المهندس طارق حمزة شلبي", role: "متحدث", expertise: "مستشار معماري وخبير دولي", image: "/people/tariq.jpg" },
     ],
     location: "مسرح الكلية · الدور 2",
   },
