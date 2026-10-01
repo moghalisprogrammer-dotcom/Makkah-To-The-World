@@ -29,8 +29,9 @@ async function main() {
       );
     }
   }
-  const capacity = Number(process.env.EVENT_CAPACITY || 800);
-  if (!Number.isInteger(capacity) || capacity < 1)
+  // A capacity of zero means registrations are open with no count limit.
+  const capacity = Number(process.env.EVENT_CAPACITY ?? 0);
+  if (!Number.isInteger(capacity) || capacity < 0)
     throw new Error("Invalid EVENT_CAPACITY");
   const schema = await readFile(
     new URL("./schema.sql", import.meta.url),

@@ -112,8 +112,7 @@ export const english: Record<string, string> = {
   "من قسم السياحة والضيافة": "From the Tourism & Hospitality Department",
   "نستقبلكم من 9:00 صباحًا في بهو الكلية، وفريق التنظيم حاضر لمساعدتكم.":
     "We welcome you from 9 AM in the college lobby. Our event team will be there to help.",
-  "التسجيل متاح حتى اكتمال العدد":
-    "Registration is open until capacity is reached",
+  "التسجيل مفتوح للجميع": "Registration is open to everyone",
   "لمحة من المملكة": "A glimpse of Saudi Arabia",
   "دعوتك إلى ما هو أبعد": "An invitation to discover more",
   "هنا، تبدأ الحكاية.": "Your story starts here.",
@@ -200,8 +199,8 @@ export const english: Record<string, string> = {
   "جلسة مستقبل السياحة والورش الثلاث في الدور الثاني.":
     "The Future of Tourism session and all three workshops are on the second floor.",
   "يسعدنا مساعدتك.": "We are here to help.",
-  "التسجيل متاح للجميع دون موافقة مسبقة حتى اكتمال العدد. إذا لم تصلك التذكرة، تحقق من البريد غير المرغوب فيه أو تواصل معنا.":
-    "Registration is open to everyone until capacity is reached. If your ticket has not arrived, check your spam folder or contact us.",
+  "التسجيل مفتوح للجميع دون حد. إذا لم تصلك التذكرة، تحقق من البريد غير المرغوب فيه أو تواصل معنا.":
+    "Registration is open to everyone with no capacity limit. If your ticket has not arrived, check your spam folder or contact us.",
   "مكانك بيننا": "You belong here",
   "نتعرّف عليك، تختار تجربتك،":
     "Tell us about yourself, choose your experience,",

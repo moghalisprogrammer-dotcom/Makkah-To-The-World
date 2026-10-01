@@ -15,7 +15,10 @@ export async function register(input: unknown) {
     const [count] = await connection.query<RowDataPacket[]>(
       "SELECT COUNT(*) AS total FROM registrations WHERE status<>'CANCELLED'",
     );
-    if (!settings[0] || count[0].total >= settings[0].capacity)
+    if (
+      !settings[0] ||
+      (settings[0].capacity > 0 && count[0].total >= settings[0].capacity)
+    )
       throw new HttpError(409, "اكتمل العدد المتاح للتسجيل. شكرًا لاهتمامك.");
     const token = newToken();
     const [result] = await connection.execute<ResultSetHeader>(

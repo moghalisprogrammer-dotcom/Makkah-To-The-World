@@ -191,7 +191,10 @@ export function AdminDashboard() {
               label: "إجمالي المسجلين",
               value: stats?.total,
               icon: Users,
-              detail: `السعة المتاحة: ${data?.capacity ?? "—"} تسجيل`,
+              detail:
+                data?.capacity === 0
+                  ? "التسجيل مفتوح بلا حد"
+                  : `السعة المتاحة: ${data?.capacity ?? "—"} تسجيل`,
             },
             {
               label: "تم تسجيل حضورهم",
