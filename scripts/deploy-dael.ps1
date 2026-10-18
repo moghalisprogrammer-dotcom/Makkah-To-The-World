@@ -2,7 +2,9 @@ $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot -Parent
 $stamp = Get-Date -Format 'yyyyMMddHHmmss'
 $archive = Join-Path $env:TEMP "makkah-$stamp.tar.gz"
-$remote = 'root@147.93.72.29'
+# The SSH target comes from the environment so the server address never lives in this public repo.
+$remote = $env:MAKKAH_DEPLOY_REMOTE
+if (-not $remote) { throw 'Set MAKKAH_DEPLOY_REMOTE (for example user@host) before deploying.' }
 # Only committed application files are packaged; server secrets stay on the server.
 git -C $repo archive --format=tar.gz --output=$archive HEAD
 if ($LASTEXITCODE -ne 0) { throw 'Could not package the application.' }
